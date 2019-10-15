@@ -18,7 +18,7 @@
                     <span class="btn btn-xs btn-warning pull-right" style="font-size: 7px; margin-top: 2.5px;">PREMIUM</span>
                 @endif
             </li>
-            <li class="active">
+            <li @if(Request::is('home')) class="active" @endif>
                 <a href="{{route('home')}}"><i class="fa fa-bar-chart"></i>
                     <span>Dasbor</span>
                 </a>
@@ -68,7 +68,7 @@
             </li> -->
 
             @if(auth()->user()->roles != 1)
-                <li class="treeview">
+                <li class="treeview @if(Request::is('articles/create','articles/list','articles/trashed','articles/categories/list')) active @endif">
                     <a href="#">
                         <i class="fa fa-newspaper-o"></i> <span>Artikel</span>
                         <span class="pull-right-container">
@@ -77,7 +77,7 @@
                     </a>
                     <ul class="treeview-menu">
                         @if(auth()->user()->roles == 2)
-                            <li class="active">
+                            <li>
                                 <a href="{{route('articles.create')}}">
                                     <i class="fa fa-circle-o"></i> Buat Artikel
                                 </a>
@@ -103,7 +103,7 @@
                     </ul>
                 </li>
             @else
-                <li class="treeview">
+                <li class="treeview @if(Request::is('articles/list','articles/list/my-favorite')) active @endif">
                     <a href="#">
                         <i class="fa fa-newspaper-o"></i> <span>Artikel</span>
                         <span class="pull-right-container">
@@ -125,7 +125,7 @@
                 </li>
             @endif
             @if(auth()->user()->roles == 1)
-                <li class="treeview">
+                <li class="treeview @if(Request::is('forums/list','forums/create')) active @endif">
                     <a href="#">
                         <i class="fa fa-stack-exchange"></i> <span>Forum</span>
                         <span class="pull-right-container">
@@ -133,7 +133,7 @@
                         </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li class="active">
+                        <li>
                             <a href="{{route('forum.create')}}">
                                 <i class="fa fa-circle-o"></i> Buat Forum
                             </a>
@@ -146,7 +146,7 @@
                     </ul>
                 </li>
             @else
-                <li>
+                <li @if(Request::is('forums/list')) class="active" @endif>
                     <a href="{{route('forum.list')}}"><i class="fa fa-stack-exchange"></i>
                         <span>Daftar Forum</span>
                     </a>
@@ -177,13 +177,13 @@
             </li> --}}
 
             @if(auth()->user()->roles == 3)
-                <li>
+                <li @if(Request::is('feedback-management/list')) class="active" @endif>
                     <a href="{{route('feedback.list')}}"><i class="fa fa-sticky-note"></i>
                         <span>Umpan Balik</span>
                     </a>
                 </li>
             @else
-                <li>
+                <li @if(Request::is('feedback/create')) class="active" @endif>
                     <a href="{{route('feedback.create')}}"><i class="fa fa-sticky-note"></i>
                         <span>Buat Umpan Balik</span>
                     </a>
@@ -191,12 +191,12 @@
             @endif
 
             @if(auth()->user()->roles == 3)
-                <li>
+                <li @if(Request::is('user-management/list')) class="active" @endif>
                     <a href="{{route('user.list')}}"><i class="fa fa-users"></i>
                         <span>Atur Pengguna</span>
                     </a>
                 </li>
-                <li>
+                <li @if(Request::is('report-logs')) class="active" @endif>
                     <a href="{{route('report.index')}}"><i class="fa fa-history"></i>
                         <span>Riwayat Laporan</span>
                     </a>
@@ -204,7 +204,7 @@
             @endif
 
             @if(auth()->user()->roles == 1)
-                <li>
+                <li @if(Request::is('articles/subscribe')) class="active" @endif>
                     <a href="{{route('articles.subscribe')}}"><i class="fa fa-money"></i>
                         <span>Daftar Berlangganan</span>
                     </a>

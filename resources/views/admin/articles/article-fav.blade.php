@@ -10,7 +10,7 @@
             margin: 10px 0 12.5px;
         }
         .fav-button{
-            padding-top: 12px;
+            padding-top: 11px;
             margin-top: -10px;
             border-radius: 50%;
             padding-bottom: 8px;
