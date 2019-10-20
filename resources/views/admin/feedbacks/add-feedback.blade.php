@@ -36,6 +36,14 @@
                         <input type="text" class="form-control" name="title" value="{{old('title')}}">
                     </div>
                     <div class="form-group">
+                        <label for="">Jenis <sup style="color: red;">*</sup></label>
+                        <select class="form-control" name="type">
+                            <option disabled selected hidden>Pilih...</option>
+                            <option value="Masukan" @if(old('type') == "Masukan") selected @endif>Masukan</option>
+                            <option value="Keluhan" @if(old('type') == "Keluhan") selected @endif>Keluhan</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
                         <label for="">Konten <sup style="color: red;">*</sup></label>
                         <textarea name="body" class="form-control"
                                   style="resize: none;" id="summernote">{{old('body')}}</textarea>

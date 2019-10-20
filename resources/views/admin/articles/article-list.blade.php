@@ -12,7 +12,7 @@
         .fav-button{
             padding-top: 11px;
             margin-top: -10px;
-            border-radius: 50%;
+            /* border-radius: 50%; */
             padding-bottom: 8px;
         }
         .panel > .panel-heading {
@@ -139,7 +139,28 @@
                                             <a href="{{route('articles.edit', $a->id)}}" class="btn btn-warning btn-sm">Ubah</a>
                                         @endif
                                         @if(auth()->user()->roles == 3)
-                                            <a href="{{route('articles.remove', $a->id)}}" class="btn btn-danger btn-sm">Hapus</a>
+                                            <a class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delModal-{{$a->id}}">Hapus</a>
+                                            <div class="modal fade" id="delModal-{{$a->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <span class="modal-title" id="exampleModalLabel">Konfirmasi Penyetujuan</span>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            Apakah anda yakin ingin menghapus artikel ini? Tindakan ini tidak bisa dibatalkan, 
+                                                            tetapi artikel bisa dikembalikan dan statusnya kembali menjadi <b>Unapproved</b>.
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                                                            <a href="{{route('articles.remove', $a->id)}}" class="btn btn-primary">Konfirmasi</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
                                             @if($a->status == "Unapproved")
                                                 <a class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal-{{$a->id}}">Setujui</a>
                                                 <div class="modal fade" id="exampleModal-{{$a->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -152,7 +173,8 @@
                                                                 </button>
                                                             </div>
                                                             <div class="modal-body">
-                                                                Setujui artikel? Tindakan ini tidak bisa dibatalkan, tetapi artikel tetap bisa dihapus.
+                                                                Apakah anda yakin ingin metujui artikel ini? Tindakan ini tidak bisa dibatalkan, 
+                                                                tetapi artikel tetap bisa dihapus dan akan masuk ke sampah artikel.
                                                             </div>
                                                             <div class="modal-footer">
                                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
@@ -178,7 +200,6 @@
 @endsection
 
 @section('js')
-
     <script>
         $('#clear-form').click(function() {
             $('#judul').val("");
@@ -186,5 +207,4 @@
             $('#filter-form').submit();
         });
     </script>
-
 @endsection

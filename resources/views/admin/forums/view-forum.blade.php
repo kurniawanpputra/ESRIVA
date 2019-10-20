@@ -93,13 +93,13 @@
 
         <div class="box cust-margin-alt" style="margin-bottom: 5%;">
             <div class="box-header with-border">
-                <b>{{$forum->comments->count()}} Komentar</b>
+                <b>{{$comments->count()}} Komentar</b>
             </div>
             
             <div class="box-body">
-                @if($forum->comments->count() > 0)
-                    @foreach($forum->comments as $c)
-                        <div class="panel panel-default">
+                @if($comments->count() > 0)
+                    @foreach($comments as $c)
+                        <div class="panel panel-default" style="margin-bottom: 0;">
                             <div class="panel-heading">
                                 <b>{{App\User::find($c->user_id)->name}}</b>
                                 
@@ -170,12 +170,14 @@
                     </p>
                 @endif
             </div>
+            <div class="text-center">
+                {{$comments->links()}}
+            </div>
         </div>
     </div>
 @endsection
 
 @section('js')
-
     <script>
         $(document).ready(function() {
             $('#summernote').summernote({
@@ -185,5 +187,4 @@
             });
         });
     </script>
-
 @endsection

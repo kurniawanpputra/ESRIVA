@@ -50,7 +50,7 @@ class ArticleApproved extends Notification
     {
         return (new MailMessage)
                 ->subject('Penyetujuan Artikel - ESRIVA')
-                ->line('Hai, '.$this->article->user->name.'!'.' Artikel kamu sudah berhasil disetujui oleh admin.')
+                ->line('Hai, '.$this->article->user->name.'!'.' Artikel kamu sudah berhasil disetujui oleh admin dan 25 poin berhasil ditambahkan ke akunmu.')
                 ->action('Lihat Artikel', route('articles.read', $this->article->slug))
                 ->line('Terima kasih telah menggunakan aplikasi kami :)');
     }

@@ -17,6 +17,11 @@ class FeedbackController extends Controller
     public function finished($id) {
         $feedback = Feedback::find($id);
 
+        if($feedback->type == "Masukan") {
+            session()->flash('error', 'Umpan balik jenis masukan tidak bisa ditandai!');
+            return redirect()->back();
+        }
+
         if($feedback->is_finished == 1) {
             session()->flash('error', 'Umpan balik sudah ditandai selesai!');
             return redirect()->back();
@@ -33,6 +38,11 @@ class FeedbackController extends Controller
 
     public function unfinished($id) {
         $feedback = Feedback::find($id);
+
+        if($feedback->type == "Masukan") {
+            session()->flash('error', 'Umpan balik jenis masukan tidak bisa ditandai!');
+            return redirect()->back();
+        }
 
         if($feedback->is_finished == 0) {
             session()->flash('error', 'Umpan balik sudah ditandai belum selesai!');
@@ -68,11 +78,17 @@ class FeedbackController extends Controller
 
         $feedback->title = request()->title;
         $feedback->body = request()->body;
+        $feedback->type = request()->type;
         $feedback->user_id = auth()->user()->id;
 
         $feedback->save();
 
-        session()->flash('success', 'Umpan balik sukses dikirm! Akan diproses Admin dalam 2x24 jam.');
+        if (request()->type == "Keluhan") {
+            session()->flash('success', 'Umpan balik sukses dikirm! Akan diproses Admin dalam 2x24 jam.');
+        } else {
+            session()->flash('success', 'Umpan balik sukses dikirm! Terima kasih atas saran dan masukannya.');
+        }
+
         return redirect()->back();
     }
 }

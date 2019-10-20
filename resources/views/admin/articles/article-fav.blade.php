@@ -12,7 +12,7 @@
         .fav-button{
             padding-top: 11px;
             margin-top: -10px;
-            border-radius: 50%;
+            /* border-radius: 50%; */
             padding-bottom: 8px;
         }
         .panel > .panel-heading {

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Forum;
+use App\ForumComments as FC;
 use Illuminate\Http\Request;
 
 class ForumController extends Controller
@@ -101,6 +102,7 @@ class ForumController extends Controller
             }
 
             session()->flash('error', 'Tidak bisa mengubah forum pengguna lain!');
+            
             return redirect()->back();
         }
 
@@ -120,6 +122,7 @@ class ForumController extends Controller
 
         $forum->title = request()->title;
         $forum->body = request()->body;
+
         $forum->save();
 
         session()->flash('success', 'Forum berhasil diubah!');
@@ -129,11 +132,13 @@ class ForumController extends Controller
 
     public function detail($id) {
         $forum = Forum::find($id);
+        $comments = FC::where('forum_id', $id)->paginate(10);
 
         $views = $forum->views;
         $forum->views = $views + 1;
+
         $forum->save();
 
-        return view('admin.forums.view-forum', compact('forum'));
+        return view('admin.forums.view-forum', compact('forum', 'comments'));
     }
 }

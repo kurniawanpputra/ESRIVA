@@ -3,6 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="{{asset('lte/bower_components/bootstrap/dist/css/bootstrap.min.css')}}">
 
         <title>ESRIVA</title>
 
@@ -87,8 +88,9 @@
         <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
                 <div class="top-right links">
+                    <a href="#about">Tentang Kami</a>
                     @auth
-                        <a href="{{ url('/home') }}">Home</a>
+                        <a href="{{ url('/home') }}">Dasbor</a>
                     @else
                         <a href="{{ route('login') }}">Login</a>
 
@@ -106,9 +108,27 @@
             </div>
         </div>
 
+        <div class="container full-height" id="about">
+            <div class="row">
+                <div class="col-md-6" style="padding: 10%;">
+                    <img src="{{asset('img/as.png')}}" style="max-width: 400px; width: 100%; height: auto; margin-top: 10%;">
+                </div>
+
+                <div class="col-md-6" style="padding: 10%;">
+                    <h1 style="font-size: 36px; margin-top: 12.5%;" class="text-center">
+                        APA ITU ESRIVA?
+                    </h1>
+                    
+                    <p style="text-align: justify; margin-top: 25px; font-size: 16px;">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos minus consequatur cumque, eaque voluptate, tempora maxime nobis fugit numquam dolor, quia ducimus qui! Officia reprehenderit enim temporibus exercitationem, dolor accusamus. 
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos minus consequatur cumque, eaque voluptate, tempora maxime nobis fugit numquam dolor, quia ducimus qui! Officia reprehenderit enim temporibus exercitationem, dolor accusamus.
+                    </p>
+                </div>
+            </div>
+        </div>
+
         <script src="{{asset('js/baffle.js')}}"></script>
         <script src="{{asset('lte/bower_components/jquery/dist/jquery.min.js')}}"></script>
-        
         <script>
             let b = baffle('.landing-title', {
                 characters: '█▓█ ▓>█▒▓ ▒█░<█ █▒█ ▒▒<▓░ ▓/>< ▓█/ ░▒▒/ ▓/█▒',

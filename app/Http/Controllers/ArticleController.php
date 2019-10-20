@@ -90,10 +90,8 @@ class ArticleController extends Controller
         $article->category_id = request()->category;
         $article->user_id = auth()->user()->id;
         $article->slug = $full_slug;
-        $article->save();
 
-        auth()->user()->points += 25;
-        auth()->user()->save();
+        $article->save();
 
         session()->flash('success', 'Artikel sukses ditambahkan!');
 
@@ -142,6 +140,7 @@ class ArticleController extends Controller
         $article->category_id = request()->category;
         $article->user_id = auth()->user()->id;
         $article->slug = $full_slug;
+
         $article->save();
 
         session()->flash('success', 'Artikel sukses diubah!');
@@ -182,6 +181,7 @@ class ArticleController extends Controller
 
         $views = $article->views;
         $article->views = $views + 1;
+
         $article->save();
 
         return view('admin.articles.view-article', compact('article'));
@@ -204,6 +204,7 @@ class ArticleController extends Controller
 
         $article->status = "Removed";
         $article->deleted_at = Carbon::now();
+
         $article->save();
 
         $article->user->notify(new ArticleRejected($article));
@@ -242,9 +243,13 @@ class ArticleController extends Controller
         }
 
         $article->status = "Approved";
+
         $article->save();
 
         $article->user->notify(new ArticleApproved($article));
+
+        $article->user->points += 25;
+        $article->user->save();
 
         session()->flash('success', 'Artikel sukses disetujui!');
 
@@ -268,6 +273,7 @@ class ArticleController extends Controller
             $favorite->user_id = auth()->user()->id;
             $favorite->article_id = $id;
             $favorite->value = 1;
+
             $favorite->save();
 
             session()->flash('success', 'Artikel sukses ditambahkan ke favorit!');

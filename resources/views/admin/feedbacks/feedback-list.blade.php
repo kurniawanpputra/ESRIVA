@@ -42,6 +42,7 @@
                             <tr>
                                 <th>Nama</th>
                                 <th>Peran</th>
+                                <th>Jenis</th>
                                 <th>Judul</th>
                                 <th style="width: 40%">Konten</th>
                                 <th>Status</th>
@@ -49,6 +50,7 @@
                                 <th style="width: 10%">Tindakan</th>
                             </tr>
                         </thead>
+                        
                         <tbody>
                             @foreach($feedbacks as $f)
                                 @php
@@ -70,15 +72,18 @@
                                 <tr>
                                     <td class="middle">{{App\User::find($f->user_id)->name}}</td>
                                     <td class="middle">{{$role}}</td>
+                                    <td class="middle">{{$f->type}}</td>
                                     <td class="middle">{{$f->title}}</td>
                                     <td><p>{!! $f->body !!}</p></td>
                                     <td class="middle">{{$status}}</td>
                                     <td class="middle">{{$f->created_at->addHours(7)}}</td>
                                     <td class="text-center middle">
-                                        @if($status == "Belum Selesai")
-                                            <a href="{{route('feedback.finished', $f->id)}}" class="btn btn-xs btn-success">Tandai Selesai</a>
-                                        @else
-                                            <a href="{{route('feedback.unfinished', $f->id)}}" class="btn btn-xs btn-warning">Batal Selesai</a>
+                                        @if($f->type == "Keluhan")
+                                            @if($status == "Belum Selesai")
+                                                <a href="{{route('feedback.finished', $f->id)}}" class="btn btn-xs btn-success">Tandai Selesai</a>
+                                            @else
+                                                <a href="{{route('feedback.unfinished', $f->id)}}" class="btn btn-xs btn-warning">Batal Selesai</a>
+                                            @endif
                                         @endif
                                     </td>
                                 </tr>
