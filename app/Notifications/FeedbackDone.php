@@ -49,7 +49,7 @@ class FeedbackDone extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->subject('Umpan Balik Selesai - ESRIVA')
+                    ->subject('Umpan Balik #'.$this->feedback->id.' - ESRIVA')
                     ->line('Hai, '.$this->feedback->user->name.'!'.' Umpan balik yang kamu buat sudah dibaca dan sudah diproses oleh admin.')
                     ->line('Terima kasih telah menggunakan aplikasi kami :)');
     }
