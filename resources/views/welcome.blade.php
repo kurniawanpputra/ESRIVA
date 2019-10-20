@@ -111,7 +111,7 @@
         <div class="container full-height" id="about">
             <div class="row">
                 <div class="col-md-6" style="padding: 10%;">
-                    <img src="{{asset('img/as.png')}}" style="max-width: 400px; width: 100%; height: auto; margin-top: 10%;">
+                    <img src="{{asset('img/landing.png')}}" style="max-width: 400px; width: 100%; height: auto; margin-top: 10%;">
                 </div>
 
                 <div class="col-md-6" style="padding: 10%;">
