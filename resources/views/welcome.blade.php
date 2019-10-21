@@ -110,12 +110,12 @@
 
         <div class="container full-height" id="about">
             <div class="row">
-                <div class="col-md-6" style="padding: 10%;">
-                    <img src="{{asset('img/landing.png')}}" style="max-width: 400px; width: 100%; height: auto; margin-top: 10%;">
+                <div class="col-md-6 text-center" style="padding: 10%; margin-top: 3%;">
+                    <img src="{{asset('img/landing.png')}}" style="max-width: 400px; width: 100%; height: auto;">
                 </div>
 
-                <div class="col-md-6" style="padding: 10%;">
-                    <h1 style="font-size: 36px; margin-top: 12.5%;" class="text-center">
+                <div class="col-md-6" style="padding: 10%; margin-top: 6%;">
+                    <h1 style="font-size: 32px; margin-top: 0;" class="text-center">
                         APA ITU ESRIVA?
                     </h1>
                     
