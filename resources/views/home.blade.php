@@ -151,8 +151,8 @@
                         <div class="info-box bg-yellow">
                             <span class="info-box-icon"><i class="fa fa-comments"></i></span>
                             <div class="info-box-content">
-                                <span class="info-box-text" style="margin-top: 17.5px;">Langganan</span>
-                                <span class="info-box-number">Status Akun: 
+                                <span class="info-box-text" style="margin-top: 17.5px;">Status Akun</span>
+                                <span class="info-box-number">
                                     @if(count(auth()->user()->memberships) > 0 && auth()->user()->memberships->last()->expired > \Carbon\Carbon::now())
                                         PREMIUM
                                     @else
