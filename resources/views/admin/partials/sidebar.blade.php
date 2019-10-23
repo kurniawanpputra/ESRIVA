@@ -164,6 +164,7 @@
                     }
                 }
             @endphp
+            
             <li>
                 <a href="{{route('feedback.list')}}"><i class="fa fa-sticky-note"></i>
                     <span>Umpan Balik</span>
@@ -175,6 +176,14 @@
                     @endif
                 </a>
             </li> --}}
+
+            @if(auth()->user()->roles == 2)
+                <li @if(Request::is('my-activity-log')) class="active" @endif>
+                    <a href="{{route('psikolog.activity')}}"><i class="fa fa-history"></i>
+                        <span>Riwayat Aktivitas</span>
+                    </a>
+                </li>
+            @endif
 
             @if(auth()->user()->roles == 3)
                 <li @if(Request::is('feedback-management/list')) class="active" @endif>
@@ -191,9 +200,19 @@
             @endif
 
             @if(auth()->user()->roles == 3)
+                <li @if(Request::is('user-management/list/psikolog')) class="active" @endif>
+                    <a href="{{route('psikolog.list')}}"><i class="fa fa-user-secret"></i>
+                        <span>Atur Psikolog</span>
+                    </a>
+                </li>
                 <li @if(Request::is('user-management/list')) class="active" @endif>
                     <a href="{{route('user.list')}}"><i class="fa fa-users"></i>
                         <span>Atur Pengguna</span>
+                    </a>
+                </li>
+                <li @if(Request::is('psikolog-activity-log')) class="active" @endif>
+                    <a href="{{route('psikolog.allActivity')}}"><i class="fa fa-book"></i>
+                        <span>Aktivitas Psikolog</span>
                     </a>
                 </li>
                 <li @if(Request::is('report-logs')) class="active" @endif>

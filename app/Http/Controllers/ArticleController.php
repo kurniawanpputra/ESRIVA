@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Image;
 use App\Article;
+use App\Activity;
 use App\User;
 use App\Favorite;
 use App\Category;
@@ -118,6 +119,15 @@ class ArticleController extends Controller
         $article->image = $name;
 
         $article->save();
+
+        // ADD LOG
+        $activity = new Activity();
+
+        $activity->user_id = auth()->user()->id;
+        $activity->activity = "Membuat artikel";
+        $activity->notes = "Poin +25";
+
+        $activity->save();
 
         session()->flash('success', 'Artikel sukses ditambahkan!');
 

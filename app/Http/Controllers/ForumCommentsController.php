@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\ForumComments as Comment;
 use App\ReportLog as Log;
 use App\Forum;
+use App\Activity;
 use App\Notifications\ForumReply;
 
 class ForumCommentsController extends Controller
@@ -26,6 +27,16 @@ class ForumCommentsController extends Controller
 
         $forum = Forum::find($id);
         $forum->user->notify(new ForumReply($forum));
+
+        if(auth()->user()->roles == 2) {
+            $activity = new Activity();
+
+            $activity->user_id = auth()->user()->id;
+            $activity->activity = "Membuat komentar";
+            $activity->notes = "Poin +5";
+
+            $activity->save();
+        }
 
         session()->flash('success', 'Komentar berhasil ditambahkan!');
         return redirect()->back();

@@ -10,17 +10,15 @@ use Illuminate\Http\Request;
 class UserController extends Controller
 {
     public function index() {
-        $users = new User();
-
-        $users = $users->where('roles', '!=', 3);
-
-        if(!empty(request()->query)) {
-            $users = $users->where('name', 'LIKE', '%'.request()->get('query').'%')
-                           ->orWhere('email', 'LIKE', '%'.request()->get('query').'%')
-                           ->where('roles', '!=', 3);
+        if(!empty(request()->get('query'))) {
+            $users = User::where('name', 'LIKE', '%'.request()->get('query').'%')
+                         ->where('roles', 1)
+                         ->orWhere('name', 'LIKE', '%'.request()->get('query').'%')
+                         ->where('roles', 1)
+                         ->get();
+        }else{
+            $users = User::where('roles', 1)->get();
         }
-
-        $users = $users->get();
 
         return view('admin.users.user-list', compact('users'));
     }
@@ -42,7 +40,7 @@ class UserController extends Controller
         $user->save();
 
         session()->flash('success', 'Hak akses pengguna sukses dicabut!');
-        return redirect()->route('user.list');
+        return redirect()->back();
     }
 
     public function unban($id) {
@@ -57,7 +55,7 @@ class UserController extends Controller
         $user->save();
 
         session()->flash('success', 'Hak akses pengguna sukses dikembalikan!');
-        return redirect()->route('user.list');
+        return redirect()->back();
     }
 
     public function create() {
@@ -101,7 +99,7 @@ class UserController extends Controller
 
         session()->flash('success', 'Psikolog berhasil ditambahkan!');
 
-        return redirect()->route('user.list');
+        return redirect()->route('psikolog.list');
     }
 
     public function edit($id) {
@@ -149,7 +147,7 @@ class UserController extends Controller
 
         session()->flash('success', 'Data pengguna berhasil diubah!');
 
-        return redirect()->route('user.list');
+        return redirect()->route('psikolog.list');
     }
 
     public function editProfile() {
@@ -243,6 +241,7 @@ class UserController extends Controller
 
         foreach($users as $u) {
             $u->article_read = 0;
+
             $u->save();
         }
 
@@ -255,6 +254,7 @@ class UserController extends Controller
         $user = User::find($id);
 
         $user->points = 0;
+        
         $user->save();
 
         session()->flash('success', 'Poin total user berhasil di reset!');

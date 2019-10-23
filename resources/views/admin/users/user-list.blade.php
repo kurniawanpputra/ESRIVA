@@ -32,7 +32,7 @@
                 Daftar Pengguna
 
                 <span class="pull-right">
-                    <a data-toggle="modal" data-target="#exampleModal" class="btn btn-warning btn-xs">Reset Jumlah Baca</a>
+                    <a data-toggle="modal" data-target="#exampleModal" class="btn btn-danger btn-xs">Reset Jumlah Baca</a>
 
                     <!-- MODAL RESET -->
                     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -55,10 +55,6 @@
                             </div>
                         </div>
                     </div>
-
-                    <a href="{{route('user.create')}}" class="btn btn-primary btn-xs">
-                        <b>+</b> <i class="fa fa-user"></i>
-                    </a>
                 </span>
             </div>
             <div class="box-body table-responsive">
@@ -83,48 +79,29 @@
                             <tr>
                                 <th>Nama</th>
                                 <th>E-Mail</th>
-                                <th>Poin</th>
                                 <th>Login Terakhir</th>
-                                <th>Peran</th>
+                                <th>Status Akun</th>
+                                <th>Forum Dibuat</th>
                                 <th>Artikel Dibaca</th>
                                 <th style="width: 20%">Tindakan</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach($users as $u)
-                                @php
-                                    if($u->roles == 1) {
-                                        $role = "User";
-                                    }elseif($u->roles == 2) {
-                                        $role = "Psikolog";
-                                    }else{
-                                        $role = "Admin";
-                                    }
-                                @endphp
                                 <tr>
                                     <td>{{$u->name}}</td>
                                     <td>{{$u->email}}</td>
-                                    <td>
-                                        @if($u->roles == 2)
-                                            {{$u->points}}
-                                        @else
-                                            -
-                                        @endif
-                                    </td>
                                     <td>{{isset($u->last_login->last()->created_at) ? $u->last_login->last()->created_at->diffForHumans() : "-"}}</td>
-                                    <td>{{$role}}</td>
                                     <td>
-                                        @if($u->roles == 1)
-                                            {{$u->article_read}}
+                                        @if(count($u->memberships) > 0 && $u->memberships->last()->expired > \Carbon\Carbon::now())
+                                            PREMIUM
                                         @else
-                                            -
+                                            REGULER
                                         @endif
                                     </td>
+                                    <td>{{$u->forums->count()}}</td>
+                                    <td>{{$u->article_read}}</td>
                                     <td class="text-center">
-                                        @if($u->roles == 2)
-                                            <a href="{{route('user.edit', $u->id)}}" class="btn btn-info btn-xs">Ubah</a>
-                                        @endif
-
                                         @if($u->is_banned == 0)
                                             @if($u->id != auth()->user()->id)
                                                 <a href="{{route('user.ban', $u->id)}}" class="btn btn-danger btn-xs">Cabut Akses</a>
@@ -133,14 +110,10 @@
                                             <a href="{{route('user.unban', $u->id)}}" class="btn btn-success btn-xs">Beri Akses</a>
                                         @endif
 
-                                        @if($u->roles == 1)
-                                            @if(count($u->memberships) > 0 && $u->memberships->last()->expired < \Carbon\Carbon::now() || count($u->memberships) == 0)
-                                                <a class="btn btn-warning btn-xs" data-toggle="modal" data-target="#premiumModal-{{$u->id}}">Premium</a>
-                                            @endif
-                                        @endif
-                                        
-                                        @if($u->roles == 2)
-                                            <a class="btn btn-danger btn-xs" data-toggle="modal" data-target="#poinModal-{{$u->id}}">Reset Poin</a>
+                                        @if(count($u->memberships) > 0 && $u->memberships->last()->expired < \Carbon\Carbon::now() || count($u->memberships) == 0)
+                                            <a class="btn btn-warning btn-xs" data-toggle="modal" data-target="#premiumModal-{{$u->id}}">Premium</a>
+                                        @else
+                                            <a class="btn btn-warning btn-xs disabled">Premium</a>
                                         @endif
                                     </td>
                                 </tr>
@@ -162,28 +135,6 @@
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
                                                 <a href="{{route('user.premium', $u->id)}}" class="btn btn-primary">Konfirmasi</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- MODAL POIN -->
-                                <div class="modal fade" id="poinModal-{{$u->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <span class="modal-title" id="exampleModalLabel">Konfirmasi Akses Premium</span>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-body">
-                                                Apakah anda yakin ingin mereset poin milik pengguna <b>{{$u->name}}</b>? 
-                                                Tindakan ini tidak bisa dibatalkan, dengan arti data yang diubah tidak bisa dikembalikan.
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-                                                <a href="{{route('user.point-reset', $u->id)}}" class="btn btn-primary">Konfirmasi</a>
                                             </div>
                                         </div>
                                     </div>

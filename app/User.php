@@ -60,4 +60,8 @@ class User extends Authenticatable
     public function memberships() {
         return $this->hasMany(Membership::class);
     }
+
+    public function activities() {
+        return $this->hasMany(Activity::class);
+    }
 }

@@ -47,6 +47,7 @@ Route::group(['middleware' => 'auth'], function ()
 
     // USER MANAGEMENTS - DONE
     Route::get('user-management/list', 'UserController@index')->name('user.list')->middleware('admin');
+    Route::get('user-management/list/psikolog', 'PsikologController@index')->name('psikolog.list')->middleware('admin');
     Route::get('user-management/ban/{id}', 'UserController@ban')->name('user.ban')->middleware('admin');
     Route::get('user-management/unban/{id}', 'UserController@unban')->name('user.unban')->middleware('admin');
     Route::get('user-management/add-user', 'UserController@create')->name('user.create')->middleware('admin');
@@ -82,4 +83,10 @@ Route::group(['middleware' => 'auth'], function ()
     Route::post('forums/{fid}/comments/{cid}/report', 'ForumCommentsController@report')->name('report.store');
     Route::get('report-logs/open/{id}', 'ForumCommentsController@open')->name('comments.open')->middleware('admin');
     Route::get('report-logs/close/{id}', 'ForumCommentsController@close')->name('comments.close')->middleware('admin');
+
+    // PSIKOLOG
+    Route::get('user-management/list/psikolog', 'PsikologController@index')->name('psikolog.list')->middleware('admin');
+    Route::get('my-activity-log', 'PsikologController@activity')->name('psikolog.activity')->middleware('psikolog');
+    Route::get('psikolog-activity-log', 'PsikologController@allActivity')->name('psikolog.allActivity')->middleware('admin');
+    Route::get('claim-points', 'PsikologController@claim')->name('psikolog.claim')->middleware('psikolog');
 });
