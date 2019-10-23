@@ -89,13 +89,46 @@
 
             html {
                 scroll-behavior: smooth;
-            }   
+            }
+
+            .center-about {
+                top: 50%;
+                position: relative;
+                transform: translateY(-50%);
+            }  
+
+            .desktop-margin{
+                margin-top: 5%;
+            }
+
+            .extra-padding{
+                padding: 10%;
+            }
+
+            .extra-padding-2{
+                padding: 10%;
+            }
 
             @media only screen and (max-width: 991px) {
                 .desktop-margin{
                     margin-top: 0;
                 }
+
+                .center-about {
+                    top: 0;
+                    position: relative;
+                    transform: translateY(0);
+                }
+
+                .extra-padding{
+                    padding: 10% 10% 5%;
+                }
+
+                .extra-padding-2{
+                    padding: 5% 10% 10%;
+                }
             }
+            
         </style>
     </head>
     <body>
@@ -119,12 +152,12 @@
         </div>
 
         <div class="container full-height" id="about">
-            <div class="row">
-                <div class="col-md-6 text-center" style="padding: 10%; margin-top: 3%;">
+            <div class="row center-about">
+                <div class="col-md-6 text-center extra-padding">
                     <img src="{{asset('img/landing.png')}}" style="max-width: 400px; width: 100%; height: auto;">
                 </div>
 
-                <div class="col-md-6 desktop-margin" style="padding: 10%;">
+                <div class="col-md-6 desktop-margin extra-padding-2">
                     <h1 style="font-size: 32px; margin-top: 0;" class="text-center">
                         APA ITU ESRIVA?
                     </h1>
@@ -141,6 +174,7 @@
         <script src="{{asset('lte/bower_components/jquery/dist/jquery.min.js')}}"></script>
         
         <script>
+
             let b = baffle('.landing-title', {
                 characters: '█▓█ ▓>█▒▓ ▒█░<█ █▒█ ▒▒<▓░ ▓/>< ▓█/ ░▒▒/ ▓/█▒',
                 speed: 100
@@ -169,6 +203,7 @@
                     }
                 });
             });
+            
         </script>
     </body>
 </html>
