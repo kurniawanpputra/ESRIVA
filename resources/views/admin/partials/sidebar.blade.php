@@ -211,12 +211,12 @@
                     </a>
                 </li>
                 <li @if(Request::is('psikolog-activity-log')) class="active" @endif>
-                    <a href="{{route('psikolog.allActivity')}}"><i class="fa fa-book"></i>
+                    <a href="{{route('psikolog.allActivity')}}"><i class="fa fa-history"></i>
                         <span>Aktivitas Psikolog</span>
                     </a>
                 </li>
                 <li @if(Request::is('report-logs')) class="active" @endif>
-                    <a href="{{route('report.index')}}"><i class="fa fa-history"></i>
+                    <a href="{{route('report.index')}}"><i class="fa fa-book"></i>
                         <span>Laporan Komentar</span>
                     </a>
                 </li>
