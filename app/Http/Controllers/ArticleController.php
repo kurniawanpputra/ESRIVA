@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Image;
 use App\Article;
 use App\User;
 use App\Favorite;
@@ -69,11 +70,16 @@ class ArticleController extends Controller
         $this->validate(request(), [
             'title' => 'required',
             'body' => 'required',
-            'category' => 'required'
+            'category' => 'required',
+            'image'  => 'required|dimensions:ratio=5/3|mimes:jpeg,png|image'
         ], [
             'title.required' => 'Judul harus diisi!',
             'body.required' => 'Konten harus diisi!',
-            'category.required' => 'Kategori harus diisi!'
+            'category.required' => 'Kategori harus diisi!',
+            'image.required' => 'Artikel harus memiliki gambar!',
+            'image.image' => 'File harus berupa foto!',
+            'image.mimes' => 'Format foto harus PNG, JPEG atau JPG!',
+            'image.dimensions' => 'Rasio gambar artikel harus 5:3!'
         ]);
 
         $article = new Article();
@@ -90,6 +96,26 @@ class ArticleController extends Controller
         $article->category_id = request()->category;
         $article->user_id = auth()->user()->id;
         $article->slug = $full_slug;
+
+        $req_img = request()->image;
+        $img = Image::make($req_img);
+
+        $time = date('Y-m-d-h-i-s');
+        $format = $req_img->getClientOriginalExtension();
+
+        $img->resize(500, 300, function ($constraint) {
+            $constraint->aspectRatio();
+        });
+
+        // CHECK IF DIRECTORY EXIST
+        if (!file_exists('uploads\articles')) {
+            mkdir('uploads\articles', 666, true);
+        }
+
+        $img->save(public_path('uploads\articles\\'.$time.'_'.'article'.".".$format));
+        $name = 'uploads/articles/'.$time.'_'.'article'.".".$format;
+
+        $article->image = $name;
 
         $article->save();
 

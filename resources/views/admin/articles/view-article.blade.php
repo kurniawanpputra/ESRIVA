@@ -63,7 +63,9 @@
                 <hr style="margin: 5px 0 20px;">
 
                 <div class="text-center">
-                    <img src="{{asset('img/test.jpg')}}" class="article-img">
+                    <a href="{{url('/'.$article->image)}}" target="_blank">
+                        <img src="{{asset($article->image)}}" class="article-img">
+                    </a>
                 </div>
 
                 <p>{!! $article->body !!}</p>

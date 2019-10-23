@@ -91,7 +91,7 @@
                 scroll-behavior: smooth;
             }   
 
-            @media only screen and (max-width: 900px) {
+            @media only screen and (max-width: 991px) {
                 .desktop-margin{
                     margin-top: 0;
                 }

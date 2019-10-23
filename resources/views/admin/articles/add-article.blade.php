@@ -29,8 +29,18 @@
                         {{ $errors->first() }}
                     </div>
                 @endif
-                <form action="{{route('articles.store')}}" method="POST">
+
+                <form action="{{route('articles.store')}}" method="POST" enctype="multipart/form-data">
                     {{ csrf_field() }}
+                    <div class="form-group text-center" style="display: none;" id="img-prev">
+                        <label for="" style="margin-bottom: 0;">Partinjau Gambar</label>
+                        <br/>
+                        <img src="#" id="preview" style="max-width: 300px; width: 100%; height: auto; margin-top: 10px;">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Gambar <sup style="color: red;">*</sup></label>
+                        <input type="file" class="form-control" name="image" id="imgfile">
+                    </div>
                     <div class="form-group">
                         <label for="">Judul <sup style="color: red;">*</sup></label>
                         <input type="text" class="form-control" name="title" value="{{old('title')}}">
@@ -58,6 +68,7 @@
 @endsection
 
 @section('js')
+
     <script>
         $(document).ready(function() {
             $('#summernote').summernote({
@@ -66,5 +77,23 @@
                 disableResizeEditor: true
             });
         });
+        
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                
+                reader.onload = function(e) {
+                    $('#preview').attr('src', e.target.result);
+                }
+                
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        $("#imgfile").change(function() {
+            readURL(this);
+            $("#img-prev").show();
+        });
     </script>
+
 @endsection

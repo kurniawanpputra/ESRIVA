@@ -5,6 +5,14 @@
         .cust-margin{
             margin: 5% 0 5%;
         }
+        .additional-margin{
+            margin-top: 10px;
+        }
+        @media only screen and (min-width: 992px) {
+            .additional-margin{
+                margin-top: 0;
+            }
+        }
     </style>
 @endsection
 
@@ -41,7 +49,7 @@
                             </div>
                         </div>
 
-                        <div class="col-md-6">
+                        <div class="col-md-6 additional-margin">
                             <div class="panel panel-default panel-body" style="margin-bottom: 0;">
                                 @if(count(auth()->user()->memberships) > 0 && auth()->user()->memberships->last()->expired > \Carbon\Carbon::now())
                                     <p class="btn btn-warning" style="margin-bottom: 10px; margin-top: 143px; width: 100px;">PREMIUM</p>
