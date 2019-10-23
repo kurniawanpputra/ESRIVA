@@ -82,21 +82,31 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
+
+            .desktop-margin{
+                margin-top: 6%;
+            }
+
+            html {
+                scroll-behavior: smooth;
+            }   
+
+            @media only screen and (max-width: 900px) {
+                .desktop-margin{
+                    margin-top: 0;
+                }
+            }
         </style>
     </head>
     <body>
         <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
                 <div class="top-right links">
-                    <a href="#about">Tentang Kami</a>
+                    <a href="#about" id="about-a">Tentang Kami</a>
                     @auth
                         <a href="{{ url('/home') }}">Dasbor</a>
                     @else
                         <a href="{{ route('login') }}">Login</a>
-
-                        <!-- @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Daftar</a>
-                        @endif -->
                     @endauth
                 </div>
             @endif
@@ -114,7 +124,7 @@
                     <img src="{{asset('img/landing.png')}}" style="max-width: 400px; width: 100%; height: auto;">
                 </div>
 
-                <div class="col-md-6" style="padding: 10%; margin-top: 6%;">
+                <div class="col-md-6 desktop-margin" style="padding: 10%;">
                     <h1 style="font-size: 32px; margin-top: 0;" class="text-center">
                         APA ITU ESRIVA?
                     </h1>
@@ -129,6 +139,7 @@
 
         <script src="{{asset('js/baffle.js')}}"></script>
         <script src="{{asset('lte/bower_components/jquery/dist/jquery.min.js')}}"></script>
+        
         <script>
             let b = baffle('.landing-title', {
                 characters: '█▓█ ▓>█▒▓ ▒█░<█ █▒█ ▒▒<▓░ ▓/>< ▓█/ ░▒▒/ ▓/█▒',
@@ -143,6 +154,20 @@
                     $("a").addClass('animate-text');
                     $(".landing-title").addClass('animate-text');
                 }, 750);
+            });
+
+            $(document).ready(function(){
+                $("#about-a").on('click', function(event) {
+                    if (this.hash !== "") {
+                    event.preventDefault();
+                    var hash = this.hash;
+                        $('html, body').animate({
+                            scrollTop: $(hash).offset().top
+                        }, 0, function(){
+                            window.location.hash = hash;
+                        });
+                    }
+                });
             });
         </script>
     </body>

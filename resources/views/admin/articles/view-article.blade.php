@@ -11,6 +11,12 @@
         hr{
             border-top: 1px solid #f4f4f4;
         }
+        .article-img{
+            width: 100%;
+            height: auto;
+            max-width: 500px;
+            margin-bottom: 7.5px;
+        }
     </style>
 @endsection
 
@@ -55,6 +61,10 @@
                     <b>Dibuat:</b> {{date('d-m-Y', strtotime($article->created_at))}}
                 </span>
                 <hr style="margin: 5px 0 20px;">
+
+                <div class="text-center">
+                    <img src="{{asset('img/test.jpg')}}" class="article-img">
+                </div>
 
                 <p>{!! $article->body !!}</p>
 

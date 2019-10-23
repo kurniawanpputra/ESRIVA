@@ -198,7 +198,7 @@
                 </li>
                 <li @if(Request::is('report-logs')) class="active" @endif>
                     <a href="{{route('report.index')}}"><i class="fa fa-history"></i>
-                        <span>Riwayat Laporan</span>
+                        <span>Laporan Komentar</span>
                     </a>
                 </li>
             @endif

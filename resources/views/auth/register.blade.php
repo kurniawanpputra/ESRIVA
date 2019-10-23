@@ -5,6 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="box" style="margin-top: 25%">
+            
                 <div class="box-header with-border text-center text-bold">
                     {{ __('PENDAFTARAN') }}
                 </div>
@@ -65,19 +66,13 @@
 
                         <div class="form-group row">
                             <div class="col-md-8 offset-md-2">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <a class="btn btn-default btn-block"  href="{{ route('login') }}" style="color: #212529;">
-                                            {{ __('Login') }}
-                                        </a>
-                                    </div>
+                                <button type="submit" class="btn btn-success btn-block">
+                                    {{ __('Daftar') }}
+                                </button>
 
-                                    <div class="col-md-6">
-                                        <button type="submit" class="btn btn-success btn-block">
-                                            {{ __('Daftar') }}
-                                        </button>
-                                    </div>
-                                </div>
+                                <a class="btn btn-link btn-block"  href="{{ route('login') }}">
+                                    {{ __('Sudah punya akun? Login disini!') }}
+                                </a>
                             </div>
                         </div>
                     </form>
