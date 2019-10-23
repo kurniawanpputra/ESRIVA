@@ -40,7 +40,7 @@
             }
         </style>
     </head>
-    <body class="hold-transition skin-black sidebar-mini" onload="startTime()">
+    <body class="hold-transition skin-black sidebar-mini sidebar-collapse" onload="startTime()">
         <div class="wrapper">
             <!-- HEADER -->
             @include('admin.partials.header')
