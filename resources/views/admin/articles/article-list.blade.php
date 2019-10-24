@@ -10,10 +10,10 @@
             margin: 10px 0 12.5px;
         }
         .fav-button{
-            padding-top: 11px;
             margin-top: -10px;
-            /* border-radius: 50%; */
+            border-radius: 50%;
             padding-bottom: 8px;
+            padding-top: 11.5px;
         }
         .panel > .panel-heading {
             background-image: none;
