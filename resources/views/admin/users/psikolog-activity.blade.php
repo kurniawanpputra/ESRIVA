@@ -10,31 +10,67 @@
 
 @section('content')
     <div class="container">
-        <!-- <div class="box box-body" style="margin: 5% 0 -3% 0;">
-            <div class="row">
-                <form action="{{route('psikolog.list')}}" method="GET" id="filter-form">
-                    <div class="col-md-10">
-                        <input type="text" name="query" placeholder="Cari psikolog berdasarkan nama atau email..." class="form-control" 
-                               value="{{count(request()->query) > 0 ? request()->get('query') : ''}}" id="query">
-                    </div>
-                    <div class="col-md-1">
-                        <input type="submit" value="Cari" class="btn btn-primary btn-block">
-                    </div>
-                </form>
-                <div class="col-md-1">
-                    <button value="Hapus" class="btn btn-default btn-block" id="clear-form">Hapus</button>
-                </div>
-            </div>
-        </div> -->
-
         <div class="box cust-margin">
             <div class="box-header with-border">
                 Aktivitas Saya
 
                 <span class="pull-right">
-                    <a href="{{route('psikolog.claim')}}" class="btn btn-success btn-xs">
+                    <a class="btn btn-success btn-xs" data-toggle="modal" data-target="#exampleModal">
                         Klaim Poin
                     </a>
+
+                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <form action="{{route('psikolog.claim')}}" method="POST">
+                                    {{csrf_field()}}
+                                    <div class="modal-header">
+                                        <span class="modal-title" id="exampleModalLabel">Klaim Poin Aktivitas</span>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="row">
+                                            <div class="form-group col-md-6">
+                                                <label for="">Poin Akan Dikonversi</label>
+                                                <input type="number" name="poin" id="poin" class="form-control">
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label for="">Hasil Konversi Poin</label>
+                                                <input type="text" name="converted" id="converted" class="form-control" readonly>
+                                            </div>
+                                            <input type="hidden" name="amount" id="amount">
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group col-md-6">
+                                                <label for="">Nomor Rekening</label>
+                                                <input type="text" name="rek" id="rek" class="form-control">
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label for="">Nama Bank</label>
+                                                <input type="text" name="bank" id="bank" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group col-md-6" style="margin-bottom: 5px;">
+                                                <label for="">Nomor Telepon</label>
+                                                <input type="text" name="phone" id="phone" class="form-control">
+                                            </div>
+                                            <div class="form-group col-md-6" style="margin-bottom: 5px;">
+                                                <label for="">Sisa Poin</label>
+                                                <input type="text" value="{{auth()->user()->points}}" class="form-control" readonly>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                                        <button type="submit" class="btn btn-primary">Klaim</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
                 </span>
             </div>
             <div class="box-body table-responsive">
@@ -53,6 +89,7 @@
                         {{ $errors->first() }}
                     </div>
                 @endif
+                
                 @if($list->count() > 0)
                     <table class="table table-striped text-center">
                         <thead>
@@ -85,10 +122,13 @@
 @endsection
 
 @section('js')
-    <!-- <script>
-        $('#clear-form').click(function() {
-            $('#query').val("");
-            $('#filter-form').submit();
+    <script>
+        $('#poin').change(function() {
+            var converted = $('#poin').val() * 1000;
+            var formatted = Number(converted.toFixed(1)).toLocaleString();
+            var fixed = formatted.replace(',', '.')
+            $('#converted').val('Rp'+fixed+',00.');
+            $('#amount').val(converted);
         });
-    </script> -->
+    </script>
 @endsection

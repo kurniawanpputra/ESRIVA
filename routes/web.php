@@ -88,5 +88,5 @@ Route::group(['middleware' => 'auth'], function ()
     Route::get('user-management/list/psikolog', 'PsikologController@index')->name('psikolog.list')->middleware('admin');
     Route::get('my-activity-log', 'PsikologController@activity')->name('psikolog.activity')->middleware('psikolog');
     Route::get('psikolog-activity-log', 'PsikologController@allActivity')->name('psikolog.allActivity')->middleware('admin');
-    Route::get('claim-points', 'PsikologController@claim')->name('psikolog.claim')->middleware('psikolog');
+    Route::post('claim-points', 'PsikologController@claim')->name('psikolog.claim')->middleware('psikolog');
 });

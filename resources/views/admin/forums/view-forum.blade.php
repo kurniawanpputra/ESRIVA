@@ -99,7 +99,7 @@
             <div class="box-body">
                 @if($comments->count() > 0)
                     @foreach($comments as $c)
-                        <div class="panel panel-default" style="margin-bottom: 0;">
+                        <div class="panel panel-default" style="margin: 10px 0;">
                             <div class="panel-heading">
                                 <b>{{App\User::find($c->user_id)->name}}</b>
                                 

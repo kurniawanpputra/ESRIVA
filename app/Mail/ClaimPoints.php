@@ -10,18 +10,21 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 class ClaimPoints extends Mailable
 {
     use Queueable, SerializesModels;
-    public $name, $rek, $amount;
+
+    public $name, $rekening, $amount, $bank, $phone;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($name, $rek, $amount)
+    public function __construct($name, $rekening, $amount, $bank, $phone)
     {
         $this->name = $name;
-        $this->rek = $rek;
+        $this->rekening = $rekening;
         $this->amount = $amount;
+        $this->bank = $bank;
+        $this->phone = $phone;
     }
 
     /**
@@ -31,6 +34,7 @@ class ClaimPoints extends Mailable
      */
     public function build()
     {
-        return $this->view('view.name');
+        return $this->subject('Klaim Poin Psikolog - ESRIVA')
+                    ->view('admin.mails.ClaimPoints');
     }
 }

@@ -42,6 +42,38 @@ class PsikologController extends Controller
     }
 
     public function claim() {
-        dd("Belum jadi!");
+        $this->validate(request(), [
+            'poin' => 'required|digits_between:2,5',
+            'rek' => 'required',
+            'bank' => 'required',
+            'phone' => 'required'
+        ],[
+            'poin.required' => 'Tentukan jumlah poin yang akan dikonversi!',
+            'poin.digits_between' => 'Minimal 10 poin untuk dikonversi!',
+            'rek.required' => 'Nomor rekening harus diisi!',
+            'bank.required' => 'Nama bank harus diisi!',
+            'phone.required' => 'Nomor telepon harus diisi!'
+        ]);
+
+        $point = request()->poin;
+        $amount = request()->amount;
+        $rekening = request()->rek;
+        $bank = request()->bank;
+        $phone = request()->phone;
+        $name = auth()->user()->name;
+
+        $int = (int) $point;
+
+        if(auth()->user()->points < $int) {
+            return redirect()->route('psikolog.activity')->with('error', 'Maaf, poin kamu kurang. Silahkan kumpulkan terlebih dahulu.');
+        }
+
+        $sisa = auth()->user()->points - $point;
+        auth()->user()->points = $sisa;
+        auth()->user()->save();
+
+        \Mail::to('moderator@ex.com')->send(new CP($name, $rekening, $amount, $bank, $phone));
+
+        return redirect()->route('psikolog.activity')->with('success', 'Data klaim poin kamu sukses dikirim kepada admin!');
     }
 }
