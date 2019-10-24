@@ -4,7 +4,7 @@
         <span class="logo-lg mst" style="letter-spacing: .5px;"><b>ESRIVA</b></span>
     </a>
     <nav class="navbar navbar-static-top">
-        <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+        <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button" id="nav-ham">
             <span class="sr-only">Toggle Navigasi</span>
         </a>
         <div class="navbar-custom-menu">
