@@ -79,10 +79,10 @@
                             <tr>
                                 <th>Nama</th>
                                 <th>E-Mail</th>
-                                <th>Login Terakhir</th>
                                 <th>Status Akun</th>
                                 <th>Forum Dibuat</th>
                                 <th>Artikel Dibaca</th>
+                                <th>Login Terakhir</th>
                                 <th style="width: 20%">Tindakan</th>
                             </tr>
                         </thead>
@@ -91,7 +91,6 @@
                                 <tr>
                                     <td>{{$u->name}}</td>
                                     <td>{{$u->email}}</td>
-                                    <td>{{isset($u->last_login->last()->created_at) ? $u->last_login->last()->created_at->diffForHumans() : "-"}}</td>
                                     <td>
                                         @if(count($u->memberships) > 0 && $u->memberships->last()->expired > \Carbon\Carbon::now())
                                             PREMIUM
@@ -101,6 +100,7 @@
                                     </td>
                                     <td>{{$u->forums->count()}}</td>
                                     <td>{{$u->article_read}}</td>
+                                    <td>{{isset($u->last_login->last()->created_at) ? $u->last_login->last()->created_at->diffForHumans() : "-"}}</td>
                                     <td class="text-center">
                                         @if($u->is_banned == 0)
                                             @if($u->id != auth()->user()->id)

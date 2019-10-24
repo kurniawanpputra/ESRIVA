@@ -89,4 +89,5 @@ Route::group(['middleware' => 'auth'], function ()
     Route::get('my-activity-log', 'PsikologController@activity')->name('psikolog.activity')->middleware('psikolog');
     Route::get('psikolog-activity-log', 'PsikologController@allActivity')->name('psikolog.allActivity')->middleware('admin');
     Route::post('claim-points', 'PsikologController@claim')->name('psikolog.claim')->middleware('psikolog');
+    Route::post('top-up-points', 'PsikologController@topUp')->name('psikolog.topUp')->middleware('admin');
 });

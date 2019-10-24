@@ -6,6 +6,7 @@ use App\User;
 use App\Activity;
 use Carbon\Carbon;
 use App\Mail\ClaimPoints as CP;
+use App\Notifications\PointBonus;
 use Illuminate\Http\Request;
 
 class PsikologController extends Controller
@@ -38,7 +39,15 @@ class PsikologController extends Controller
         $list = Activity::OrderBy('created_at', 'desc')
                         ->paginate(10);
 
-        return view('admin.users.psikolog-allActivity', compact('list'));
+        $psikolog = User::where('roles', 2)->get();
+
+        if(request()->uid != "") {
+            $list = Activity::where('user_id', request()->uid)
+                            ->OrderBy('created_at', 'desc')
+                            ->paginate(10);
+        }
+
+        return view('admin.users.psikolog-allActivity', compact('list', 'psikolog'));
     }
 
     public function claim() {
@@ -70,10 +79,37 @@ class PsikologController extends Controller
 
         $sisa = auth()->user()->points - $point;
         auth()->user()->points = $sisa;
+
         auth()->user()->save();
 
         \Mail::to('moderator@ex.com')->send(new CP($name, $rekening, $amount, $bank, $phone));
 
         return redirect()->route('psikolog.activity')->with('success', 'Data klaim poin kamu sukses dikirim kepada admin!');
+    }
+
+    public function topUp() {
+        $id = request()->uid;
+        $point = request()->poin;
+
+        // FIND USER
+        $user = User::find($id);
+
+        $curr = $user->points;
+        $user->points = $curr + $point;
+
+        $user->save();
+
+        // SAVE IN LOG
+        $act = new Activity();
+
+        $act->user_id = $user->id;
+        $act->activity = "Bonus poin dari Admin";
+        $act->notes = "Poin +".$point;
+
+        $act->save();
+
+        $user->notify(new PointBonus($user, $point));
+
+        return redirect()->route('psikolog.allActivity')->with('success', 'Poin '.$user->name.' sebanyak '.$point.' sukses ditambahkan!');
     }
 }
