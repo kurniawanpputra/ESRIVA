@@ -5,11 +5,24 @@
         .cust-margin{
             margin: 5% 0 5%;
         }
+        input[type='file'] {
+  color: transparent;
+  direction: rtl;
+  max-width: 115px;
+  border: none;
+  margin: 0 auto;
+}
     </style>
 @endsection
 
 @section('content')
     <div class="container">
+        <div class="alert alert-success text-center" role="alert" style="margin: 5% 0 -3% 0;">
+            <h4 class="alert-heading">Hai, {{auth()->user()->name}}!</h4>
+            <hr style="margin: 7.5px 0;">
+            <p>Tahukah kamu? setiap tiga artikel yang kamu buat, kamu mendapatkan bonus 25 poin loh dari Admin. Rajin-rajin menulis artikel yah! &#128513;</p>
+        </div>
+
         <div class="box cust-margin">
             <div class="box-header with-border">Buat Artikel Baru</div>
 
@@ -29,17 +42,17 @@
                         {{ $errors->first() }}
                     </div>
                 @endif
-
                 <form action="{{route('articles.store')}}" method="POST" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     <div class="form-group text-center" style="display: none;" id="img-prev">
                         <label for="" style="margin-bottom: 0;">Partinjau Gambar</label>
                         <br/>
-                        <img src="#" id="preview" style="max-width: 300px; width: 100%; height: auto; margin-top: 10px;">
+                        <img src="#" id="preview" style="max-width: 300px; width: 100%; height: auto; margin-top: 10px; margin-bottom: -7.5px;">
                     </div>
-                    <div class="form-group">
-                        <label for="">Gambar <sup style="color: red;">*</sup></label>
+                    <div class="form-group text-center" style="margin-bottom: 10px;">
+                        <label for="" style="margin-bottom: -5px;" id="i-label">Gambar <sup style="color: red;">*</sup></label>
                         <input type="file" class="form-control" name="image" id="imgfile">
+                        <small class="text-muted">Rasio gambar artikel harus 5:3</small>
                     </div>
                     <div class="form-group">
                         <label for="">Judul <sup style="color: red;">*</sup></label>
@@ -58,6 +71,7 @@
                         <label for="">Konten <sup style="color: red;">*</sup></label>
                         <textarea id="summernote" name="body">{{old('body')}}</textarea>
                     </div>
+
                     <div class="form-group">
                         <input type="submit" value="Simpan" class="btn btn-success pull-right">
                     </div>
@@ -93,6 +107,7 @@
         $("#imgfile").change(function() {
             readURL(this);
             $("#img-prev").show();
+            $("#i-label").hide();
         });
     </script>
 
