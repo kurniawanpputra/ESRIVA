@@ -4,7 +4,7 @@
         <div class="user-panel">
             <div class="pull-left image">
                 <img @if(auth()->user()->avatar == NULL) src="{{asset('lte/dist/img/default.png')}}" @else src="{{asset(auth()->user()->avatar)}}" @endif 
-                             height="45" width="auto" style="border-radius: 50%;">
+                     class="img-circle">
             </div>
             <div class="pull-left info">
                 <p style="margin-top: 12.5px;">{{auth()->user()->name}}</p>
