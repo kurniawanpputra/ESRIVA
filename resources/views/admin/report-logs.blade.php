@@ -19,7 +19,6 @@
                 Laporan Komentar
             </div>
             <div class="box-body table-responsive">
-
                 @if (session('error'))
                     <div class="alert alert-danger" role="alert">
                         {{ session('error') }}
@@ -35,7 +34,6 @@
                         {{ $errors->first() }}
                     </div>
                 @endif
-
                 @if($logs->count() > 0)
                     <table class="table table-striped text-center">
                         <thead>
@@ -71,8 +69,11 @@
                         </tbody>
                     </table>
                 @else
-                    <p class="text-center text-muted" style="margin-top: 10px;">Tidak ada riwayat.</p>
+                    <p class="text-center text-muted" style="margin-top: 10px;">Tidak ada laporan.</p>
                 @endif
+            </div>
+            <div class="text-center">
+                {{$logs->links()}}
             </div>
         </div>
     </div>

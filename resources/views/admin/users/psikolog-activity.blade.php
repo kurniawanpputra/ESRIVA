@@ -115,7 +115,7 @@
             </div>
 
             <div class="text-center">
-            {{$list->links()}}
+                {{$list->links()}}
             </div>
         </div>
     </div>

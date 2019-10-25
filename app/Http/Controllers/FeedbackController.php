@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class FeedbackController extends Controller
 {
     public function index() {
-        $feedbacks = Feedback::OrderBy('created_at', 'desc')->get();
+        $feedbacks = Feedback::OrderBy('created_at', 'desc')->paginate(10);
 
         return view('admin.feedbacks.feedback-list', compact('feedbacks'));
     }

@@ -76,6 +76,8 @@ Route::group(['middleware' => 'auth'], function ()
     Route::get('forums/close/{id}', 'ForumController@close')->name('forum.close')->middleware('admin');
     Route::get('forums/edit/{id}', 'ForumController@edit')->name('forum.edit');
     Route::post('forums/update/{id}', 'ForumController@update')->name('forum.update');
+    Route::get('forums/show/{id}', 'ForumController@show')->name('forum.show')->middleware('admin');
+    Route::get('forums/hide/{id}', 'ForumController@hide')->name('forum.hide')->middleware('admin');
 
     // COMMENTS - DONE
     Route::get('report-logs', 'ForumCommentsController@reportIndex')->name('report.index')->middleware('admin');

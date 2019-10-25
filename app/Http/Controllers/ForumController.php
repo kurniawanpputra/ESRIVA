@@ -54,6 +54,10 @@ class ForumController extends Controller
         if(!empty(request()->judul)) {
             $forums = $forums->where('title', 'LIKE', '%'.request()->judul.'%');
         }
+
+        if(auth()->user()->roles != 3) {
+            $forums = $forums->where('is_show', 1);
+        }
             
         $forums = $forums->OrderBy('created_at', 'desc')
                          ->get();
@@ -93,6 +97,38 @@ class ForumController extends Controller
         return redirect()->route('forum.list');
     }
 
+    public function hide($id) {
+        $forum = Forum::find($id);
+
+        if($forum->is_show == 0) {
+            session()->flash('error', 'Forum sudah disembunyikan!');
+            return redirect()->back();
+        }
+
+        $forum->is_show = 0;
+        $forum->save();
+
+        session()->flash('success', 'Forum berhasil disembunyikan!');
+        
+        return redirect()->route('forum.list');
+    }
+
+    public function show($id) {
+        $forum = Forum::find($id);
+
+        if($forum->is_show == 1) {
+            session()->flash('error', 'Forum sudah ditampilkan!');
+            return redirect()->back();
+        }
+
+        $forum->is_show = 1;
+        $forum->save();
+
+        session()->flash('success', 'Forum berhasil ditampilkan!');
+
+        return redirect()->route('forum.list');
+    }
+
     public function edit($id) {
         $forum = Forum::find($id);
 
@@ -100,8 +136,7 @@ class ForumController extends Controller
             if(auth()->user()->roles == 3) {
                 return view('admin.forums.edit-forum', compact('forum'));
             }
-
-            session()->flash('error', 'Tidak bisa mengubah forum pengguna lain!');
+            session()->flash('error', 'Tidak bisa mengubah forum pengguna lain!'); 
             
             return redirect()->back();
         }

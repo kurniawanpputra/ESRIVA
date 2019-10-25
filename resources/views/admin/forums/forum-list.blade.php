@@ -95,6 +95,16 @@
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
                                         <a href="{{route('forum.detail', $f->id)}}">{{$f->title}}</a>
+
+                                        @if(auth()->user()->roles == 3)
+                                            <span class="pull-right">
+                                                @if($f->is_show == 1)
+                                                    <a href="{{route('forum.hide', $f->id)}}" class="btn btn-danger btn-xs">Sembunyikan</a>
+                                                @else
+                                                    <a href="{{route('forum.show', $f->id)}}" class="btn btn-primary btn-xs">Tampilkan</a>
+                                                @endif
+                                            </span>
+                                        @endif
                                     </div>
                                     <div class="panel-body">
                                         <p>
@@ -155,5 +165,5 @@
             $('#filter-form').submit();
         });
     </script>
-    
+
 @endsection

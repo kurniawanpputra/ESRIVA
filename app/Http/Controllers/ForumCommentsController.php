@@ -64,7 +64,8 @@ class ForumCommentsController extends Controller
     }
 
     public function reportIndex() {
-        $logs = Log::OrderBy('created_at', 'desc')->get();
+        $logs = Log::OrderBy('created_at', 'desc')
+                   ->paginate(10);
 
         return view('admin.report-logs', compact('logs'));
     }
@@ -78,6 +79,7 @@ class ForumCommentsController extends Controller
         }
 
         $comment->abuse = 0;
+
         $comment->save();
 
         session()->flash('success', 'Komentar sukses dibuka!');
@@ -93,6 +95,7 @@ class ForumCommentsController extends Controller
         }
 
         $comment->abuse = 1;
+
         $comment->save();
 
         session()->flash('success', 'Komentar sukses ditutup!');

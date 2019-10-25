@@ -19,7 +19,6 @@
                 Daftar Umpan Balik
             </div>
             <div class="box-body table-responsive">
-
                 @if (session('error'))
                     <div class="alert alert-danger" role="alert">
                         {{ session('error') }}
@@ -35,7 +34,6 @@
                         {{ $errors->first() }}
                     </div>
                 @endif
-
                 @if($feedbacks->count() > 0)
                     <table class="table table-striped text-center">
                         <thead>
@@ -68,7 +66,6 @@
                                         $role = "Admin";
                                     }
                                 @endphp
-                                
                                 <tr>
                                     <td class="middle">{{App\User::find($f->user_id)->name}}</td>
                                     <td class="middle">{{$role}}</td>
@@ -93,6 +90,9 @@
                 @else
                     <p class="text-center text-muted" style="margin-top: 10px;">Tidak ada umpan balik.</p>
                 @endif
+            </div>
+            <div class="text-center">
+                {{$feedbacks->links()}}
             </div>
         </div>
     </div>
