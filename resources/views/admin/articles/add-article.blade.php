@@ -19,13 +19,11 @@
     <div class="container">
         <div class="alert alert-success text-center" role="alert" style="margin: 5% 0 -3% 0;">
             <h4 class="alert-heading">Hai, {{auth()->user()->name}}!</h4>
-            <hr style="margin: 7.5px 0;">
             <p>Tahukah kamu? setiap tiga artikel yang kamu buat, kamu mendapatkan bonus 25 poin loh dari Admin. Rajin-rajin menulis artikel yah! &#128513;</p>
         </div>
 
         <div class="box cust-margin">
             <div class="box-header with-border">Buat Artikel Baru</div>
-
             <div class="box-body">
                 @if (session('error'))
                     <div class="alert alert-danger" role="alert">
@@ -82,7 +80,6 @@
 @endsection
 
 @section('js')
-
     <script>
         $(document).ready(function() {
             $('#summernote').summernote({
@@ -110,5 +107,4 @@
             $("#i-label").hide();
         });
     </script>
-
 @endsection

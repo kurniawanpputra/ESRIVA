@@ -34,7 +34,8 @@ class ArticleController extends Controller
             $articles = $articles->where('title', 'LIKE', '%'.request()->judul.'%');
         }
 
-        $articles = $articles->get();
+        $articles = $articles->OrderBy('created_at', 'desc')
+                             ->get();
         
         return view('admin.articles.article-list', compact('articles', 'categories'));
     }
