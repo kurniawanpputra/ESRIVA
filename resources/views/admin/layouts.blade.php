@@ -36,14 +36,28 @@
             }
 
             .box{
-                border-top-color: #222d32;
+                border-top-color: #3C8DBC;
+            }
+
+            .container{
+                padding-right: 0;
+                padding-left: 0;
+            }
+
+            .navbar-nav > .user-menu > .dropdown-menu{
+                padding: 0;
+            }
+
+            .navbar-custom-menu > .navbar-nav > li > .dropdown-menu {
+                border: none;
             }
         </style>
     </head>
-    <body class="hold-transition skin-black sidebar-mini sidebar-collapse" onload="startTime()">
+    <body class="hold-transition skin-blue-light sidebar-mini" onload="startTime()">
         <div class="wrapper">
             <!-- HEADER -->
             @include('admin.partials.header')
+
             <!-- SIDEBAR -->
             @include('admin.partials.sidebar')
 
@@ -76,6 +90,7 @@
         <script src="{{asset('lte/dist/js/pages/dashboard.js')}}"></script>
         <script src="{{asset('lte/dist/js/demo.js')}}"></script>
         <script src="{{asset('js/summernote.js')}}"></script>
+        
         <script>
             function startTime() {
                 var today = new Date();

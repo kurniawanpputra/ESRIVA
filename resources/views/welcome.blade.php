@@ -23,7 +23,7 @@
             
             @keyframes animate{
                 from{background-color: #fff;}
-                to{background-color: #222d32;}
+                to{background-color: #3C8DBC;}
             }
 
             @keyframes animate-text{

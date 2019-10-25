@@ -17,11 +17,14 @@
         }
         .panel > .panel-heading {
             background-image: none;
-            background-color: #222d32;
+            background-color: #3C8DBC;
         }
         .panel > .panel-heading > a{
             color: #f4f4f4;
             font-weight: 600;
+        }
+        .box-cust-padding{
+            padding: 20px 20px 0px 20px;
         }
     </style>
 @endsection
@@ -57,7 +60,7 @@
             <div class="box-header with-border">
                 Daftar Artikel
             </div>
-            <div class="box-body">
+            <div class="box-body box-cust-padding">
                 @if (session('error'))
                     <div class="alert alert-danger" role="alert">
                         {{ session('error') }}
@@ -89,11 +92,11 @@
                                         <a href="{{route('articles.read', $a->slug)}}">{{$a->title}}</a>
                                         @if(auth()->user()->roles != 1)
                                             @if($a->status == "Approved")
-                                                <span class="pull-right btn btn-primary btn-xs disabled">
+                                                <span class="pull-right btn btn-default btn-xs disabled">
                                                     {{$a->status}}
                                                 </span>
                                             @else
-                                                <span class="pull-right btn btn-danger btn-xs disabled">
+                                                <span class="pull-right btn btn-warning btn-xs disabled">
                                                     {{$a->status}}
                                                 </span>
                                             @endif

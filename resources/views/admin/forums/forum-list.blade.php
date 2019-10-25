@@ -17,11 +17,14 @@
         }
         .panel > .panel-heading {
             background-image: none;
-            background-color: #222d32;
+            background-color: #3C8DBC;
         }
         .panel > .panel-heading > a{
             color: #f4f4f4;
             font-weight: 600;
+        }
+        .box-cust-padding{
+            padding: 20px 20px 0px 20px;
         }
     </style>
 @endsection
@@ -67,7 +70,7 @@
                 Daftar Forum
             </div>
             
-            <div class="box-body">
+            <div class="box-body box-cust-padding">
                 @if (session('error'))
                     <div class="alert alert-danger" role="alert">
                         {{ session('error') }}
@@ -99,9 +102,9 @@
                                         @if(auth()->user()->roles == 3)
                                             <span class="pull-right">
                                                 @if($f->is_show == 1)
-                                                    <a href="{{route('forum.hide', $f->id)}}" class="btn btn-danger btn-xs">Sembunyikan</a>
+                                                    <a href="{{route('forum.hide', $f->id)}}" class="btn btn-warning btn-xs" title="Sembunyikan"><i class="fa fa-eye-slash"></i></a>
                                                 @else
-                                                    <a href="{{route('forum.show', $f->id)}}" class="btn btn-primary btn-xs">Tampilkan</a>
+                                                    <a href="{{route('forum.show', $f->id)}}" class="btn btn-default btn-xs" title="Tampilkan"><i class="fa fa-eye"></i></a>
                                                 @endif
                                             </span>
                                         @endif
@@ -157,7 +160,6 @@
 @endsection
 
 @section('js')
-
     <script>
         $('#clear-form').click(function() {
             $('#judul').val("");
@@ -165,5 +167,4 @@
             $('#filter-form').submit();
         });
     </script>
-
 @endsection

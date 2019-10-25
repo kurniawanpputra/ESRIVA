@@ -22,7 +22,7 @@
                 <span class="text-bold">{{strtoupper($forum->title)}}</span>
                 <span class="pull-right" style="color: #111;">
                     @if($forum->is_closed == 0)
-                        <span class=" btn btn-success btn-xs disabled">Dibuka</span>
+                        <span class=" btn btn-primary btn-xs disabled">Dibuka</span>
                     @else
                         <span class=" btn btn-danger btn-xs disabled">Ditutup</span>
                     @endif

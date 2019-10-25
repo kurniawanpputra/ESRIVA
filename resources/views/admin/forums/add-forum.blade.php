@@ -10,6 +10,11 @@
 
 @section('content')
     <div class="container">
+        <div class="alert alert-success text-center" role="alert" style="margin: 5% 0 -3% 0;">
+            <h4 class="alert-heading">Hai, {{auth()->user()->name}}!</h4>
+            <p>Sebelum kamu mulai membuat forum, cek dulu yuk forum yang sudah ada. Siapa tahu ada yang memiliki cerita mirip dengan kamu. &#128513;</p>
+        </div>
+
         <div class="box cust-margin">
             <div class="box-header with-border">Buat Forum Baru</div>
             <div class="box-body">

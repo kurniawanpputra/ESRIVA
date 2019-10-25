@@ -1,5 +1,13 @@
 @extends('admin.layouts')
 
+@section('css')
+    <style>
+        .info-box{
+            margin-top: 15px;
+        }
+    </style>
+@stop
+
 @section('content')
     <div class="container">
         <div class="box" style="margin-top: 5%;">

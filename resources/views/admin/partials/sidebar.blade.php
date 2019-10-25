@@ -11,13 +11,13 @@
             </div>
         </div>
         <ul class="sidebar-menu" data-widget="tree">
-            <li class="header">
+            <!-- <li class="header">
                 NAVIGASI UTAMA
 
                 @if(count(auth()->user()->memberships) > 0 && auth()->user()->memberships->last()->expired > \Carbon\Carbon::now())
                     <span class="btn btn-xs btn-warning pull-right" style="font-size: 7px; margin-top: 2.5px;">PREMIUM</span>
                 @endif
-            </li>
+            </li> -->
             <li @if(Request::is('home')) class="active" @endif>
                 <a href="{{route('home')}}"><i class="fa fa-bar-chart"></i>
                     <span>Dasbor</span>
