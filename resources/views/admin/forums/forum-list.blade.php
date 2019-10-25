@@ -104,7 +104,7 @@
                                                 @if($f->is_show == 1)
                                                     <a href="{{route('forum.hide', $f->id)}}" class="btn btn-warning btn-xs" title="Sembunyikan"><i class="fa fa-eye-slash"></i></a>
                                                 @else
-                                                    <a href="{{route('forum.show', $f->id)}}" class="btn btn-default btn-xs" title="Tampilkan"><i class="fa fa-eye"></i></a>
+                                                    <a href="{{route('forum.show', $f->id)}}" class="btn btn-success btn-xs" title="Tampilkan"><i class="fa fa-eye"></i></a>
                                                 @endif
                                             </span>
                                         @endif

@@ -92,7 +92,7 @@
                                         <a href="{{route('articles.read', $a->slug)}}">{{$a->title}}</a>
                                         @if(auth()->user()->roles != 1)
                                             @if($a->status == "Approved")
-                                                <span class="pull-right btn btn-default btn-xs disabled">
+                                                <span class="pull-right btn btn-success btn-xs disabled">
                                                     {{$a->status}}
                                                 </span>
                                             @else
