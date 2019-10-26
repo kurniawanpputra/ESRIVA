@@ -10,10 +10,10 @@
             margin: 10px 0 12.5px;
         }
         .fav-button{
+            width: 40px;
+            height: 40px;
             margin-top: -10px;
             border-radius: 50%;
-            padding-bottom: 8px;
-            padding-top: 11.5px;
         }
         .panel > .panel-heading {
             background-image: none;
@@ -74,11 +74,11 @@
                                             @endphp
                                             @if($fav == NULL || $fav->value == 0)
                                                 <button type="submit" class="pull-right btn btn-default fav-button" style="background-color: #fff;">
-                                                    <i class="fa fa-star-o" style="font-size: 18px; color: #eeba30"></i>
+                                                    <i class="fa fa-star-o" style="color: #eeba30"></i>
                                                 </button>
                                             @else
                                                 <button type="submit" class="pull-right btn btn-default fav-button" style="background-color: #fff;">
-                                                    <i class="fa fa-star" style="font-size: 18px; color: #eeba30"></i>
+                                                    <i class="fa fa-star" style="color: #eeba30"></i>
                                                 </button>
                                             @endif
                                         </form> 

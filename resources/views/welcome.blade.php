@@ -98,7 +98,7 @@
             }  
 
             .desktop-margin{
-                margin-top: 5%;
+                margin-top: 7.5%;
             }
 
             .extra-padding{

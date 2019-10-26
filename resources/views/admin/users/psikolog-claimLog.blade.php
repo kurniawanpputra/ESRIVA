@@ -29,7 +29,7 @@
 
         <div class="box box-body" style="margin: 5% 0 -3% 0;">
             <div class="row">
-                <form action="{{route('psikolog.allActivity')}}" method="GET" id="filter-form">
+                <form action="{{route('psikolog.claimLog')}}" method="GET" id="filter-form">
                     <div class="col-md-10">
                         <select name="uid" class="form-control" id="uid">
                             <option disabled selected hidden>Filter data psikolog spesifik...</option>
@@ -50,7 +50,7 @@
 
         <div class="box cust-margin">
             <div class="box-header with-border">
-                Aktivitas Psikolog
+                Riwayat Klaim Poin
 
                 <!-- <span class="pull-right">
                     <a class="btn btn-success btn-xs" data-toggle="modal" data-target="#exampleModal">
@@ -119,17 +119,19 @@
                         <thead>
                             <tr>
                                 <th>Nama</th>
-                                <th>Aktivitas</th>
-                                <th>Keterangan</th>
+                                <th>Diklaim</th>
+                                <th>Sisa Poin</th>
+                                <th>No. Rekening</th>
                                 <th>Waktu</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach($list as $l)
                                 <tr>
-                                    <td>{{$l->user->name}}</td>
-                                    <td>{{$l->activity}}</td>
-                                    <td>{{$l->notes}}</td>
+                                    <td>{{App\User::find($l->user_id)->name}}</td>
+                                    <td>{{$l->claimed}}</td>
+                                    <td>{{$l->point_left}}</td>
+                                    <td>{{$l->rekening}}</td>
                                     <td>{{date('Y-m-d H:i', strtotime($l->created_at->addHours(7)))}}</td>
                                 </tr>
                             @endforeach

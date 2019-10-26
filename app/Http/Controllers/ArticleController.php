@@ -121,15 +121,6 @@ class ArticleController extends Controller
 
         $article->save();
 
-        // ADD LOG
-        $activity = new Activity();
-
-        $activity->user_id = auth()->user()->id;
-        $activity->activity = "Membuat artikel";
-        $activity->notes = "Poin +25";
-
-        $activity->save();
-
         session()->flash('success', 'Artikel sukses ditambahkan!');
 
         return redirect()->route('articles.list');
@@ -287,6 +278,30 @@ class ArticleController extends Controller
 
         $article->user->points += 25;
         $article->user->save();
+
+        // ADD LOG
+        $activity = new Activity();
+
+        $activity->user_id = $article->user->id;
+        $activity->activity = "Artikel diapprove admin";
+        $activity->notes = "Poin +25";
+
+        $activity->save();
+
+        // EVERY 3 ARTICLE BONUS 25 POINTS
+        $approved = Article::where('user_id', $article->user->id)
+                           ->where('status', "Approved")
+                           ->get();
+
+        if($approved->count() % 3 == 0) {
+            $activity = new Activity();
+
+            $activity->user_id = $article->user->id;
+            $activity->activity = "Bonus poin membuat 3 artikel";
+            $activity->notes = "Poin +25";
+    
+            $activity->save();
+        }
 
         session()->flash('success', 'Artikel sukses disetujui!');
 

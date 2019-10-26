@@ -12,14 +12,12 @@
 */
 
 Route::get('/', function () { return view('welcome'); });
-
 Route::get('/no-access-forbidden', function () { return view('error-403'); });
 
 Auth::routes();
 
 Route::group(['middleware' => 'auth'], function () 
 {
-    // HOME - DONE
     Route::get('/home', 'HomeController@index')->name('home');
 
     //ARTICLES - DONE
@@ -92,4 +90,6 @@ Route::group(['middleware' => 'auth'], function ()
     Route::get('psikolog-activity-log', 'PsikologController@allActivity')->name('psikolog.allActivity')->middleware('admin');
     Route::post('claim-points', 'PsikologController@claim')->name('psikolog.claim')->middleware('psikolog');
     Route::post('top-up-points', 'PsikologController@topUp')->name('psikolog.topUp')->middleware('admin');
+    Route::get('my-claim-log', 'PsikologController@myClaim')->name('psikolog.myClaim')->middleware('psikolog');
+    Route::get('points-claim-log', 'PsikologController@claimLog')->name('psikolog.claimLog')->middleware('admin');
 });

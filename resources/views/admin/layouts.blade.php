@@ -40,8 +40,8 @@
             }
 
             .container{
-                padding-right: 0;
-                padding-left: 0;
+                /* padding-right: 0;
+                padding-left: 0; */
             }
 
             .navbar-nav > .user-menu > .dropdown-menu{

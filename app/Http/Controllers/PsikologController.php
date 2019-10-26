@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\User;
 use App\Activity;
 use Carbon\Carbon;
+use App\ClaimLog as Log;
 use App\Mail\ClaimPoints as CP;
 use App\Notifications\PointBonus;
 use Illuminate\Http\Request;
@@ -50,6 +51,29 @@ class PsikologController extends Controller
         return view('admin.users.psikolog-allActivity', compact('list', 'psikolog'));
     }
 
+    public function claimLog() {
+        $list = Log::OrderBy('created_at', 'desc')
+                    ->paginate(10);
+
+        $psikolog = User::where('roles', 2)->get();
+
+        if(request()->uid != "") {
+            $list = Log::where('user_id', request()->uid)
+                        ->OrderBy('created_at', 'desc')
+                        ->paginate(10);
+        }
+
+        return view('admin.users.psikolog-claimLog', compact('list', 'psikolog'));
+    }
+
+    public function myClaim() {
+        $list = Log::where('user_id', auth()->user()->id)
+                    ->OrderBy('created_at', 'desc')
+                    ->paginate(10);
+
+        return view('admin.users.psikolog-myClaim', compact('list'));
+    }
+
     public function claim() {
         $this->validate(request(), [
             'poin' => 'required|digits_between:2,5',
@@ -83,6 +107,16 @@ class PsikologController extends Controller
         auth()->user()->save();
 
         \Mail::to('moderator@ex.com')->send(new CP($name, $rekening, $amount, $bank, $phone));
+
+        // SAVE TO LOG
+        $log = new Log();
+
+        $log->user_id = auth()->user()->id;
+        $log->claimed = $point;
+        $log->point_left = $sisa;
+        $log->rekening = $rekening;
+
+        $log->save();
 
         return redirect()->route('psikolog.activity')->with('success', 'Data klaim poin kamu sukses dikirim kepada admin!');
     }
