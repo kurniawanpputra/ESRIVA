@@ -34,7 +34,7 @@ class HomeController extends Controller
         $article_total = Article::all()->count();
         $forum_total = Forum::all()->count();
         $feedback_total = Feedback::all()->count();
-        $user_total = User::all()->count();
+        $user_total = User::where('roles', '!=', 3)->get()->count();
         $log_total = Log::all()->count();
 
         // DATA DIPROSES
@@ -52,9 +52,10 @@ class HomeController extends Controller
             $forum_percent = 0;
         }
 
-        $unfinished_feedback = Feedback::where('is_finished', 0)->get()->count();
+        // $unfinished_feedback = Feedback::where('is_finished', 0)->get()->count();
+        $bug_feedback = Feedback::where('type', "Keluhan")->get()->count();
         if($feedback_total != 0) {
-            $feedback_percent = number_format(($unfinished_feedback / $feedback_total * 100));
+            $feedback_percent = number_format(($bug_feedback / $feedback_total * 100));
         }else{
             $feedback_percent = 0;
         }
@@ -97,7 +98,7 @@ class HomeController extends Controller
             'unapproved_article',
             'closed_forum',
             'forum_percent',
-            'unfinished_feedback',
+            'bug_feedback',
             'feedback_percent',
             'blocked_user',
             'blocked_percent',

@@ -13,7 +13,6 @@
         <div class="box" style="margin-top: 5%;">
             <div class="box-header with-border">
                 Dasbor
-                
                 <span class="pull-right">
                     {{\Carbon\Carbon::now()->format('d-m-Y')}}
                     <span id="txt"></span>
@@ -35,14 +34,13 @@
                         {{ $errors->first() }}
                     </div>
                 @endif
-
                 @if(auth()->user()->roles == 3)
                     <div class="col-md-6">
                         <div class="info-box bg-green">
                             <span class="info-box-icon"><i class="fa fa-newspaper-o"></i></span>
                             <div class="info-box-content">
                                 <span class="info-box-text" style="margin-top: 7.5px;">Artikel</span>
-                                <span class="info-box-number">Artikel Diproses: {{$article_total - $unapproved_article}}</span>
+                                <span class="info-box-number">Artikel Terproses: {{$article_total - $unapproved_article}}</span>
                                 <span class="progress-description">
                                     {{$unapproved_article}} artikel baru
                                 </span>
@@ -64,7 +62,7 @@
                                 <span class="info-box-text" style="margin-top: 7.5px;">Umpan Balik</span>
                                 <span class="info-box-number">Umpan Balik: {{$feedback_total}}</span>
                                 <span class="progress-description">
-                                    {{$unfinished_feedback}} umpan balik baru
+                                    {{$bug_feedback}} diantaranya keluhan
                                 </span>
                             </div>
                         </div>
@@ -125,7 +123,7 @@
                     </div>
                     <div class="col-md-4">
                         <div class="info-box bg-yellow">
-                            <span class="info-box-icon"><i class="fa fa-gift"></i></span>
+                            <span class="info-box-icon"><i class="fa fa-puzzle-piece"></i></span>
                             <div class="info-box-content">
                                 <span class="info-box-text" style="margin-top: 17.5px;">Total Poin</span>
                                 <span class="info-box-number">Poin Aktivitas: {{auth()->user()->points}}</span>
@@ -157,7 +155,7 @@
                     </div>
                     <div class="col-md-4">
                         <div class="info-box bg-yellow">
-                            <span class="info-box-icon"><i class="fa fa-comments"></i></span>
+                            <span class="info-box-icon"><i class="fa fa-user"></i></span>
                             <div class="info-box-content">
                                 <span class="info-box-text" style="margin-top: 17.5px;">Status Akun</span>
                                 <span class="info-box-number">
