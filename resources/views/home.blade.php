@@ -141,6 +141,7 @@
                                 <!-- <span class="progress-description">
                                     {{App\Article::where('user_id', auth()->user()->id)->where('status', 'Approved')->get()->count()}} artikel disetujui
                                 </span> -->
+                                
                             </div>
                         </div>
                     </div>
@@ -154,19 +155,27 @@
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <div class="info-box bg-yellow">
-                            <span class="info-box-icon"><i class="fa fa-user"></i></span>
-                            <div class="info-box-content">
-                                <span class="info-box-text" style="margin-top: 17.5px;">Status Akun</span>
-                                <span class="info-box-number">
-                                    @if(count(auth()->user()->memberships) > 0 && auth()->user()->memberships->last()->expired > \Carbon\Carbon::now())
+                        @if(count(auth()->user()->memberships) > 0 && auth()->user()->memberships->last()->expired > \Carbon\Carbon::now())
+                            <div class="info-box bg-yellow">
+                                <span class="info-box-icon"><i class="fa fa-user"></i></span>
+                                <div class="info-box-content">
+                                    <span class="info-box-text" style="margin-top: 17.5px;">Status Akun</span>
+                                    <span class="info-box-number">
                                         PREMIUM
-                                    @else
-                                        REGULER
-                                    @endif
-                                </span>
+                                    </span>
+                                </div>
                             </div>
-                        </div>
+                        @else
+                            <div class="info-box bg-aqua">
+                                <span class="info-box-icon"><i class="fa fa-user"></i></span>
+                                <div class="info-box-content">
+                                    <span class="info-box-text" style="margin-top: 17.5px;">Status Akun</span>
+                                    <span class="info-box-number">
+                                        REGULER
+                                    </span>
+                                </div>
+                            </div>
+                        @endif
                     </div>
                 @endif
             </div>

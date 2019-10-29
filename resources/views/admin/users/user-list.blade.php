@@ -112,8 +112,8 @@
 
                                         @if(count($u->memberships) > 0 && $u->memberships->last()->expired < \Carbon\Carbon::now() || count($u->memberships) == 0)
                                             <a class="btn btn-warning btn-xs" data-toggle="modal" data-target="#premiumModal-{{$u->id}}">Premium</a>
-                                        @else
-                                            <a class="btn btn-warning btn-xs disabled">Premium</a>
+                                        {{-- @else
+                                            <a class="btn btn-warning btn-xs disabled">Premium</a> --}}
                                         @endif
                                     </td>
                                 </tr>

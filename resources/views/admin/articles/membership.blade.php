@@ -27,8 +27,8 @@
                                     <p class="btn btn-warning" style="margin-bottom: 10px; margin-top: 5px; width: 100px;">PREMIUM</p>
                                     <p style="margin-bottom: 0px;">Sisa fitur premium: <b>{{\Carbon\Carbon::parse(auth()->user()->memberships->last()->expired)->diffInDays(\Carbon\Carbon::now())}} hari</b></p>
                                 @else
-                                    <p class="btn btn-default" style="margin-bottom: 10px; width: 100px;">REGULER</p>
-                                    <p style="margin-bottom: 0px;">Sisa jumlah membaca: <b>{{6 - auth()->user()->article_read}} kali</b></p>
+                                    <p class="btn btn-info" style="margin-bottom: 10px; width: 100px;">REGULER</p>
+                                    <p style="margin-bottom: 0px;">Sisa jatah membaca: <b>{{6 - auth()->user()->article_read}} kali</b></p>
                                 @endif
                             </div>
                         </div>
