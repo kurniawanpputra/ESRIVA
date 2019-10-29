@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Forum;
+use App\User;
 use App\ForumComments as FC;
 use Illuminate\Http\Request;
 
@@ -43,6 +44,9 @@ class ForumController extends Controller
     public function index() {
         $forums = new Forum();
 
+        $forums = $forums->join('users', 'users.id', 'forums.user_id')
+                         ->select('forums.*', 'users.name');
+
         if(request()->status != NULL) {
             if(request()->status == 0) {
                 $forums = $forums->where('is_closed', 0);
@@ -52,7 +56,8 @@ class ForumController extends Controller
         }
 
         if(!empty(request()->judul)) {
-            $forums = $forums->where('title', 'LIKE', '%'.request()->judul.'%');
+            $forums = $forums->where('title', 'LIKE', '%'.request()->judul.'%')
+                             ->orWhere('users.name', 'LIKE', '%'.request()->judul.'%');
         }
 
         if(auth()->user()->roles != 3) {

@@ -20,7 +20,9 @@ class ArticleController extends Controller
 
         $articles = new Article();
 
-        $articles = $articles->where('deleted_at', NULL);
+        $articles = $articles->where('deleted_at', NULL)
+                             ->join('users', 'users.id', 'articles.user_id')
+                             ->select('articles.*', 'users.name');
 
         if(auth()->user()->roles == 1) {
             $articles = $articles->where('status', "Approved");
@@ -31,7 +33,8 @@ class ArticleController extends Controller
         }
 
         if(!empty(request()->judul != '')) {
-            $articles = $articles->where('title', 'LIKE', '%'.request()->judul.'%');
+            $articles = $articles->where('title', 'LIKE', '%'.request()->judul.'%')
+                                 ->orWhere('users.name', 'LIKE', '%'.request()->judul.'%');
         }
 
         $articles = $articles->OrderBy('created_at', 'desc')

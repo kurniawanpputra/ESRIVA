@@ -34,7 +34,7 @@
         <div class="box box-body" style="margin: 5% 0 -3% 0;">
             <div class="row">
                 <form action="{{route('articles.list')}}" method="GET" id="filter-form">
-                    <div class="col-md-5">
+                    <div class="col-md-4">
                         <select name="kategori" class="form-control" id="kategori">
                             <option disabled selected hidden>{{isset(request()->kategori) ? App\Category::find(request()->kategori)->title : "Filter kategori..." }}</option>
                             @foreach($categories as $c)
@@ -42,8 +42,8 @@
                             @endforeach
                         </select>
                     </div>
-                    <div class="col-md-5">
-                        <input type="text" name="judul" placeholder="Cari judul artikel..." class="form-control" 
+                    <div class="col-md-6">
+                        <input type="text" name="judul" placeholder="Cari judul atau nama penulis..." class="form-control" 
                                value="{{isset(request()->judul) ? request()->judul : ''}}" id="judul">
                     </div>
                     <div class="col-md-1">

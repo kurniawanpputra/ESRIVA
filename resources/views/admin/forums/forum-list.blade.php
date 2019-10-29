@@ -34,7 +34,7 @@
         <div class="box box-body" style="margin: 5% 0 -3% 0;">
             <div class="row">
                 <form action="{{route('forum.list')}}" method="GET" id="filter-form">
-                    <div class="col-md-5">
+                    <div class="col-md-4">
                         <select name="status" class="form-control" id="status">
                             @php
                                 if(isset(request()->status)) {
@@ -51,8 +51,8 @@
                             <option value="1">Ditutup</option>
                         </select>
                     </div>
-                    <div class="col-md-5">
-                        <input type="text" name="judul" placeholder="Cari judul forum..." class="form-control" 
+                    <div class="col-md-6">
+                        <input type="text" name="judul" placeholder="Cari judul atau nama penulis..." class="form-control" 
                                value="{{isset(request()->judul) ? request()->judul : ''}}" id="judul">
                     </div>
                     <div class="col-md-1">
