@@ -1,3 +1,14 @@
+<style>
+    .skin-blue-light .main-header .navbar, 
+    .skin-blue-light .main-header .logo,
+    .skin-blue-light .main-header li.user-header,
+    .skin-blue-light .main-header .navbar .sidebar-toggle:hover, 
+    .skin-blue-light .main-header .logo:hover
+    {
+        background-color: #8ed1cd;
+    }
+</style>
+
 <header class="main-header">
     <a href="{{route('home')}}" class="logo">
         <span class="logo-mini mst"><b>ERV</b></span>
@@ -57,7 +68,6 @@
                 <span class="hidden-xs">{{auth()->user()->name}}</span>
             </a>
             <ul class="dropdown-menu">
-                <!-- PROFILE -->
                 <li class="user-header">
                     <img @if(auth()->user()->avatar == NULL) src="{{asset('lte/dist/img/default.png')}}" @else src="{{asset(auth()->user()->avatar)}}" @endif 
                          height="90" width="auto" style="border-radius: 50%;">

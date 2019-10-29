@@ -36,7 +36,7 @@
             }
 
             .box{
-                border-top-color: #3C8DBC;
+                border-top-color: #8ed1cd;
             }
 
             .container{

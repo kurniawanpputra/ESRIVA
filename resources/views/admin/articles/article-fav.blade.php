@@ -10,18 +10,18 @@
             margin: 10px 0 12.5px;
         }
         .fav-button{
-            width: 40px;
-            height: 40px;
-            margin-top: -10px;
-            border-radius: 50%;
+            margin-top: -6.5px;
         }
-        .panel > .panel-heading {
+        /* .panel > .panel-heading {
             background-image: none;
-            background-color: #3C8DBC;
-        }
+            background-color: #8ed1cd;
+        } */
         .panel > .panel-heading > a{
-            color: #f4f4f4;
+            color: #333;
             font-weight: 600;
+        }
+        .box-cust-padding{
+            padding: 20px 20px 0px 20px;
         }
     </style>
 @endsection
@@ -32,7 +32,7 @@
             <div class="box-header with-border">
                 Artikel Favorit
             </div>
-            <div class="box-body">
+            <div class="box-body box-cust-padding">
                 @if (session('error'))
                     <div class="alert alert-danger" role="alert">
                         {{ session('error') }}

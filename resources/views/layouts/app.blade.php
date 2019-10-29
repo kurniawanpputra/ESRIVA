@@ -21,7 +21,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <style>
         body{
-            background-color: #3C8DBC;
+            background-color: #8ed1cd;
         }
         .navbar-light .navbar-nav .nav-link {
             color: rgba(0,0,0,.75);

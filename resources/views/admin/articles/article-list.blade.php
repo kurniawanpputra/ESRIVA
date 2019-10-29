@@ -10,17 +10,14 @@
             margin: 10px 0 12.5px;
         }
         .fav-button{
-            width: 40px;
-            height: 40px;
-            margin-top: -10px;
-            border-radius: 50%;
+            margin-top: -6.5px;
         }
-        .panel > .panel-heading {
+        /* .panel > .panel-heading {
             background-image: none;
-            background-color: #3C8DBC;
-        }
+            background-color: #8ed1cd;
+        } */
         .panel > .panel-heading > a{
-            color: #f4f4f4;
+            color: #333;
             font-weight: 600;
         }
         .box-cust-padding{

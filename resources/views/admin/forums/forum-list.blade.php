@@ -15,12 +15,12 @@
             border-radius: 50%;
             padding-bottom: 8px;
         }
-        .panel > .panel-heading {
+        /* .panel > .panel-heading {
             background-image: none;
-            background-color: #3C8DBC;
-        }
+            background-color: #8ed1cd;
+        } */
         .panel > .panel-heading > a{
-            color: #f4f4f4;
+            color: #333;
             font-weight: 600;
         }
         .box-cust-padding{

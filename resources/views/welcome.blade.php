@@ -23,7 +23,7 @@
             
             @keyframes animate{
                 from{background-color: #fff;}
-                to{background-color: #3C8DBC;}
+                to{background-color: #8ed1cd;}
             }
 
             @keyframes animate-text{
@@ -83,10 +83,6 @@
                 margin-bottom: 30px;
             }
 
-            .desktop-margin{
-                margin-top: 6%;
-            }
-
             html {
                 scroll-behavior: smooth;
             }
@@ -98,7 +94,7 @@
             }  
 
             .desktop-margin{
-                margin-top: 7.5%;
+                margin-top: 2.5%;
             }
 
             .extra-padding{
@@ -154,7 +150,7 @@
         <div class="container full-height" id="about">
             <div class="row center-about">
                 <div class="col-md-6 text-center extra-padding">
-                    <img src="{{asset('img/landing.png')}}" style="max-width: 400px; width: 100%; height: auto;">
+                    <img src="{{asset('img/landing-2.gif')}}" style="max-width: 400px; width: 100%; height: auto;">
                 </div>
 
                 <div class="col-md-6 desktop-margin extra-padding-2">
