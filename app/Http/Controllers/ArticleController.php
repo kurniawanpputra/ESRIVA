@@ -348,7 +348,7 @@ class ArticleController extends Controller
             }
         }
 
-        return redirect()->route('articles.list-fav');
+        return redirect()->route('articles.list');
     }
 
     public function subscribe() {

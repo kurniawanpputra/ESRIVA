@@ -10,7 +10,10 @@
             margin: 10px 0 12.5px;
         }
         .fav-button{
-            margin-top: -6.5px;
+            padding-bottom: 9px;
+            border-radius: 50%;
+            padding-top: 9px;
+            margin-top: -8px;
         }
         /* .panel > .panel-heading {
             background-image: none;
@@ -32,7 +35,7 @@
             <div class="box-header with-border">
                 Artikel Favorit
             </div>
-            <div class="box-body box-cust-padding">
+            <div class="box-body @if(count($articles) > 0) box-cust-padding @endif">
                 @if (session('error'))
                     <div class="alert alert-danger" role="alert">
                         {{ session('error') }}
@@ -72,7 +75,7 @@
                                                                    ->where('article_id', $a->id)
                                                                    ->first();
                                             @endphp
-                                            @if($fav == NULL || $fav->value == 0)
+                                            {{-- @if($fav == NULL || $fav->value == 0)
                                                 <button type="submit" class="pull-right btn btn-default fav-button" style="background-color: #fff;">
                                                     <i class="fa fa-star-o" style="color: #eeba30"></i>
                                                 </button>
@@ -80,7 +83,7 @@
                                                 <button type="submit" class="pull-right btn btn-default fav-button" style="background-color: #fff;">
                                                     <i class="fa fa-star" style="color: #eeba30"></i>
                                                 </button>
-                                            @endif
+                                            @endif --}}
                                         </form> 
                                     </div>
 

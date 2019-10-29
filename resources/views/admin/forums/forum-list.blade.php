@@ -70,7 +70,7 @@
                 Daftar Forum
             </div>
             
-            <div class="box-body box-cust-padding">
+            <div class="box-body @if(count($forums) > 0) box-cust-padding @endif">
                 @if (session('error'))
                     <div class="alert alert-danger" role="alert">
                         {{ session('error') }}
