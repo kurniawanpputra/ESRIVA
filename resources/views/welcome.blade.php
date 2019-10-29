@@ -150,7 +150,7 @@
         <div class="container full-height" id="about">
             <div class="row center-about">
                 <div class="col-md-6 text-center extra-padding">
-                    <img src="{{asset('img/landing-2.gif')}}" style="max-width: 400px; width: 100%; height: auto;">
+                    <img src="{{asset('img/landing-2.gif')}}" style="max-width: 400px; width: 100%; height: auto;" id="undrag" draggable="false">
                 </div>
 
                 <div class="col-md-6 desktop-margin extra-padding-2">
@@ -198,6 +198,10 @@
                         });
                     }
                 });
+            });
+            
+            $("#undrag").on("contextmenu",function(e){
+                return false;
             });
             
         </script>
