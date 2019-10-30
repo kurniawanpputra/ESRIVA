@@ -15,6 +15,7 @@
             width: 100%;
             height: auto;
             max-width: 500px;
+            border-radius: 1%;
             margin-bottom: 7.5px;
         }
     </style>
@@ -25,6 +26,7 @@
         <div class="box cust-margin">
             <div class="box-header with-border">
                 <span class="text-bold">{{strtoupper($article->title)}}</span>
+
                 <span class="pull-right btn btn-primary btn-xs disabled">
                     {{App\Category::find($article->category_id)->title}}
                 </span>
@@ -109,6 +111,8 @@
             (d.head || d.body).appendChild(s);
         })();
     </script>
+
+    <script async src="https://platform-api.sharethis.com/js/sharethis.js#property=5db904967fb33e00121cd44b&product=sticky-share-buttons"></script>
 
     <noscript>
         Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by DISQUS.</a>

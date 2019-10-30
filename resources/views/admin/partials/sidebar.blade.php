@@ -86,12 +86,26 @@
                         <li>
                             <a href="{{route('articles.list')}}">
                                 <i class="fa fa-circle-o"></i> Daftar Artikel
+                                @if(auth()->user()->roles == 3)
+                                    <span class="pull-right-container">
+                                        <small class="label pull-right btn-warning">
+                                            {{App\Article::where('status', "Unapproved")->get()->count()}}
+                                        </small>
+                                    </span>
+                                @endif
                             </a>
                         </li>
                         @if(auth()->user()->roles == 3)
                             <li>
                                 <a href="{{route('articles.trashed')}}">
                                     <i class="fa fa-circle-o"></i> Sampah Artikel
+                                    @if(auth()->user()->roles == 3)
+                                    <span class="pull-right-container">
+                                        <small class="label pull-right btn-danger">
+                                            {{App\Article::where('deleted_at', '!=', NULL)->get()->count()}}
+                                        </small>
+                                    </span>
+                                @endif
                                 </a>
                             </li>
                             <li>
