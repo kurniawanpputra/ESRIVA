@@ -7,7 +7,7 @@
         }
         hr{
             border-top: 1px solid #f4f4f4;
-            margin: 10px 0 12.5px;
+            margin: 10px 0 15px;
         }
         .fav-button{
             padding-top: 12px;
