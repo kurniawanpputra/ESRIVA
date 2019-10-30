@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row justify-content-center" style="margin-top: 20%">
         <div class="col-md-8">
-            <div class="box">
+            <div class="box" style="border-top: 3px solid #fff">
                 <div class="box-header with-border text-center text-bold">
                     {{ __('LOGIN') }}
                 </div>

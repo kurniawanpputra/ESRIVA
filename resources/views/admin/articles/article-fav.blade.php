@@ -15,13 +15,13 @@
             padding-top: 9px;
             margin-top: -8px;
         }
-        /* .panel > .panel-heading {
+        .panel > .panel-heading {
             background-image: none;
             background-color: #8ed1cd;
-        } */
+        }
         .panel > .panel-heading > a{
-            color: #333;
-            font-weight: 600;
+            color: #fff;
+            font-weight: bold;
         }
         .box-cust-padding{
             padding: 20px 20px 0px 20px;

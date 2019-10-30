@@ -4,6 +4,7 @@
     <style>
         .info-box{
             margin-top: 15px;
+            opacity: 0.9;
         }
     </style>
 @stop

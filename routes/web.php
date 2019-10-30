@@ -70,8 +70,8 @@ Route::group(['middleware' => 'auth'], function ()
     Route::post('forums/store', 'ForumController@store')->name('forum.store');
     Route::get('forums/list', 'ForumController@index')->name('forum.list');
     Route::get('forums/detail/{id}', 'ForumController@detail')->name('forum.detail');
-    Route::get('forums/open/{id}', 'ForumController@open')->name('forum.open')->middleware('admin');
-    Route::get('forums/close/{id}', 'ForumController@close')->name('forum.close')->middleware('admin');
+    Route::get('forums/open/{id}', 'ForumController@open')->name('forum.open');
+    Route::get('forums/close/{id}', 'ForumController@close')->name('forum.close');
     Route::get('forums/edit/{id}', 'ForumController@edit')->name('forum.edit');
     Route::post('forums/update/{id}', 'ForumController@update')->name('forum.update');
     Route::get('forums/show/{id}', 'ForumController@show')->name('forum.show')->middleware('admin');

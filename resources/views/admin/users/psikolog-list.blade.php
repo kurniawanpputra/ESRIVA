@@ -5,6 +5,20 @@
         .cust-margin{
             margin: 5% 0 5%;
         }
+        .filter-margin{
+            margin-top: 0;
+        }
+        .filter-margin-2{
+            margin-top: 0;
+        }
+        @media only screen and (max-width: 991px) {
+            .filter-margin{
+                margin-top: 5px;
+            }
+            .filter-margin-2{
+                margin-top: 10px;
+            }
+        }
     </style>
 @endsection
 
@@ -18,11 +32,11 @@
                                value="{{count(request()->query) > 0 ? request()->get('query') : ''}}" id="query">
                     </div>
                     <div class="col-md-1">
-                        <input type="submit" value="Cari" class="btn btn-primary btn-block">
+                        <input type="submit" value="Cari" class="btn btn-primary btn-block filter-margin-2">
                     </div>
                 </form>
                 <div class="col-md-1">
-                    <button value="Hapus" class="btn btn-default btn-block" id="clear-form">Hapus</button>
+                    <button value="Hapus" class="btn btn-default btn-block filter-margin" id="clear-form">Hapus</button>
                 </div>
             </div>
         </div>

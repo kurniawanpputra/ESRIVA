@@ -15,16 +15,30 @@
             padding-top: 9px;
             margin-top: -8px;
         }
-        /* .panel > .panel-heading {
+        .panel > .panel-heading {
             background-image: none;
             background-color: #8ed1cd;
-        } */
+        }
         .panel > .panel-heading > a{
-            color: #333;
-            font-weight: 600;
+            color: #fff;
+            font-weight: bold;
         }
         .box-cust-padding{
             padding: 20px 20px 0px 20px;
+        }
+        .filter-margin{
+            margin-top: 0;
+        }
+        .filter-margin-2{
+            margin-top: 0;
+        }
+        @media only screen and (max-width: 991px) {
+            .filter-margin{
+                margin-top: 5px;
+            }
+            .filter-margin-2{
+                margin-top: 10px;
+            }
         }
     </style>
 @endsection
@@ -43,15 +57,15 @@
                         </select>
                     </div>
                     <div class="col-md-6">
-                        <input type="text" name="judul" placeholder="Cari judul atau nama penulis..." class="form-control" 
+                        <input type="text" name="judul" placeholder="Cari judul atau nama penulis..." class="form-control filter-margin" 
                                value="{{isset(request()->judul) ? request()->judul : ''}}" id="judul">
                     </div>
                     <div class="col-md-1">
-                        <input type="submit" value="Cari" class="btn btn-primary btn-block">
+                        <input type="submit" value="Cari" class="btn btn-primary btn-block filter-margin-2">
                     </div>
                 </form>
                 <div class="col-md-1">
-                    <button value="Hapus" class="btn btn-default btn-block" id="clear-form">Hapus</button>
+                    <button value="Hapus" class="btn btn-default btn-block filter-margin" id="clear-form">Hapus</button>
                 </div>
             </div>
         </div>

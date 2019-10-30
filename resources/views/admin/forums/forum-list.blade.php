@@ -15,16 +15,30 @@
             border-radius: 50%;
             padding-bottom: 8px;
         }
-        /* .panel > .panel-heading {
+        .panel > .panel-heading {
             background-image: none;
             background-color: #8ed1cd;
-        } */
+        }
         .panel > .panel-heading > a{
-            color: #333;
-            font-weight: 600;
+            color: #fff;
+            font-weight: bold;
         }
         .box-cust-padding{
             padding: 20px 20px 0px 20px;
+        }
+        .filter-margin{
+            margin-top: 0;
+        }
+        .filter-margin-2{
+            margin-top: 0;
+        }
+        @media only screen and (max-width: 991px) {
+            .filter-margin{
+                margin-top: 5px;
+            }
+            .filter-margin-2{
+                margin-top: 10px;
+            }
         }
     </style>
 @endsection
@@ -44,23 +58,22 @@
                                         $status = "Ditutup";
                                     }
                                 }
-                            @endphp
-                            
+                            @endphp 
                             <option disabled selected hidden>{{isset(request()->status) ? $status : "Filter status..." }}</option>
                             <option value="0">Dibuka</option>
                             <option value="1">Ditutup</option>
                         </select>
                     </div>
                     <div class="col-md-6">
-                        <input type="text" name="judul" placeholder="Cari judul atau nama penulis..." class="form-control" 
+                        <input type="text" name="judul" placeholder="Cari judul atau nama penulis..." class="form-control filter-margin" 
                                value="{{isset(request()->judul) ? request()->judul : ''}}" id="judul">
                     </div>
                     <div class="col-md-1">
-                        <input type="submit" value="Cari" class="btn btn-primary btn-block">
+                        <input type="submit" value="Cari" class="btn btn-primary btn-block filter-margin-2">
                     </div>
                 </form>
                 <div class="col-md-1">
-                    <button value="Hapus" class="btn btn-default btn-block" id="clear-form">Hapus</button>
+                    <button value="Hapus" class="btn btn-default btn-block filter-margin" id="clear-form">Hapus</button>
                 </div>
             </div>
         </div>
@@ -69,7 +82,6 @@
             <div class="box-header with-border">
                 Daftar Forum
             </div>
-            
             <div class="box-body @if(count($forums) > 0) box-cust-padding @endif">
                 @if (session('error'))
                     <div class="alert alert-danger" role="alert">
@@ -137,11 +149,13 @@
                                             <a href="{{route('forum.edit', $f->id)}}" class="btn btn-warning btn-sm">Ubah</a>
                                         @endif
                                         
-                                        @if(auth()->user()->roles == 3)
-                                            @if($f->is_closed == 0)
-                                                <a href="{{route('forum.close', $f->id)}}" class="btn btn-danger btn-sm">Tutup</a>
-                                            @else
-                                                <a href="{{route('forum.open', $f->id)}}" class="btn btn-primary btn-sm">Buka</a>
+                                        @if(auth()->user()->roles != 3)
+                                            @if($f->user_id == auth()->user()->id || auth()->user()->roles == 2)
+                                                @if($f->is_closed == 0)
+                                                    <a href="{{route('forum.close', $f->id)}}" class="btn btn-danger btn-sm">Tutup</a>
+                                                @else
+                                                    <a href="{{route('forum.open', $f->id)}}" class="btn btn-primary btn-sm">Buka</a>
+                                                @endif
                                             @endif
                                         @endif
 

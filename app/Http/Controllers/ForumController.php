@@ -16,6 +16,17 @@ class ForumController extends Controller
             return redirect()->route('forum.list');
         }
 
+        $forums = Forum::where('user_id', auth()->user()->id)
+                       ->where('is_closed', 0)
+                       ->get()
+                       ->count();
+        
+        if($forums >= 2) {
+            session()->flash('error', 'Kamu hanya bisa memiliki 2 forum aktif, harap tutup salah satu sebelum membuat baru!');
+
+            return redirect()->route('forum.list');
+        }
+
         return view('admin.forums.add-forum');
     }
 
@@ -71,7 +82,21 @@ class ForumController extends Controller
     }
 
     public function close($id) {
+        if(auth()->user()->roles == 3) {
+            session()->flash('error', 'Hanya pengguna atau psikolog yang dapat menutup forum!');
+            return redirect()->back();
+        }
+
         $forum = Forum::find($id);
+
+        if(auth()->user()->id != $forum->user_id) {
+            if(auth()->user()->roles == 2) {
+                // DO NOTHING
+            }else{
+                session()->flash('error', 'Tidak bisa membuka atau menutup forum orang lain!');
+                return redirect()->back();
+            }
+        }
 
         if($forum->is_closed == 1) {
             session()->flash('error', 'Forum sudah ditutup!');
@@ -87,7 +112,21 @@ class ForumController extends Controller
     }
 
     public function open($id) {
+        if(auth()->user()->roles == 3) {
+            session()->flash('error', 'Hanya pengguna atau psikolog yang dapat membuka forum!');
+            return redirect()->back();
+        }
+
         $forum = Forum::find($id);
+
+        if(auth()->user()->id != $forum->user_id) {
+            if(auth()->user()->roles == 2) {
+                // DO NOTHING
+            }else{
+                session()->flash('error', 'Tidak bisa membuka atau menutup forum orang lain!');
+                return redirect()->back();
+            }
+        }
 
         if($forum->is_closed == 0) {
             session()->flash('error', 'Forum sudah dibuka!');
