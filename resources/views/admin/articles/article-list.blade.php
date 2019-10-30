@@ -82,7 +82,9 @@
         }
         @media only screen and (max-width: 650px) {
             .minus-top{
-                margin-top: -10px;
+                @if(auth()->user()->roles == 1)
+                    margin-top: -10px;
+                @endif
             }
         }
     </style>
@@ -135,7 +137,7 @@
                         {{ $errors->first() }}
                     </div>
                 @endif
-                
+
                 <div class="row">
                     @if($articles->count() > 0)
                         @foreach($articles as $a)
@@ -267,7 +269,6 @@
 @endsection
 
 @section('js')
-
     <script>
         $('#clear-form').click(function() {
             $('#judul').val("");
@@ -275,5 +276,4 @@
             $('#filter-form').submit();
         });
     </script>
-
 @endsection
