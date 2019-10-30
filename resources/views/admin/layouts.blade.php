@@ -53,7 +53,7 @@
             }
         </style>
     </head>
-    <body class="hold-transition skin-blue-light sidebar-mini" onload="startTime()">
+    <body class="hold-transition skin-black sidebar-mini" onload="startTime()">
         <div class="wrapper">
             <!-- HEADER -->
             @include('admin.partials.header')

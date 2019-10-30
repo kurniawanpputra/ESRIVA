@@ -7,7 +7,10 @@
                      class="img-circle">
             </div>
             <div class="pull-left info">
-                <p style="margin-top: 12.5px;">{{auth()->user()->name}}</p>
+                {{-- <p style="margin-top: 12.5px;">{{auth()->user()->name}}</p> --}}
+                
+                <p>{{auth()->user()->name}}</p>
+                <a><i class="fa fa-circle text-success"></i> Online</a>
             </div>
         </div>
         <ul class="sidebar-menu" data-widget="tree">

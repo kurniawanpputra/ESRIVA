@@ -20,7 +20,7 @@
             background-color: #8ed1cd;
         }
         .panel > .panel-heading > a{
-            color: #fff;
+            color: #333;
             font-weight: bold;
         }
         .box-cust-padding{

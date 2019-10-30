@@ -1,11 +1,37 @@
 <style>
-    .skin-blue-light .main-header .navbar, 
-    .skin-blue-light .main-header .logo,
-    .skin-blue-light .main-header li.user-header,
-    .skin-blue-light .main-header .navbar .sidebar-toggle:hover, 
-    .skin-blue-light .main-header .logo:hover
+    .skin-black .main-header .navbar, 
+    .skin-black .main-header .logo,
+    .skin-black .main-header li.user-header,
+    .skin-black .main-header .navbar .sidebar-toggle:hover, 
+    .skin-black .main-header .logo:hover
     {
         background-color: #8ed1cd;
+    }
+
+    a#nav-ham.sidebar-toggle:before{
+        color: #333;
+    }
+
+    a#nav-ham.sidebar-toggle{
+        border-right: 0px solid transparent;
+    }
+
+    .skin-black .main-header .logo {
+        border-right: 0px solid transparent;
+    }
+
+    .skin-black .main-header .navbar .navbar-custom-menu .navbar-nav > li > a{
+        border-left: 0px solid transparent;
+    }
+
+    .skin-black .main-header .navbar .navbar-custom-menu .navbar-nav>li>a:hover,
+    .skin-black .main-header .navbar .navbar-custom-menu .navbar-nav>li>a:focus,
+    .skin-black .main-header .navbar .navbar-custom-menu .navbar-nav>li>a:link,
+    .skin-black .main-header .navbar .navbar-custom-menu .navbar-nav>li>a:active,
+    .skin-black .main-header .navbar .navbar-custom-menu .navbar-nav>li>a:visited
+    {
+        background-color: #8ed1cd;
+        color: #333;
     }
 </style>
 
@@ -18,9 +44,9 @@
         <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button" id="nav-ham">
             <span class="sr-only">Toggle Navigasi</span>
         </a>
+        
         <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
-        
             <!-- <li class="dropdown notifications-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                     <i class="fa fa-bell-o"></i>
@@ -61,7 +87,6 @@
                     <li class="footer"><a href="#">View all</a></li>
                 </ul>
             </li> -->
-
             <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 <i class="fa fa-user-circle-o" style="margin-right: 2.5px; margin-left: 2.5px;"></i>
