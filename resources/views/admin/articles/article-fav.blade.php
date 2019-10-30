@@ -36,7 +36,7 @@
         }
         @media only screen and (max-width: 1199px) {
             .res-margin{
-                transform: translateY(12.5%);
+                transform: translateY(12%);
             }
         }
         @media only screen and (max-width: 991px) {

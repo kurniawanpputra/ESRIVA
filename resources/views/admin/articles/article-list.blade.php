@@ -10,10 +10,21 @@
             margin: 10px 0 15px;
         }
         .fav-button{
-            padding-bottom: 9px;
+            /* padding-bottom: 9px;
             border-radius: 50%;
-            padding-top: 9px;
-            margin-top: -8px;
+            padding-top: 9px; */
+            
+            transform: translateY(-50%);
+            background: transparent;
+            border-radius: 50%;
+            margin-top: 10px;
+            cursor: pointer;
+            padding: 0;
+        }
+        .fav-button .fa{
+            padding: 12px;
+            padding-bottom: 11.7px;
+            padding-top: 11.7px;
         }
         .panel > .panel-heading {
             background-image: none;
@@ -36,8 +47,11 @@
             @if(auth()->user()->roles != 1)
                 transform: translateY(30%);
             @else
-                transform: translateY(25%);
+                transform: translateY(10%);
             @endif
+        }
+        .minus-top{
+            margin-top: 0;
         }
         .thumbnail{
             margin-bottom: 0;
@@ -47,9 +61,9 @@
         @media only screen and (max-width: 1199px) {
             .res-margin{
                 @if(auth()->user()->roles != 1)
-                    transform: translateY(12.5%);
+                    transform: translateY(12%);
                 @else
-                    transform: translateY(9.5%);
+                    transform: translateY(-6%);
                 @endif
             }
         }
@@ -65,11 +79,11 @@
                 text-align: center;
                 transform: translateY(0%);
             }
-            @if(auth()->user()->roles == 1)
-                .thumbnail{
-                    margin-top: 10px;
-                }
-            @endif
+        }
+        @media only screen and (max-width: 650px) {
+            .minus-top{
+                margin-top: -10px;
+            }
         }
     </style>
 @endsection
@@ -121,6 +135,7 @@
                         {{ $errors->first() }}
                     </div>
                 @endif
+                
                 <div class="row">
                     @if($articles->count() > 0)
                         @foreach($articles as $a)
@@ -169,7 +184,7 @@
                                     <div class="panel-body">
                                         <div class="row">
                                             <div class="col-md-7 text-center">
-                                                <img src="{{asset($a->image)}}" style="border-radius: 3px; max-width: 100%; height: auto;" class="thumbnail">
+                                                <img src="{{asset($a->image)}}" style="border-radius: 3px; max-width: 100%; height: auto;" class="thumbnail minus-top">
                                             </div>
                                             <div class="col-md-5 res-margin">
                                                 <p>Penulis: {{App\User::find($a->user_id)->name}}</p>
