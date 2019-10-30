@@ -159,8 +159,10 @@
                     </h1>
                     
                     <p style="text-align: justify; margin-top: 25px; font-size: 16px;">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos minus consequatur cumque, eaque voluptate, tempora maxime nobis fugit numquam dolor, quia ducimus qui! Officia reprehenderit enim temporibus exercitationem, dolor accusamus. 
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos minus consequatur cumque, eaque voluptate, tempora maxime nobis fugit numquam dolor, quia ducimus qui! Officia reprehenderit enim temporibus exercitationem, dolor accusamus.
+                        ESRIVA adalah sebuah website yang memberikan pelayanan dan pengetahuan tentang kesehatan mental. Nama ESRIVA berasal dari bahasa Perancis yang merupakan singkatan dari <i>Esprit Sauvage</i>, berarti jiwa atau pikiran yang bebas.
+                        ESRIVA memiliki dua fitur utama, pertama blog yang berisi artikel-artikel dengan tema kesehatan mental dan fitur kedua adalah forum diskusi, dimana para pengguna bisa bertanya dan akan dijawab langsung oleh para psikolog.
+                        <!-- Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos minus consequatur cumque, eaque voluptate, tempora maxime nobis fugit numquam dolor, quia ducimus qui! Officia reprehenderit enim temporibus exercitationem, dolor accusamus. 
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos minus consequatur cumque, eaque voluptate, tempora maxime nobis fugit numquam dolor, quia ducimus qui! Officia reprehenderit enim temporibus exercitationem, dolor accusamus. -->
                     </p>
                 </div>
             </div>
@@ -170,7 +172,6 @@
         <script src="{{asset('lte/bower_components/jquery/dist/jquery.min.js')}}"></script>
         
         <script>
-
             let b = baffle('.landing-title', {
                 characters: '█▓█ ▓>█▒▓ ▒█░<█ █▒█ ▒▒<▓░ ▓/>< ▓█/ ░▒▒/ ▓/█▒',
                 speed: 100
@@ -203,7 +204,6 @@
             $("#undrag").on("contextmenu",function(e){
                 return false;
             });
-            
         </script>
     </body>
 </html>
