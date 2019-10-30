@@ -33,6 +33,10 @@
         background-color: #8ed1cd;
         color: #333;
     }
+
+    .navbar-nav > .user-menu > .dropdown-menu > li.user-header > p {
+        color: #333;
+    }
 </style>
 
 <header class="main-header">
@@ -106,11 +110,11 @@
                 <!-- MENU FOOTER-->
                 <li class="user-footer">
                     <div class="pull-left">
-                        <a href="{{route('profile.edit', auth()->user()->id)}}" class="btn btn-default btn-flat">Profil</a>
+                        <a href="{{route('profile.edit', auth()->user()->id)}}" class="btn btn-default">Profil</a>
                     </div>
                     <div class="pull-right">
                         <!-- <a href="#" class="btn btn-default btn-flat">Keluar</a> -->
-                        <a class="btn btn-default btn-flat" href="{{ route('logout') }}"
+                        <a class="btn btn-default" href="{{ route('logout') }}"
                             onclick="event.preventDefault();
                                             document.getElementById('logout-form').submit();">
                             {{ __('Keluar') }}
