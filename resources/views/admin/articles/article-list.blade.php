@@ -7,7 +7,7 @@
         }
         hr{
             border-top: 1px solid #f4f4f4;
-            margin: 10px 0 12.5px;
+            margin: 10px 0 15px;
         }
         .fav-button{
             padding-bottom: 9px;
@@ -32,6 +32,27 @@
         .filter-margin-2{
             margin-top: 0;
         }
+        .res-margin{
+            @if(auth()->user()->roles != 1)
+                transform: translateY(30%);
+            @else
+                transform: translateY(25%);
+            @endif
+        }
+        .thumbnail{
+            margin-bottom: 0;
+            display: inline-block;
+            background-color: #8ed1cd;
+        }
+        @media only screen and (max-width: 1199px) {
+            .res-margin{
+                @if(auth()->user()->roles != 1)
+                    transform: translateY(12.5%);
+                @else
+                    transform: translateY(9.5%);
+                @endif
+            }
+        }
         @media only screen and (max-width: 991px) {
             .filter-margin{
                 margin-top: 5px;
@@ -39,6 +60,16 @@
             .filter-margin-2{
                 margin-top: 10px;
             }
+            .res-margin{
+                margin-top: 15px;
+                text-align: center;
+                transform: translateY(0%);
+            }
+            @if(auth()->user()->roles == 1)
+                .thumbnail{
+                    margin-top: 10px;
+                }
+            @endif
         }
     </style>
 @endsection
@@ -90,17 +121,15 @@
                         {{ $errors->first() }}
                     </div>
                 @endif
-                
                 <div class="row">
                     @if($articles->count() > 0)
                         @foreach($articles as $a)
-                        
                             @php
                                 $words = count(explode(" ", $a->body));
                                 $mins = explode('.', ceil($words / 250))[0];
                             @endphp
                             
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
                                         <a href="{{route('articles.read', $a->slug)}}">{{$a->title}}</a>
@@ -138,20 +167,26 @@
                                     </div>
 
                                     <div class="panel-body">
-                                        <p>Penulis: {{App\User::find($a->user_id)->name}}</p>
-                                        <p>Kategori: {{App\Category::find($a->category_id)->title}}</p>
-                                        <p>{{date('M Y', strtotime($a->created_at))}} &#8226; {{$mins}} min read</p>
-                                        <p style="margin-bottom: 0;">
-                                            <i class="fa fa-eye" style="margin-right: 2.5px;"></i> {{$a->views}} kali
+                                        <div class="row">
+                                            <div class="col-md-7 text-center">
+                                                <img src="{{asset($a->image)}}" style="border-radius: 3px; max-width: 100%; height: auto;" class="thumbnail">
+                                            </div>
+                                            <div class="col-md-5 res-margin">
+                                                <p>Penulis: {{App\User::find($a->user_id)->name}}</p>
+                                                <p>Kategori: {{App\Category::find($a->category_id)->title}}</p>
+                                                <p>{{date('M Y', strtotime($a->created_at))}} &#8226; {{$mins}} min read</p>
+                                                <p style="margin-bottom: 0;">
+                                                    <i class="fa fa-eye" style="margin-right: 2.5px;"></i> {{$a->views}} kali
 
-                                            @php
-                                                $fav_count = App\Favorite::where('article_id', $a->id)->where('value', 1)->get()->count();
-                                            @endphp
+                                                    @php
+                                                        $fav_count = App\Favorite::where('article_id', $a->id)->where('value', 1)->get()->count();
+                                                    @endphp
 
-                                            <i class="fa fa-star" style="margin-right: 2.5px; margin-left: 5px;"></i> {{$fav_count}} orang
-                                        </p>
+                                                    <i class="fa fa-star" style="margin-right: 2.5px; margin-left: 5px;"></i> {{$fav_count}} orang
+                                                </p>
+                                            </div>
+                                        </div>
                                         <hr>
-
                                         @if(auth()->user()->id == $a->user_id || auth()->user()->roles == 3)
                                             <a href="{{route('articles.edit', $a->id)}}" class="btn btn-warning btn-sm">Ubah</a>
                                         @endif
@@ -217,6 +252,7 @@
 @endsection
 
 @section('js')
+
     <script>
         $('#clear-form').click(function() {
             $('#judul').val("");
@@ -224,4 +260,5 @@
             $('#filter-form').submit();
         });
     </script>
+
 @endsection
