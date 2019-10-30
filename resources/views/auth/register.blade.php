@@ -6,7 +6,7 @@
         <div class="col-md-8">
             <div class="box" style="border-top: 3px solid #fff">
             
-                <div class="box-header with-border text-center text-bold">
+                <div class="box-header with-border text-center text-bold" style="border-bottom: 1px solid #8ed1cd;">
                     {{ __('PENDAFTARAN') }}
                 </div>
 

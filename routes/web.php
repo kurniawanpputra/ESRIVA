@@ -14,7 +14,7 @@
 Route::get('/', function () { return view('welcome'); });
 Route::get('/no-access-forbidden', function () { return view('error-403'); });
 
-Auth::routes();
+Auth::routes(['reset' => false, 'verify' => false]);
 
 Route::group(['middleware' => 'auth'], function () 
 {
