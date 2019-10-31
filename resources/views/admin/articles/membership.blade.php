@@ -36,8 +36,9 @@
                         <div class="col-md-12">
                             <div class="panel panel-default panel-body" style="margin-bottom: 0;">
                                 <p class="text-bold" style="margin-top: 5px;">Manfaat Berlangganan:</p>
-                                <p>1. Membaca artikel lebih dari 6 kali untuk satu bulan.</p>
-                                <p>2. Forum pengguna premium menjadi prioritas psikolog untuk dijawab.</p>
+                                <p>1. Membaca artikel lebih dari 6 kali.</p>
+                                <p>3. Bisa membuat lebih dari 1 forum aktif.</p>
+                                <p>2. Forum menjadi prioritas psikolog untuk dijawab.</p>
                                 </br>
 
                                 <!-- BATAS MANFAAT DAN CARA DAFTAR -->

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Forum;
 use App\User;
+use Carbon\Carbon;
 use App\ForumComments as FC;
 use Illuminate\Http\Request;
 
@@ -16,15 +17,32 @@ class ForumController extends Controller
             return redirect()->route('forum.list');
         }
 
-        $forums = Forum::where('user_id', auth()->user()->id)
+        $user = auth()->user();
+
+        if(count($user->memberships) > 0) {
+            if($user->memberships->last()->expired < Carbon::now()) {
+                $forums = Forum::where('user_id', auth()->user()->id)
                        ->where('is_closed', 0)
                        ->get()
                        ->count();
         
-        if($forums >= 2) {
-            session()->flash('error', 'Kamu hanya bisa memiliki 2 forum aktif, harap tutup salah satu sebelum membuat baru!');
+                if($forums > 0) {
+                    session()->flash('error', 'Kamu hanya bisa memiliki 2 forum aktif, harap tutup salah satu sebelum membuat baru!');
 
-            return redirect()->route('forum.list');
+                    return redirect()->route('forum.list');
+                }
+            }
+        }elseif(count($user->memberships) == 0) {
+            $forums = Forum::where('user_id', auth()->user()->id)
+                       ->where('is_closed', 0)
+                       ->get()
+                       ->count();
+        
+            if($forums > 0) {
+                session()->flash('error', 'Kamu hanya bisa memiliki 2 forum aktif, harap tutup salah satu sebelum membuat baru!');
+
+                return redirect()->route('forum.list');
+            }
         }
 
         return view('admin.forums.add-forum');
