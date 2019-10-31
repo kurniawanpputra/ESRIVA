@@ -39,11 +39,6 @@
                 border-top-color: #8ed1cd;
             }
 
-            .container{
-                /* padding-right: 0;
-                padding-left: 0; */
-            }
-
             .navbar-nav > .user-menu > .dropdown-menu{
                 padding: 0;
             }
