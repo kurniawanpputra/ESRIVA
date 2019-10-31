@@ -27,7 +27,7 @@ class ForumController extends Controller
                        ->count();
         
                 if($forums > 0) {
-                    session()->flash('error', 'Kamu hanya bisa memiliki 2 forum aktif, harap tutup salah satu sebelum membuat baru!');
+                    session()->flash('error', 'Kamu hanya bisa memiliki 1 forum aktif, harap tutup salah satu sebelum membuat baru!');
 
                     return redirect()->route('forum.list');
                 }
@@ -39,7 +39,7 @@ class ForumController extends Controller
                        ->count();
         
             if($forums > 0) {
-                session()->flash('error', 'Kamu hanya bisa memiliki 2 forum aktif, harap tutup salah satu sebelum membuat baru!');
+                session()->flash('error', 'Kamu hanya bisa memiliki 1 forum aktif, harap tutup salah satu sebelum membuat baru!');
 
                 return redirect()->route('forum.list');
             }
@@ -135,6 +135,17 @@ class ForumController extends Controller
             return redirect()->back();
         }
 
+        $forums = Forum::where('user_id', auth()->user()->id)
+                       ->where('is_closed', 0)
+                       ->get()
+                       ->count();
+        
+        if($forums > 0) {
+            session()->flash('error', 'Kamu hanya bisa memiliki 1 forum aktif, harap tutup forum lain sebelum membuka forum ini!');
+
+            return redirect()->route('forum.list');
+        }
+
         $forum = Forum::find($id);
 
         if(auth()->user()->id != $forum->user_id) {
@@ -168,6 +179,7 @@ class ForumController extends Controller
         }
 
         $forum->is_show = 0;
+        
         $forum->save();
 
         session()->flash('success', 'Forum berhasil disembunyikan!');
@@ -184,6 +196,7 @@ class ForumController extends Controller
         }
 
         $forum->is_show = 1;
+
         $forum->save();
 
         session()->flash('success', 'Forum berhasil ditampilkan!');
