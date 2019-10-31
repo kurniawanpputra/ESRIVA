@@ -37,6 +37,10 @@
     .navbar-nav > .user-menu > .dropdown-menu > li.user-header > p {
         color: #333;
     }
+
+    b{
+        color: #333;
+    }
 </style>
 
 <header class="main-header">
@@ -51,6 +55,7 @@
         
         <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
+
             <!-- <li class="dropdown notifications-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                     <i class="fa fa-bell-o"></i>
@@ -91,6 +96,7 @@
                     <li class="footer"><a href="#">View all</a></li>
                 </ul>
             </li> -->
+            
             <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 <i class="fa fa-user-circle-o" style="margin-right: 2.5px; margin-left: 2.5px;"></i>
