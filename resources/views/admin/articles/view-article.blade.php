@@ -5,12 +5,15 @@
         .cust-margin{
             margin: 5% 0 0;
         }
+        
         .cust-margin-alt{
             margin: 2.5% 0 5%;
         }
+
         hr{
             border-top: 1px solid #f4f4f4;
         }
+
         .article-img{
             width: 100%;
             height: auto;
@@ -71,6 +74,7 @@
                 </div>
 
                 <p>{!! $article->body !!}</p>
+                <div class="sharethis-inline-share-buttons"></div>
 
                 <hr style="margin: 20px 0 5px;">
                 <span>
@@ -112,8 +116,8 @@
         })();
     </script>
 
-    <script async src="https://platform-api.sharethis.com/js/sharethis.js#property=5db904967fb33e00121cd44b&product=sticky-share-buttons"></script>
-
+    <script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=5dbc09382fa1090012d209c4&product=inline-share-buttons" async="async"></script>
+    
     <noscript>
         Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by DISQUS.</a>
     </noscript>
