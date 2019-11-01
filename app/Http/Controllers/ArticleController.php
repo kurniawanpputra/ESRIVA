@@ -169,7 +169,6 @@ class ArticleController extends Controller
         $article->body = request()->body;
         $article->status = "Unapproved";
         $article->category_id = request()->category;
-        $article->user_id = auth()->user()->id;
         $article->slug = $full_slug;
 
         $article->save();

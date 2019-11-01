@@ -195,7 +195,7 @@
             </li> --}}
 
             @if(auth()->user()->roles == 2)
-                <li @if(Request::is('my-activity-log')) class="active" @endif>
+                <li @if(Request::is('activity/log')) class="active" @endif>
                     <a href="{{route('psikolog.activity')}}"><i class="fa fa-area-chart"></i>
                         <span>Riwayat Aktivitas</span>
                     </a>
@@ -217,7 +217,7 @@
             @endif
 
             @if(auth()->user()->roles == 2)
-                <li @if(Request::is('my-claim-log')) class="active" @endif>
+                <li @if(Request::is('claim/log')) class="active" @endif>
                     <a href="{{route('psikolog.myClaim')}}"><i class="fa fa-history"></i>
                         <span>Riwayat Klaim Poin</span>
                     </a>
@@ -235,17 +235,17 @@
                         <span>Atur Pengguna</span>
                     </a>
                 </li>
-                <li @if(Request::is('psikolog-activity-log')) class="active" @endif>
+                <li @if(Request::is('activity/psikolog/log')) class="active" @endif>
                     <a href="{{route('psikolog.allActivity')}}"><i class="fa fa-area-chart"></i>
                         <span>Aktivitas Psikolog</span>
                     </a>
                 </li>
-                <li @if(Request::is('report-logs')) class="active" @endif>
+                <li @if(Request::is('report-log')) class="active" @endif>
                     <a href="{{route('report.index')}}"><i class="fa fa-book"></i>
                         <span>Laporan Komentar</span>
                     </a>
                 </li>
-                <li @if(Request::is('points-claim-log')) class="active" @endif>
+                <li @if(Request::is('all-claim/log')) class="active" @endif>
                     <a href="{{route('psikolog.claimLog')}}"><i class="fa fa-history"></i>
                         <span>Riwayat Klaim Poin</span>
                     </a>

@@ -78,18 +78,18 @@ Route::group(['middleware' => 'auth'], function ()
     Route::get('forums/hide/{id}', 'ForumController@hide')->name('forum.hide')->middleware('admin');
 
     // COMMENTS - DONE
-    Route::get('report-logs', 'ForumCommentsController@reportIndex')->name('report.index')->middleware('admin');
+    Route::get('report-log', 'ForumCommentsController@reportIndex')->name('report.index')->middleware('admin');
     Route::post('forums/{id}/comments/store', 'ForumCommentsController@store')->name('comments.store');
     Route::post('forums/{fid}/comments/{cid}/report', 'ForumCommentsController@report')->name('report.store');
-    Route::get('report-logs/open/{id}', 'ForumCommentsController@open')->name('comments.open')->middleware('admin');
-    Route::get('report-logs/close/{id}', 'ForumCommentsController@close')->name('comments.close')->middleware('admin');
+    Route::get('report-log/open/{id}', 'ForumCommentsController@open')->name('comments.open')->middleware('admin');
+    Route::get('report-log/close/{id}', 'ForumCommentsController@close')->name('comments.close')->middleware('admin');
 
     // PSIKOLOG
     Route::get('user-management/list/psikolog', 'PsikologController@index')->name('psikolog.list')->middleware('admin');
-    Route::get('my-activity-log', 'PsikologController@activity')->name('psikolog.activity')->middleware('psikolog');
-    Route::get('psikolog-activity-log', 'PsikologController@allActivity')->name('psikolog.allActivity')->middleware('admin');
+    Route::get('activity/log', 'PsikologController@activity')->name('psikolog.activity')->middleware('psikolog');
+    Route::get('activity/psikolog/log', 'PsikologController@allActivity')->name('psikolog.allActivity')->middleware('admin');
     Route::post('claim-points', 'PsikologController@claim')->name('psikolog.claim')->middleware('psikolog');
-    // Route::post('top-up-points', 'PsikologController@topUp')->name('psikolog.topUp')->middleware('admin');
-    Route::get('my-claim-log', 'PsikologController@myClaim')->name('psikolog.myClaim')->middleware('psikolog');
-    Route::get('points-claim-log', 'PsikologController@claimLog')->name('psikolog.claimLog')->middleware('admin');
+    Route::post('top-up-points', 'PsikologController@topUp')->name('psikolog.topUp')->middleware('admin');
+    Route::get('claim/log', 'PsikologController@myClaim')->name('psikolog.myClaim')->middleware('psikolog');
+    Route::get('all-claim/log', 'PsikologController@claimLog')->name('psikolog.claimLog')->middleware('admin');
 });
