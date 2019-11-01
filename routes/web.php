@@ -33,7 +33,7 @@ Route::group(['middleware' => 'auth'], function ()
     Route::get('articles/read/{slug}', 'ArticleController@detail')->name('articles.read');
     Route::post('articles/favorite/{id}', 'ArticleController@favorite')->name('articles.favorite');
     Route::get('articles/list/my-favorite', 'ArticleController@userFavorite')->name('articles.list-fav');
-    Route::get('articles/subscribe', 'ArticleController@subscribe')->name('articles.subscribe');
+    Route::get('esriva/subscribe', 'ArticleController@subscribe')->name('articles.subscribe');
 
     // CATEGORIES - DONE
     Route::get('articles/categories/list', 'CategoriesController@index')->name('categories.list')->middleware('admin');
@@ -54,7 +54,7 @@ Route::group(['middleware' => 'auth'], function ()
     Route::post('user-management/update/{id}', 'UserController@update')->name('user.update')->middleware('admin');
     Route::get('user-management/premium/{id}', 'UserController@premium')->name('user.premium')->middleware('admin');
     Route::get('user-management/read-reset', 'UserController@readReset')->name('user.read-reset')->middleware('admin');
-    Route::get('user-management/point-reset/{id}', 'UserController@pointReset')->name('user.point-reset')->middleware('admin');
+    // Route::get('user-management/point-reset/{id}', 'UserController@pointReset')->name('user.point-reset')->middleware('admin');
     Route::get('my-profile', 'UserController@editProfile')->name('profile.edit');
     Route::post('my-profile/update', 'UserController@updateProfile')->name('profile.update');
 
@@ -89,7 +89,7 @@ Route::group(['middleware' => 'auth'], function ()
     Route::get('my-activity-log', 'PsikologController@activity')->name('psikolog.activity')->middleware('psikolog');
     Route::get('psikolog-activity-log', 'PsikologController@allActivity')->name('psikolog.allActivity')->middleware('admin');
     Route::post('claim-points', 'PsikologController@claim')->name('psikolog.claim')->middleware('psikolog');
-    Route::post('top-up-points', 'PsikologController@topUp')->name('psikolog.topUp')->middleware('admin');
+    // Route::post('top-up-points', 'PsikologController@topUp')->name('psikolog.topUp')->middleware('admin');
     Route::get('my-claim-log', 'PsikologController@myClaim')->name('psikolog.myClaim')->middleware('psikolog');
     Route::get('points-claim-log', 'PsikologController@claimLog')->name('psikolog.claimLog')->middleware('admin');
 });
