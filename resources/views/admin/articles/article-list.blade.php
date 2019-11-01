@@ -35,7 +35,9 @@
             font-weight: bold;
         }
         .box-cust-padding{
-            padding: 20px 20px 0px 20px;
+            @if($articles->count() > 0)
+                padding: 20px 20px 0px 20px;
+            @endif
         }
         .filter-margin{
             margin-top: 0;

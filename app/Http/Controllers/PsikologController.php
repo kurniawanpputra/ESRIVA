@@ -16,7 +16,7 @@ class PsikologController extends Controller
         if(!empty(request()->get('query'))) {
             $users = User::where('name', 'LIKE', '%'.request()->get('query').'%')
                          ->where('roles', 2)
-                         ->orWhere('name', 'LIKE', '%'.request()->get('query').'%')
+                         ->orWhere('email', 'LIKE', '%'.request()->get('query').'%')
                          ->where('roles', 2)
                          ->get();
         }else{

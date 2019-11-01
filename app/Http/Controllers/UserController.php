@@ -13,7 +13,7 @@ class UserController extends Controller
         if(!empty(request()->get('query'))) {
             $users = User::where('name', 'LIKE', '%'.request()->get('query').'%')
                          ->where('roles', 1)
-                         ->orWhere('name', 'LIKE', '%'.request()->get('query').'%')
+                         ->orWhere('email', 'LIKE', '%'.request()->get('query').'%')
                          ->where('roles', 1)
                          ->get();
         }else{

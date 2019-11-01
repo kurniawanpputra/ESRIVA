@@ -93,7 +93,7 @@
                             <span class="info-box-icon"><i class="fa fa-money"></i></span>
                             <div class="info-box-content">
                                 <span class="info-box-text" style="margin-top: 7.5px;">Langganan</span>
-                                <span class="info-box-number">Jumlah Pengguna: {{App\User::where('roles', 1)->get()->count()}}</span>
+                                <span class="info-box-number">Jumlah Pengguna: {{$user_total}}</span>
                                 <span class="progress-description">
                                     {{$sub}} pengguna berlangganan
                                 </span>

@@ -106,7 +106,7 @@
                         </tbody>
                     </table>
                 @else
-                    <p class="text-center text-muted" style="margin-top: 10px;">Tidak ada user.</p>
+                    <p class="text-center text-muted" style="margin-top: 10px;">Tidak ada psikolog.</p>
                 @endif
             </div>
         </div>
