@@ -12,7 +12,7 @@
 
         <!-- Styles -->
         <style>
-            html, body {
+            html, body{
                 background-color: #fff;
                 color: #636b6f;
                 font-family: 'Nunito', sans-serif;
@@ -41,35 +41,35 @@
                 animation-fill-mode: forwards;
             }
 
-            .full-height {
+            .full-height{
                 height: 100vh;
             }
 
-            .flex-center {
+            .flex-center{
                 align-items: center;
                 display: flex;
                 justify-content: center;
             }
 
-            .position-ref {
+            .position-ref{
                 position: relative;
             }
 
-            .top-right {
+            .top-right{
                 position: absolute;
                 right: 10px;
                 top: 18px;
             }
 
-            .content {
+            .content{
                 text-align: center;
             }
 
-            .title {
+            .title{
                 font-size: 84px;
             }
 
-            .links > a {
+            .links > a{
                 color: #636b6f;
                 padding: 0 25px;
                 font-size: 13px;
@@ -79,19 +79,19 @@
                 text-transform: uppercase;
             }
 
-            .m-b-md {
+            .m-b-md{
                 margin-bottom: 30px;
             }
 
-            html {
+            html{
                 scroll-behavior: smooth;
             }
 
-            .center-about {
+            .center-about{
                 top: 50%;
                 position: relative;
                 transform: translateY(-50%);
-            }  
+            }
 
             .desktop-margin{
                 margin-top: 2.25%;
@@ -110,7 +110,7 @@
                     margin-top: 0;
                 }
 
-                .center-about {
+                .center-about{
                     top: 0;
                     position: relative;
                     transform: translateY(0);
@@ -124,7 +124,6 @@
                     padding: 5% 10% 10%;
                 }
             }
-            
         </style>
     </head>
     <body>
@@ -132,6 +131,7 @@
             @if (Route::has('login'))
                 <div class="top-right links">
                     <a href="#about" id="about-a">Tentang Kami</a>
+
                     @auth
                         <a href="{{ url('/home') }}">Dasbor</a>
                     @else
@@ -160,7 +160,7 @@
                     
                     <p style="text-align: justify; margin-top: 25px; font-size: 16px;">
                         ESRIVA adalah sebuah website yang memberikan pelayanan dan pengetahuan tentang kesehatan mental. Nama ESRIVA berasal dari bahasa Perancis yang merupakan singkatan dari <i>Esprit Sauvage</i>, berarti jiwa atau pikiran yang bebas.
-                        ESRIVA memiliki dua fitur utama, pertama blog yang berisi artikel-artikel dengan tema kesehatan mental dan fitur kedua adalah forum diskusi, dimana para pengguna bisa bertanya dan akan dijawab langsung oleh para pakar psikologi.
+                        ESRIVA memiliki dua fitur utama, pertama blog yang berisi artikel-artikel berkaitan kesehatan mental dan fitur kedua adalah forum diskusi, dimana para pengguna bisa bertanya dan akan dijawab langsung oleh para pakar psikologi.
                         <!-- Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos minus consequatur cumque, eaque voluptate, tempora maxime nobis fugit numquam dolor, quia ducimus qui! Officia reprehenderit enim temporibus exercitationem, dolor accusamus. 
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos minus consequatur cumque, eaque voluptate, tempora maxime nobis fugit numquam dolor, quia ducimus qui! Officia reprehenderit enim temporibus exercitationem, dolor accusamus. -->
                     </p>
@@ -180,14 +180,14 @@
             b.reveal(10000);
 
             $(document).ready(function () {
-                setInterval(function(){
+                setInterval(function () {
                     $("body").addClass('animate');
                     $("a").addClass('animate-text');
                     $(".landing-title").addClass('animate-text');
                 }, 750);
             });
 
-            $(document).ready(function(){
+            $(document).ready(function () {
                 $("#about-a").on('click', function(event) {
                     if (this.hash !== "") {
                     event.preventDefault();
@@ -201,7 +201,7 @@
                 });
             });
             
-            $("#undrag").on("contextmenu",function(e){
+            $("#undrag").on("contextmenu", function (e) {
                 return false;
             });
         </script>

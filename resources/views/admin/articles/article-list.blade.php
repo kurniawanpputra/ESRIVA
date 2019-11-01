@@ -80,7 +80,7 @@
                 transform: translateY(0%);
             }
         }
-        @media only screen and (max-width: 667px) {
+        @media only screen and (max-width: 650px) {
             .minus-top{
                 @if(auth()->user()->roles == 1)
                     margin-top: -10px;

@@ -23,9 +23,14 @@
         body{
             background-color: #8ed1cd;
         }
-        .navbar-light .navbar-nav .nav-link {
+
+        .navbar-light .navbar-nav .nav-link{
             color: rgba(0,0,0,.75);
             font-weight: bold;
+        }
+        
+        .navbar-toggler{
+            display: none;
         }
     </style>
 </head>
