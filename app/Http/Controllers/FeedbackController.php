@@ -17,8 +17,8 @@ class FeedbackController extends Controller
     public function finished($id) {
         $feedback = Feedback::find($id);
 
-        if($feedback->type == "Masukan") {
-            session()->flash('error', 'Umpan balik jenis masukan tidak bisa ditandai!');
+        if($feedback->type != "Keluhan") {
+            session()->flash('error', 'Umpan balik selain keluhan tidak bisa ditandai!');
             return redirect()->back();
         }
 
@@ -39,8 +39,8 @@ class FeedbackController extends Controller
     public function unfinished($id) {
         $feedback = Feedback::find($id);
 
-        if($feedback->type == "Masukan") {
-            session()->flash('error', 'Umpan balik jenis masukan tidak bisa ditandai!');
+        if($feedback->type != "Keluhan") {
+            session()->flash('error', 'Umpan balik selain keluhan tidak bisa ditandai!');
             return redirect()->back();
         }
 

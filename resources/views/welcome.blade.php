@@ -124,6 +124,14 @@
                     padding: 5% 10% 10%;
                 }
             }
+
+            @media only screen and (min-height: 800px) {
+                .center-about{
+                    top: 50%;
+                    position: relative;
+                    transform: translateY(-50%);
+                }
+            }
         </style>
     </head>
     <body>
@@ -172,6 +180,7 @@
         <script src="{{asset('lte/bower_components/jquery/dist/jquery.min.js')}}"></script>
         
         <script>
+        
             let b = baffle('.landing-title', {
                 characters: '█▓█ ▓>█▒▓ ▒█░<█ █▒█ ▒▒<▓░ ▓/>< ▓█/ ░▒▒/ ▓/█▒',
                 speed: 100
@@ -204,6 +213,7 @@
             $("#undrag").on("contextmenu", function (e) {
                 return false;
             });
+
         </script>
     </body>
 </html>

@@ -69,7 +69,7 @@
                                 <tr>
                                     <td class="middle">{{App\User::find($f->user_id)->name}}</td>
                                     <td class="middle">{{$role}}</td>
-                                    <td class="middle text-bold @if($f->type == 'Masukan') text-success @else text-danger @endif">{{$f->type}}</td>
+                                    <td class="middle text-bold @if($f->type != 'Keluhan') text-success @else text-danger @endif">{{$f->type}}</td>
                                     <td class="middle">{{$f->title}}</td>
                                     <td><p>{!! $f->body !!}</p></td>
                                     <td class="middle">{{$status}}</td>

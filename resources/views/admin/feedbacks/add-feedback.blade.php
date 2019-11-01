@@ -39,6 +39,7 @@
                         <label for="">Jenis <sup style="color: red;">*</sup></label>
                         <select class="form-control" name="type">
                             <option disabled selected hidden>Pilih...</option>
+                            <option value="Pesan" @if(old('type') == "Pesan") selected @endif>Pesan</option>
                             <option value="Masukan" @if(old('type') == "Masukan") selected @endif>Masukan</option>
                             <option value="Keluhan" @if(old('type') == "Keluhan") selected @endif>Keluhan</option>
                         </select>

@@ -275,21 +275,25 @@ class ArticleController extends Controller
 
         $article->status = "Approved";
 
+        if($article->validated_once == 0) {
+            $article->user->notify(new ArticleApproved($article));
+
+            // ADD LOG
+            $activity = new Activity();
+
+            $activity->user_id = $article->user->id;
+            $activity->activity = "Artikel diapprove admin";
+            $activity->notes = "Poin +25";
+
+            $activity->save();
+
+            $article->user->points += 25;
+            $article->user->save();
+
+            $article->validated_once = 1;
+        }
+
         $article->save();
-
-        $article->user->notify(new ArticleApproved($article));
-
-        $article->user->points += 25;
-        $article->user->save();
-
-        // ADD LOG
-        $activity = new Activity();
-
-        $activity->user_id = $article->user->id;
-        $activity->activity = "Artikel diapprove admin";
-        $activity->notes = "Poin +25";
-
-        $activity->save();
 
         // EVERY 3 ARTICLE BONUS 25 POINTS
         $approved = Article::where('user_id', $article->user->id)
@@ -304,6 +308,9 @@ class ArticleController extends Controller
             $activity->notes = "Poin +25";
     
             $activity->save();
+
+            $article->user->points += 25;
+            $article->user->save();
         }
 
         session()->flash('success', 'Artikel sukses disetujui!');
