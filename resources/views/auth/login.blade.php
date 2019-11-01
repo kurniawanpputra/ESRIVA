@@ -65,7 +65,7 @@
                                     {{ __('Masuk') }}
                                 </button>
 
-                                <a class="btn btn-link btn-block" href="{{ route('register') }}">
+                                <a class="btn btn-link btn-block" href="{{ route('register') }}" style="white-space: normal;">
                                     {{ __('Belum punya akun? Daftar disini!') }}
                                 </a>
                             </div>

@@ -70,7 +70,7 @@
                                     {{ __('Daftar') }}
                                 </button>
 
-                                <a class="btn btn-link btn-block"  href="{{ route('login') }}">
+                                <a class="btn btn-link btn-block"  href="{{ route('login') }}" style="white-space: normal;">
                                     {{ __('Sudah punya akun? Login disini!') }}
                                 </a>
                             </div>
