@@ -16,6 +16,8 @@ class UserController extends Controller
                          ->orWhere('email', 'LIKE', '%'.request()->get('query').'%')
                          ->where('roles', 1)
                          ->get();
+
+            $users->appends(request()->all());
         }else{
             $users = User::where('roles', 1)->get();
         }
@@ -237,7 +239,7 @@ class UserController extends Controller
     }
 
     public function readReset() {
-        $users = User::all();
+        $users = User::where('roles', 1)->get();
 
         foreach($users as $u) {
             $u->article_read = 0;

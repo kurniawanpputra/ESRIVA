@@ -47,12 +47,14 @@
                         {{ $errors->first() }}
                     </div>
                 @endif
+                
                 <form action="{{route('articles.store')}}" method="POST" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     <div class="form-group text-center" style="display: none;" id="img-prev">
                         <label for="" style="margin-bottom: 0;">Partinjau Gambar</label>
                         <br/>
-                        <img src="#" id="preview" style="max-width: 300px; width: 100%; height: auto; margin-top: 10px; margin-bottom: -7.5px;">
+                        <img src="#" id="preview" style="max-width: 300px; width: 100%; height: auto; margin-top: 10px; margin-bottom: -7.5px;
+                             border-radius: 2.5px;">
                     </div>
                     <div class="form-group text-center" style="margin-bottom: 10px;">
                         <label for="" style="margin-bottom: -5px;" id="i-label">Gambar <sup style="color: red;">*</sup></label>

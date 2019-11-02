@@ -12,6 +12,9 @@
             border-top: 1px solid #f4f4f4;
             margin: 10px 0 10px;
         }
+        .thumbnail, .btn-profile{
+            background-color: #8ed1cd;
+        }
     </style>
 @endsection
 
@@ -99,10 +102,57 @@
             <div class="box-body">
                 @if($comments->count() > 0)
                     @foreach($comments as $c)
+                        @php
+                            $user = App\User::find($c->user_id);
+                        @endphp
                         <div class="panel panel-default" style="margin: 10px 0;">
                             <div class="panel-heading">
-                                <b>{{App\User::find($c->user_id)->name}}</b>
+                                <b>
+                                    <a data-toggle="modal" data-target="#profileModal-{{$c->user_id}}" 
+                                       style="cursor: pointer; color: #333; text-decoration: underline;">{{$user->name}}</a>
+                                </b>
+                                <div class="modal fade" id="profileModal-{{$c->user_id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <p class="text-center" style="margin-bottom: 0;">Profil <b>{{$user->name}}</b></p>
+                                            </div>
+
+                                            <div class="modal-body">
+                                                <div class="text-center">
+                                                    <img src="{{isset($user->avatar) ? asset($user->avatar) : asset('lte/dist/img/default.png')}}"
+                                                         style="border-radius: 50%; width: 100%; height: auto; max-width: 200px;
+                                                         margin-top: 8px; margin-bottom: 16px; display: inline-block" class="thumbnail">
+                                                    <br>
+                                                    <table class="table text-center" style="margin-bottom: 0px;">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Forum Dibuat</th>
+                                                                <th>Komentar Dibuat</th>
+                                                                <th>Terdaftar Pada</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>{{$user->forums->count()}}</td>
+                                                                <td>{{$user->comments->count()}}</td>
+                                                                <td>{{date('d-m-Y', strtotime($user->created_at))}}</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-profile" data-dismiss="modal">
+                                                    <i class="fa fa-remove" style="color: #fff;"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                                 
+                                <!-- LAPORKAN -->
                                 @if($c->abuse != 1)
                                     @if(auth()->user()->id != $c->user_id && auth()->user()->roles != 3)
                                         <span class="pull-right">

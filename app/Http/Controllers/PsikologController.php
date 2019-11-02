@@ -19,6 +19,8 @@ class PsikologController extends Controller
                          ->orWhere('email', 'LIKE', '%'.request()->get('query').'%')
                          ->where('roles', 2)
                          ->get();
+
+            $users->appends(request()->all());
         }else{
             $users = User::where('roles', 2)->get();
         }
@@ -46,6 +48,8 @@ class PsikologController extends Controller
             $list = Activity::where('user_id', request()->uid)
                             ->OrderBy('created_at', 'desc')
                             ->paginate(10);
+
+            $list->appends(request()->all());
         }
 
         return view('admin.users.psikolog-allActivity', compact('list', 'psikolog'));
@@ -61,6 +65,8 @@ class PsikologController extends Controller
             $list = Log::where('user_id', request()->uid)
                         ->OrderBy('created_at', 'desc')
                         ->paginate(10);
+
+            $list->appends(request()->all());
         }
 
         return view('admin.users.psikolog-claimLog', compact('list', 'psikolog'));
