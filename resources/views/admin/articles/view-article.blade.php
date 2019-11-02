@@ -116,8 +116,8 @@
         })();
     </script>
 
-    <script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=5dbc09382fa1090012d209c4&product=inline-share-buttons" async="async"></script>
-    
+    <script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=5dbd81e6d895600013deafce&product=inline-share-buttons" async="async"></script>
+
     <noscript>
         Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by DISQUS.</a>
     </noscript>
