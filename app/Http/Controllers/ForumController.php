@@ -100,6 +100,19 @@ class ForumController extends Controller
         return view('admin.forums.forum-list', compact('forums'));
     }
 
+    public function myForums() {
+        if(auth()->user()->roles != 1) {
+            session()->flash('error', 'Menu ini hanya tersedia untuk non-admin dan non-psikolog!');
+            return redirect()->back();
+        }
+
+        $forums = Forum::where('user_id', auth()->user()->id)
+                        ->OrderBy('created_at', 'desc')
+                        ->get();
+
+        return view('admin.forums.my-forum', compact('forums'));
+    }
+
     public function close($id) {
         if(auth()->user()->roles == 3) {
             session()->flash('error', 'Hanya pengguna atau psikolog yang dapat menutup forum!');
@@ -127,7 +140,7 @@ class ForumController extends Controller
 
         session()->flash('success', 'Forum berhasil ditutup!');
         
-        return redirect()->route('forum.list');
+        return redirect()->back();
     }
 
     public function open($id) {
@@ -144,7 +157,7 @@ class ForumController extends Controller
         if($forums > 0) {
             session()->flash('error', 'Kamu hanya bisa memiliki 1 forum aktif, harap tutup forum lain sebelum membuka forum ini!');
 
-            return redirect()->route('forum.list');
+            return redirect()->back();
         }
 
         $forum = Forum::find($id);
@@ -168,7 +181,7 @@ class ForumController extends Controller
 
         session()->flash('success', 'Forum berhasil dibuka!');
 
-        return redirect()->route('forum.list');
+        return redirect()->back();
     }
 
     public function hide($id) {
@@ -238,7 +251,7 @@ class ForumController extends Controller
 
         session()->flash('success', 'Forum berhasil diubah!');
 
-        return redirect()->route('forum.list');
+        return redirect()->back();
     }
 
     public function detail($id) {

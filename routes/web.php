@@ -24,6 +24,7 @@ Route::group(['middleware' => 'auth'], function ()
     Route::get('articles/create', 'ArticleController@create')->name('articles.create')->middleware('psikolog');
     Route::post('articles/store', 'ArticleController@store')->name('articles.store')->middleware('psikolog');
     Route::get('articles/list', 'ArticleController@index')->name('articles.list');
+    Route::get('articles/my', 'ArticleController@myArticles')->name('articles.my');
     Route::get('articles/trashed', 'ArticleController@trashed')->name('articles.trashed')->middleware('admin');
     Route::get('articles/remove/{id}', 'ArticleController@remove')->name('articles.remove')->middleware('admin');
     Route::get('articles/restore/{id}', 'ArticleController@restore')->name('articles.restore')->middleware('admin');
@@ -54,7 +55,9 @@ Route::group(['middleware' => 'auth'], function ()
     Route::post('user-management/update/{id}', 'UserController@update')->name('user.update')->middleware('admin');
     Route::get('user-management/premium/{id}', 'UserController@premium')->name('user.premium')->middleware('admin');
     Route::get('user-management/read-reset', 'UserController@readReset')->name('user.read-reset')->middleware('admin');
+
     // Route::get('user-management/point-reset/{id}', 'UserController@pointReset')->name('user.point-reset')->middleware('admin');
+    
     Route::get('my-profile', 'UserController@editProfile')->name('profile.edit');
     Route::post('my-profile/update', 'UserController@updateProfile')->name('profile.update');
 
@@ -69,6 +72,7 @@ Route::group(['middleware' => 'auth'], function ()
     Route::get('forums/create', 'ForumController@create')->name('forum.create');
     Route::post('forums/store', 'ForumController@store')->name('forum.store');
     Route::get('forums/list', 'ForumController@index')->name('forum.list');
+    Route::get('forums/my', 'ForumController@myForums')->name('forum.my');
     Route::get('forums/detail/{id}', 'ForumController@detail')->name('forum.detail');
     Route::get('forums/open/{id}', 'ForumController@open')->name('forum.open');
     Route::get('forums/close/{id}', 'ForumController@close')->name('forum.close');

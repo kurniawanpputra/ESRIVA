@@ -45,42 +45,9 @@
 
 @section('content')
     <div class="container">
-        <div class="box box-body" style="margin: 5% 0 -3% 0;">
-            <div class="row">
-                <form action="{{route('forum.list')}}" method="GET" id="filter-form">
-                    <div class="col-md-4">
-                        <select name="status" class="form-control" id="status">
-                            @php
-                                if(isset(request()->status)) {
-                                    if(request()->status == 0) {
-                                        $status = "Dibuka";
-                                    }else{
-                                        $status = "Ditutup";
-                                    }
-                                }
-                            @endphp 
-                            <option disabled selected hidden>{{isset(request()->status) ? $status : "Filter status..." }}</option>
-                            <option value="0">Dibuka</option>
-                            <option value="1">Ditutup</option>
-                        </select>
-                    </div>
-                    <div class="col-md-6">
-                        <input type="text" name="judul" placeholder="Cari judul atau nama penulis..." class="form-control filter-margin" 
-                               value="{{isset(request()->judul) ? request()->judul : ''}}" id="judul">
-                    </div>
-                    <div class="col-md-1">
-                        <input type="submit" value="Cari" class="btn btn-primary btn-block filter-margin-2">
-                    </div>
-                </form>
-                <div class="col-md-1">
-                    <button value="Hapus" class="btn btn-default btn-block filter-margin" id="clear-form">Hapus</button>
-                </div>
-            </div>
-        </div>
-
         <div class="box cust-margin">
             <div class="box-header with-border">
-                Daftar Forum
+                Forum Saya
             </div>
             <div class="box-body @if($forums->count() > 0) box-cust-padding @endif">
                 @if (session('error'))
@@ -110,28 +77,10 @@
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
                                         <a href="{{route('forum.detail', $f->id)}}">{{$f->title}}</a>
-
-                                        @if(auth()->user()->roles == 3)
-                                            <span class="pull-right">
-                                                @if($f->is_show == 1)
-                                                    <a href="{{route('forum.hide', $f->id)}}" class="btn btn-warning btn-xs" title="Sembunyikan"><i class="fa fa-eye-slash"></i></a>
-                                                @else
-                                                    <a href="{{route('forum.show', $f->id)}}" class="btn btn-success btn-xs" title="Tampilkan"><i class="fa fa-eye"></i></a>
-                                                @endif
-                                            </span>
-                                        @endif
                                     </div>
                                     <div class="panel-body">
                                         <p>
-                                            @if(count(App\User::find($f->user_id)->memberships) > 0 && App\User::find($f->user_id)->memberships->last()->expired > \Carbon\Carbon::now())
-                                                @if(auth()->user()->roles != 1)
-                                                    Pembuat: <span style="color: gold; font-weight: 600;">{{App\User::find($f->user_id)->name}}</span>
-                                                @else
-                                                    Pembuat: {{App\User::find($f->user_id)->name}}
-                                                @endif
-                                            @else
-                                                Pembuat: {{App\User::find($f->user_id)->name}}
-                                            @endif
+                                            Pembuat: {{App\User::find($f->user_id)->name}}
                                         </p>
                                         <!-- <p>{{date('M Y', strtotime($f->created_at))}} &#8226; {{$mins}} min read</p> -->
                                         @if($f->is_closed == 0)
@@ -145,19 +94,13 @@
                                             <i class="fa fa-comments" style="margin-right: 2.5px; margin-left: 5px;"></i> {{$f->comments->count()}} komentar
                                         </p>
                                         <hr>
-
-                                        @if(auth()->user()->roles == 3 || auth()->user()->id == $f->user_id)
-                                            <a href="{{route('forum.edit', $f->id)}}" class="btn btn-warning btn-sm">Ubah</a>
-                                        @endif
                                         
-                                        @if(auth()->user()->roles != 3)
-                                            @if($f->user_id == auth()->user()->id || auth()->user()->roles == 2)
-                                                @if($f->is_closed == 0)
-                                                    <a href="{{route('forum.close', $f->id)}}" class="btn btn-danger btn-sm">Tutup</a>
-                                                @else
-                                                    <a href="{{route('forum.open', $f->id)}}" class="btn btn-primary btn-sm">Buka</a>
-                                                @endif
-                                            @endif
+                                        <a href="{{route('forum.edit', $f->id)}}" class="btn btn-warning btn-sm">Ubah</a>
+                                        
+                                        @if($f->is_closed == 0)
+                                            <a href="{{route('forum.close', $f->id)}}" class="btn btn-danger btn-sm">Tutup</a>
+                                        @else
+                                            <a href="{{route('forum.open', $f->id)}}" class="btn btn-primary btn-sm">Buka</a>
                                         @endif
 
                                         <a href="{{route('forum.detail', $f->id)}}" class="btn btn-success btn-sm pull-right">Baca</a>

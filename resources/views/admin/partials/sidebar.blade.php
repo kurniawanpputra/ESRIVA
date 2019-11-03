@@ -85,6 +85,11 @@
                                     <i class="fa fa-circle-o"></i> Buat Artikel
                                 </a>
                             </li>
+                            <li>
+                                <a href="{{route('articles.my')}}">
+                                    <i class="fa fa-circle-o"></i> Artikel Saya
+                                </a>
+                            </li>
                         @endif
                         <li>
                             <a href="{{route('articles.list')}}">
@@ -153,6 +158,11 @@
                         <li>
                             <a href="{{route('forum.create')}}">
                                 <i class="fa fa-circle-o"></i> Buat Forum
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{route('forum.my')}}">
+                                <i class="fa fa-circle-o"></i> Forum Saya
                             </a>
                         </li>
                         <li>

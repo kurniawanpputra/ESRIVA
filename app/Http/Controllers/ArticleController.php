@@ -43,6 +43,19 @@ class ArticleController extends Controller
         return view('admin.articles.article-list', compact('articles', 'categories'));
     }
 
+    public function myArticles() {
+        if(auth()->user()->roles != 2) {
+            session()->flash('error', 'Menu ini hanya tersedia untuk psikolog!');
+            return redirect()->back();
+        }
+
+        $articles = Article::where('user_id', auth()->user()->id)
+                            ->OrderBy('created_at', 'desc')
+                            ->get();
+
+        return view('admin.articles.my-article', compact('articles'));
+    }
+
     public function userFavorite() {
         if(auth()->user()->roles != 1) {
             session()->flash('error', 'Admin dan Psikolog tidak bisa memfavorit artikel!');
@@ -175,7 +188,7 @@ class ArticleController extends Controller
 
         session()->flash('success', 'Artikel sukses diubah!');
 
-        return redirect()->route('articles.list');
+        return redirect()->back();
     }
 
     public function detail($slug) {
