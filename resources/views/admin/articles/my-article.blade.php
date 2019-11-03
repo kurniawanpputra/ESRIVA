@@ -84,6 +84,16 @@
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
                                         <a href="{{route('articles.read', $a->slug)}}">{{$a->title}}</a>
+
+                                        @if($a->status == "Approved")
+                                            <span class="pull-right btn btn-success btn-xs disabled">
+                                                {{$a->status}}
+                                            </span>
+                                        @else
+                                            <span class="pull-right btn btn-warning btn-xs disabled">
+                                                {{$a->status}}
+                                            </span>
+                                        @endif
                                     </div>
 
                                     <div class="panel-body">
