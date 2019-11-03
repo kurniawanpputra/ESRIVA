@@ -118,7 +118,7 @@
                                                 <p class="text-center" style="margin-bottom: 0;">Profil <b>{{$user->name}}</b></p>
                                             </div>
 
-                                            <div class="modal-body">
+                                            <div class="modal-body table-responsive">
                                                 <div class="text-center">
                                                     <img src="{{isset($user->avatar) ? asset($user->avatar) : asset('lte/dist/img/default.png')}}"
                                                          style="border-radius: 50%; width: 100%; height: auto; max-width: 200px;
