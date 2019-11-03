@@ -35,9 +35,7 @@
             font-weight: bold;
         }
         .box-cust-padding{
-            @if($articles->count() > 0)
-                padding: 20px 20px 0px 20px;
-            @endif
+            padding: 20px 20px 0px 20px;
         }
         .filter-margin{
             margin-top: 0;
@@ -123,7 +121,7 @@
             <div class="box-header with-border">
                 Daftar Artikel
             </div>
-            <div class="box-body box-cust-padding">
+            <div class="box-body @if($articles->count() > 0) box-cust-padding @endif">
                 @if (session('error'))
                     <div class="alert alert-danger" role="alert">
                         {{ session('error') }}

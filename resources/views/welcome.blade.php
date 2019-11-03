@@ -138,7 +138,7 @@
         <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
                 <div class="top-right links">
-                    <a href="#about" id="about-a">Tentang Kami</a>
+                    <a href="#about" id="about-a">Tentang Esriva</a>
 
                     @auth
                         <a href="{{ url('/home') }}">Dasbor</a>

@@ -47,6 +47,14 @@
                         <input type="text" class="form-control" name="title" value="{{old('title')}}">
                     </div>
                     <div class="form-group">
+                        <label for="">Tipe <sup style="color: red;">*</sup></label>
+                        <select class="form-control" name="type">
+                            <option disabled selected hidden>Pilih...</option>
+                            <option value="Privat" @if(old('type') == "Privat") selected @endif>Privat</option>
+                            <option value="Publik" @if(old('type') == "Publik") selected @endif>Publik</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
                         <label for="">Konten <sup style="color: red;">*</sup></label>
                         <textarea id="summernote" name="body">{{old('body')}}</textarea>
                     </div>

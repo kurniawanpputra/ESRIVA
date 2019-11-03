@@ -82,7 +82,7 @@
             <div class="box-header with-border">
                 Daftar Forum
             </div>
-            <div class="box-body @if(count($forums) > 0) box-cust-padding @endif">
+            <div class="box-body @if($forums->count() > 0) box-cust-padding @endif">
                 @if (session('error'))
                     <div class="alert alert-danger" role="alert">
                         {{ session('error') }}
@@ -111,7 +111,7 @@
                                     <div class="panel-heading">
                                         <a href="{{route('forum.detail', $f->id)}}">{{$f->title}}</a>
 
-                                        @if(auth()->user()->roles == 3)
+                                        @if(auth()->user()->roles == 2)
                                             <span class="pull-right">
                                                 @if($f->is_show == 1)
                                                     <a href="{{route('forum.hide', $f->id)}}" class="btn btn-warning btn-xs" title="Sembunyikan"><i class="fa fa-eye-slash"></i></a>
@@ -125,20 +125,21 @@
                                         <p>
                                             @if(count(App\User::find($f->user_id)->memberships) > 0 && App\User::find($f->user_id)->memberships->last()->expired > \Carbon\Carbon::now())
                                                 @if(auth()->user()->roles != 1)
-                                                    Penulis: <span style="color: gold; font-weight: 600;">{{App\User::find($f->user_id)->name}}</span>
+                                                    Pembuat: <span style="color: gold; font-weight: 600;">{{App\User::find($f->user_id)->name}}</span>
                                                 @else
-                                                    Penulis: {{App\User::find($f->user_id)->name}}
+                                                    Pembuat: {{App\User::find($f->user_id)->name}}
                                                 @endif
                                             @else
-                                                Penulis: {{App\User::find($f->user_id)->name}}
+                                                Pembuat: {{App\User::find($f->user_id)->name}}
                                             @endif
                                         </p>
-                                        <p>{{date('M Y', strtotime($f->created_at))}} &#8226; {{$mins}} min read</p>
+                                        <!-- <p>{{date('M Y', strtotime($f->created_at))}} &#8226; {{$mins}} min read</p> -->
                                         @if($f->is_closed == 0)
                                             <p>Status: <span class="text-success text-bold">Dibuka</span></p>
                                         @else
                                             <p>Status: <span class="text-danger text-bold">Ditutup</span></p>
                                         @endif
+                                        <p>Tipe: {{$f->type}} <i class="fa @if($f->type == 'Privat') fa-lock @else fa-unlock-alt @endif" style="margin-left: 2.5px;"></i></p>
                                         <p style="margin-bottom: 0;">
                                             <i class="fa fa-eye" style="margin-right: 2.5px;"></i> {{$f->views}} kali
                                             <i class="fa fa-comments" style="margin-right: 2.5px; margin-left: 5px;"></i> {{$f->comments->count()}} komentar
@@ -174,6 +175,7 @@
 @endsection
 
 @section('js')
+
     <script>
         $('#clear-form').click(function() {
             $('#judul').val("");
@@ -181,4 +183,5 @@
             $('#filter-form').submit();
         });
     </script>
+
 @endsection

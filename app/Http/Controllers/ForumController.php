@@ -61,6 +61,7 @@ class ForumController extends Controller
 
         $forum->title = request()->title;
         $forum->body = request()->body;
+        $forum->type = request()->type;
         $forum->user_id = auth()->user()->id;
 
         $forum->save();
@@ -242,6 +243,15 @@ class ForumController extends Controller
 
     public function detail($id) {
         $forum = Forum::find($id);
+
+        if($forum->type == "Privat") {
+            if(auth()->user()->id != $forum->user_id || auth()->user()->roles != 2) {
+                session()->flash('error', 'Forum privat hanya bisa diakses pembuat forum dan psikolog!'); 
+            
+                return redirect()->back();
+            }
+        }
+
         $comments = FC::where('forum_id', $id)->paginate(10);
 
         $views = $forum->views;

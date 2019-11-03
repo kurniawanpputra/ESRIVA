@@ -40,7 +40,7 @@
                 @endphp
 
                 <span>
-                    <b>Penulis:</b> {{$short[0]}}
+                    <b>Pembuat:</b> {{$short[0]}}
                 </span>
                 <span class="pull-right">
                     <b>Dibuat:</b> {{date('d-m-Y', strtotime($forum->created_at))}}
