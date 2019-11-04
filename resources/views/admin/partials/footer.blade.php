@@ -4,6 +4,6 @@
         <i>Terra Incognita</i>
     </div>
 
-    <strong>&copy; 2019-2020 ESRIVA.</strong>
+    <strong>&copy; {{\Carbon\Carbon::now()->format('Y')}} ESRIVA.</strong>
     Seluruh hak cipta dilindungi.
 </footer>
