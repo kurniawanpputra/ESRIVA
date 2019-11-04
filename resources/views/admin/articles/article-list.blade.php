@@ -153,11 +153,11 @@
                                         @if(auth()->user()->roles != 1)
                                             @if($a->status == "Approved")
                                                 <span class="pull-right btn btn-success btn-xs disabled">
-                                                    {{$a->status}}
+                                                    Disetujui
                                                 </span>
                                             @else
                                                 <span class="pull-right btn btn-warning btn-xs disabled">
-                                                    {{$a->status}}
+                                                    Pending
                                                 </span>
                                             @endif
                                         @endif
