@@ -129,13 +129,24 @@
                                                             <tr>
                                                                 <th>Forum Dibuat</th>
                                                                 <th>Komentar Dibuat</th>
-                                                                <th>Terdaftar Pada</th>
+                                                                <th>Status Login</th>
+                                                                <th>Terdaftar Pada</th>                                 
                                                             </tr>
                                                         </thead>
                                                         <tbody>
                                                             <tr>
                                                                 <td>{{$user->forums->count()}}</td>
                                                                 <td>{{$user->comments->count()}}</td>
+                                                                @php
+                                                                    $last_login = App\LoginLog::where('user_id', $user->id)->OrderBy('created_at', 'desc')->first();
+                                                                @endphp
+                                                                <td>
+                                                                    @if($user->online == 0)
+                                                                        <a style="color: #333;"><i class="fa fa-circle text-muted" style="margin-right: 2.5px;"></i> Offline</a>
+                                                                    @else
+                                                                        <a style="color: #333;"><i class="fa fa-circle text-success" style="margin-right: 2.5px;"></i> Online</a>
+                                                                    @endif
+                                                                </td>
                                                                 <td>{{date('d-m-Y', strtotime($user->created_at))}}</td>
                                                             </tr>
                                                         </tbody>
@@ -220,6 +231,7 @@
                     </p>
                 @endif
             </div>
+            
             <div class="text-center">
                 {{$comments->links()}}
             </div>
@@ -228,6 +240,7 @@
 @endsection
 
 @section('js')
+
     <script>
         $(document).ready(function() {
             $('#summernote').summernote({
@@ -237,4 +250,5 @@
             });
         });
     </script>
+
 @endsection

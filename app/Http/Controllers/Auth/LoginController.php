@@ -39,14 +39,24 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
+    public function logout() {
+        $user = auth()->user();
+        $user->online = 0;
+        $user->save();
+
+        auth()->logout();
+        session()->invalidate();
+
+        return redirect('login');
+    }
+
     public function login() {
         if(empty(request()->email)) {
             session()->flash('error', 'E-Mail tidak boleh kosong!');
             return redirect()->back();
         }
         
-        $user = User::where('email','=',request()->email)
-                    ->first();
+        $user = User::where('email','=',request()->email)->first();
 
         if(!isset($user)) {
             session()->flash('error', 'Pengguna tidak ditemukan!');
@@ -65,6 +75,11 @@ class LoginController extends Controller
 
             $log->user_id = auth()->user()->id;
             $log->save();
+
+            $user = auth()->user();
+
+            $user->online = 1;
+            $user->save();
 
             return redirect('/home');
         }else{
