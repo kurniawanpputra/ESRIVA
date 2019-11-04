@@ -149,7 +149,7 @@
                             <div class="col-md-6">
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
-                                        <a href="{{route('articles.read', $a->slug)}}">{{$a->title}}</a>
+                                        <a href="{{route('articles.read', $a->slug)}}" style="text-decoration: underline;">{{$a->title}}</a>
                                         @if(auth()->user()->roles != 1)
                                             @if($a->status == "Approved")
                                                 <span class="pull-right btn btn-success btn-xs disabled">
