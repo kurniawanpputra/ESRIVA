@@ -18,20 +18,7 @@ class LandingController extends Controller
     }
 
     public function message() {
-        if (!empty($_SERVER['HTTP_CLIENT_IP']))   
-        {
-            $ip_address = $_SERVER['HTTP_CLIENT_IP'];
-        }
-        //whether ip is from proxy
-        elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR']))  
-        {
-            $ip_address = $_SERVER['HTTP_X_FORWARDED_FOR'];
-        }
-        //whether ip is from remote address
-        else
-        {
-            $ip_address = $_SERVER['REMOTE_ADDR'];
-        }
+        $ip_address = gethostbyname(trim(exec("hostname")));
 
         $data = new Message();
 
@@ -44,7 +31,6 @@ class LandingController extends Controller
         $data->save();
 
         session()->flash('success', 'Pesan kamu berhasil dikirim, terima kasih '.request()->name.'.');
-
         return redirect('/#contact');
     }
 }

@@ -81,7 +81,7 @@
       <div class="divider-custom">
         <div class="divider-custom-line"></div>
         <div class="divider-custom-icon">
-          <i class="fas fa-star"></i>
+          <i class="fas fa-newspaper"></i>
         </div>
         <div class="divider-custom-line"></div>
       </div>
@@ -121,7 +121,7 @@
                       <div class="divider-custom">
                         <div class="divider-custom-line"></div>
                         <div class="divider-custom-icon">
-                          <i class="fas fa-star"></i>
+                          <i class="fas fa-eye"></i>
                         </div>
                         <div class="divider-custom-line"></div>
                       </div>
@@ -222,7 +222,7 @@
       <div class="divider-custom divider-light">
         <div class="divider-custom-line"></div>
         <div class="divider-custom-icon">
-          <i class="fas fa-star"></i>
+          <i class="fas fa-question-circle"></i>
         </div>
         <div class="divider-custom-line"></div>
       </div>
@@ -258,7 +258,7 @@
       <div class="divider-custom">
         <div class="divider-custom-line"></div>
         <div class="divider-custom-icon">
-          <i class="fas fa-star"></i>
+          <i class="fas fa-phone-square"></i>
         </div>
         <div class="divider-custom-line"></div>
       </div>
