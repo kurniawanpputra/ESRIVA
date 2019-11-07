@@ -18,7 +18,6 @@
   <link href="css/freelancer.min.css" rel="stylesheet">
 
 </head>
-
 <body id="page-top">
 
   <!-- Navigation -->
@@ -49,7 +48,7 @@
     <div class="container d-flex align-items-center flex-column">
 
       <!-- Masthead Avatar Image -->
-      <img class="masthead-avatar mb-5" src="{{asset('img/clipart-2.png')}}" alt="">
+      <img class="masthead-avatar mb-5" src="{{asset('img/clipart-1.png')}}" draggable="false">
 
       <!-- Masthead Heading -->
       <h1 class="masthead-heading text-uppercase mb-0">Ayo! Ceritakan<br/>Masalahmu</h1>
@@ -264,6 +263,17 @@
         <div class="divider-custom-line"></div>
       </div>
 
+      @if(session('success'))
+        <div class="col-md-8 mx-auto">
+          <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Hore!</strong> {{session('success')}}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+        </div>
+      @endif
+
       <!-- Contact Section Form -->
       <div class="row">
         <div class="col-lg-8 mx-auto">
@@ -326,13 +336,13 @@
         <!-- Footer Social Icons -->
         <div class="col-lg-4 mb-5 mb-lg-0">
           <h4 class="text-uppercase mb-4">Ikuti Kami</h4>
-          <a class="btn btn-outline-light btn-social mx-1" href="#">
+          <a class="btn btn-outline-light btn-social mx-1" href="https://www.facebook.com" target="_blank">
             <i class="fab fa-fw fa-facebook-f"></i>
           </a>
-          <a class="btn btn-outline-light btn-social mx-1" href="#">
+          <a class="btn btn-outline-light btn-social mx-1" href="https://www.twitter.com" target="_blank">
             <i class="fab fa-fw fa-twitter"></i>
           </a>
-          <a class="btn btn-outline-light btn-social mx-1" href="#">
+          <a class="btn btn-outline-light btn-social mx-1" href="https://www.linkedin.com" target="_blank">
             <i class="fab fa-fw fa-linkedin-in"></i>
           </a>
           <!-- <a class="btn btn-outline-light btn-social mx-1" href="#">

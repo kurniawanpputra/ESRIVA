@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Feedback;
+use App\Message;
 use App\Notifications\FeedbackDone;
 use Illuminate\Http\Request;
 
@@ -11,7 +12,9 @@ class FeedbackController extends Controller
     public function index() {
         $feedbacks = Feedback::OrderBy('created_at', 'desc')->paginate(10);
 
-        return view('admin.feedbacks.feedback-list', compact('feedbacks'));
+        $messages = Message::OrderBy('created_at', 'desc')->take(10)->get();
+
+        return view('admin.feedbacks.feedback-list', compact('feedbacks', 'messages'));
     }
 
     public function finished($id) {

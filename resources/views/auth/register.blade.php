@@ -1,9 +1,38 @@
 @extends('layouts.app')
 
+@section('css')
+    <style>
+        img{
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+            position: absolute;
+        }
+
+        @media only screen and (max-width: 767px) {
+            img{
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                margin: auto;
+                position: initial;
+            }
+        }
+    </style>
+@stop
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center" style="margin-top: 5%">
-        <div class="col-md-6">
+        <div class="col-md-5 text-center" style="position: relative;">
+            <img src="{{asset('img/landing-2.gif')}}" style="width: 100%; height: auto; max-width: 350px;" draggable="false">
+        </div>
+        
+        <div class="col-md-7">
+            <div class="col-md-10 offset-md-1">
             <div class="box" style="border-top: 3px solid #fff">
             
                 <div class="box-header with-border text-center text-bold" style="border-bottom: 1px solid #8ed1cd;">
@@ -77,6 +106,7 @@
                         </div>
                     </form>
                 </div>
+            </div>
             </div>
         </div>
     </div>

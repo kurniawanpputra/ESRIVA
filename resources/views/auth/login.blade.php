@@ -3,7 +3,11 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center" style="margin-top: 10%">
-        <div class="col-md-6">
+        <div class="col-md-5 text-center">
+            <img src="{{asset('img/landing-2.gif')}}" style="width: 100%; height: auto; max-width: 350px;" draggable="false">
+        </div>
+        <div class="col-md-7">
+            <div class="col-md-10 offset-md-1">
             <div class="box" style="border-top: 3px solid #fff">
                 <div class="box-header with-border text-center text-bold" style="border-bottom: 1px solid #1abc9c;">
                     {{ __('LOGIN') }}
@@ -72,6 +76,7 @@
                         </div>
                     </form>
                 </div>
+            </div>
             </div>
         </div>
     </div>

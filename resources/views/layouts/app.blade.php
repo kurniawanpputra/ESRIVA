@@ -34,6 +34,7 @@
             display: none;
         }
     </style>
+    @yield('css')
 </head>
 <body onload="startTime()">
     <div id="app">
@@ -112,7 +113,6 @@
             if (i < 10) {
                 i = "0" + i;
             }
-
             return i;
         }
     </script>
