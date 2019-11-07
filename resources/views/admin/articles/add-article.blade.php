@@ -2,9 +2,9 @@
 
 @section('css')
     <style>
-        .cust-margin{
+        /* .cust-margin{
             margin: 5% 0 5%;
-        }
+        } */
         input[type='file'] {
             color: transparent;
             direction: rtl;
@@ -13,8 +13,8 @@
             margin: 0 auto;
         }
         .cust-success{
-            background-color: #8ed1cd!important;
-            border-color: #8ed1cd;
+            background-color: #1abc9c!important;
+            border-color: #1abc9c;
         }
         .cust-success > h4, .cust-success > p {
             color: #333;
@@ -22,9 +22,16 @@
     </style>
 @endsection
 
+@section('title')
+	<h1>
+		Buat Artikel
+		<small>Form untuk membuat artikel baru</small>
+	</h1>
+@stop
+
 @section('content')
-    <div class="container">
-        <div class="alert alert-success text-center cust-success" role="alert" style="margin: 5% 0 -3% 0;">
+    <div>
+        <div class="alert alert-success text-center cust-success" role="alert" style="margin: 0 0 15px 0;">
             <h4 class="alert-heading">Hai, {{auth()->user()->name}}!</h4>
             <p>Tahukah kamu? setiap tiga artikel yang kamu buat, kamu mendapatkan bonus 25 poin loh dari Admin. Rajin-rajin menulis artikel yah! &#128513;</p>
         </div>

@@ -2,9 +2,9 @@
 
 @section('css')
     <style>
-        .cust-margin{
+        /* .cust-margin{
             margin: 5% 0 5%;
-        }
+        } */
         
         .additional-margin{
             margin-bottom: 20px;
@@ -12,8 +12,15 @@
     </style>
 @endsection
 
+@section('title')
+	<h1>
+		Daftar Berlangganan
+		<small>Daftar langganan untuk akses unlimited</small>
+	</h1>
+@stop
+
 @section('content')
-    <div class="container">
+    <div>
         <div class="box cust-margin">
             <div class="box-header with-border">
                 Daftar Berlangganan
@@ -22,7 +29,7 @@
                 <div class="text-center">
                     <div class="row">
                         <div class="col-md-12 additional-margin">
-                            <div class="panel panel-default panel-body" style="margin-bottom: 0; border: 1.5px solid #8ed1cd;">
+                            <div class="panel panel-default panel-body" style="margin-bottom: 0; border: 1.5px solid #1abc9c;">
                                 @if(count(auth()->user()->memberships) > 0 && auth()->user()->memberships->last()->expired > \Carbon\Carbon::now())
                                     <p class="btn btn-warning" style="margin-bottom: 10px; margin-top: 5px; width: 100px; font-weight: bold;">PREMIUM</p>
                                     <p style="margin-bottom: 0px;">Sisa fitur premium: <b>{{\Carbon\Carbon::parse(auth()->user()->memberships->last()->expired)->diffInDays(\Carbon\Carbon::now())}} hari</b></p>
@@ -34,7 +41,7 @@
                         </div>
 
                         <div class="col-md-12">
-                            <div class="panel panel-default panel-body" style="margin-bottom: 0; border: 1.5px solid #8ed1cd;">
+                            <div class="panel panel-default panel-body" style="margin-bottom: 0; border: 1.5px solid #1abc9c;">
                                 <p class="text-bold" style="margin-top: 5px;">Manfaat Berlangganan:</p>
                                 <p>1. Membaca artikel lebih dari 6 kali.</p>
                                 <p>3. Bisa membuat lebih dari 1 forum aktif.</p>

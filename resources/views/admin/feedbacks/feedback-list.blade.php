@@ -2,9 +2,9 @@
 
 @section('css')
     <style>
-        .cust-margin{
+        /* .cust-margin{
             margin: 5% 0 5%;
-        }
+        } */
         .table > tbody > tr > td.middle{
             vertical-align: middle;
             display: table-cell;
@@ -12,8 +12,15 @@
     </style>
 @endsection
 
+@section('title')
+	<h1>
+		Umpan Balik
+		<small>Menampilkan data umpan balik dari pengguna</small>
+	</h1>
+@stop
+
 @section('content')
-    <div class="container">
+    <div>
         <div class="box cust-margin">
             <div class="box-header with-border">
                 Daftar Umpan Balik

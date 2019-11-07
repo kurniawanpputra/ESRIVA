@@ -58,9 +58,15 @@
             @include('admin.partials.sidebar')
 
             <!-- MAIN CONTENT -->
-            <section class="content-wrapper">
-                @yield('content')
-            </section>
+            <div class="content-wrapper">
+                <section class="content-header">
+                    @yield('title')
+                </section>
+
+                <section class="content container-fluid">
+                    @yield('content')
+                </section>
+            </div>
 
             <!-- FOOTER -->
             @include('admin.partials.footer')

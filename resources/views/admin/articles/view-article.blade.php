@@ -2,12 +2,12 @@
 
 @section('css')
     <style>
-        .cust-margin{
+        /* .cust-margin{
             margin: 5% 0 0;
-        }
+        } */
         
         .cust-margin-alt{
-            margin: 2.5% 0 5%;
+            margin: 2.5% 0 0;
         }
 
         hr{
@@ -24,8 +24,15 @@
     </style>
 @endsection
 
+@section('title')
+	<h1>
+		Baca Artikel
+		<small>Menampilkan artikel {{$article->title}}</small>
+	</h1>
+@stop
+
 @section('content')
-    <div class="container">
+    <div>
         <div class="box cust-margin">
             <div class="box-header with-border">
                 <span class="text-bold">{{strtoupper($article->title)}}</span>

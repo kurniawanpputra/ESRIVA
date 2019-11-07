@@ -2,9 +2,9 @@
 
 @section('css')
     <style>
-        .cust-margin{
+        /* .cust-margin{
             margin: 5% 0 5%;
-        }
+        } */
         hr{
             border-top: 1px solid #f4f4f4;
             margin: 10px 0 15px;
@@ -44,8 +44,15 @@
     </style>
 @endsection
 
+@section('title')
+	<h1>
+		Forum Saya
+		<small>Menampilkan forum milik {{auth()->user()->name}}</small>
+	</h1>
+@stop
+
 @section('content')
-    <div class="container">
+    <div>
         <div class="box cust-margin">
             <div class="box-header with-border">
                 Forum Saya

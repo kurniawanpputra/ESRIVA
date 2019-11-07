@@ -2,14 +2,21 @@
 
 @section('css')
     <style>
-        .cust-margin{
+        /* .cust-margin{
             margin: 5% 0 5%;
-        }
+        } */
     </style>
 @endsection
 
+@section('title')
+	<h1>
+		Tambah Psikolog
+		<small>Form untuk menambahkan psikolog baru</small>
+	</h1>
+@stop
+
 @section('content')
-    <div class="container">
+    <div>
         <div class="box cust-margin">
             <div class="box-header with-border">Tambah Psikolog</div>
             <div class="box-body">

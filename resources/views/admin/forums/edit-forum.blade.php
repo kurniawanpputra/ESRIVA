@@ -2,14 +2,21 @@
 
 @section('css')
     <style>
-        .cust-margin{
+        /* .cust-margin{
             margin: 5% 0 5%;
-        }
+        } */
     </style>
 @endsection
 
+@section('title')
+	<h1>
+		Ubah Forum
+		<small>Ubah forum {{$forum->title}}</small>
+	</h1>
+@stop
+
 @section('content')
-    <div class="container">
+    <div>
         <div class="box cust-margin">
             <div class="box-header with-border">Ubah Forum</div>
             <div class="box-body">

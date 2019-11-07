@@ -2,9 +2,9 @@
 
 @section('css')
     <style>
-        .cust-margin{
+        /* .cust-margin{
             margin: 5% 0 0;
-        }
+        } */
         .cust-margin-alt{
             margin: 2.5% 0 0;
         }
@@ -18,8 +18,15 @@
     </style>
 @endsection
 
+@section('title')
+	<h1>
+        Baca Forum
+		<small>Menampilkan forum {{$forum->title}}</small>
+	</h1>
+@stop
+
 @section('content')
-    <div class="container">
+    <div>
         <div class="box cust-margin">
             <div class="box-header with-border">
                 <span class="text-bold">{{strtoupper($forum->title)}}</span>
@@ -94,7 +101,7 @@
             </div>
         @endif
 
-        <div class="box cust-margin-alt" style="margin-bottom: 5%;">
+        <div class="box cust-margin-alt">
             <div class="box-header with-border">
                 <b>{{$comments->count()}} Komentar</b>
             </div>

@@ -9,9 +9,16 @@
     </style>
 @stop
 
+@section('title')
+	<h1>
+		Dasbor
+		<small>Menampilkan data statistik pengguna</small>
+	</h1>
+@stop
+
 @section('content')
-    <div class="container">
-        <div class="box" style="margin-top: 5%;">
+    <div>
+        <div class="box">
             <div class="box-header with-border">
                 Dasbor
                 <span class="pull-right">

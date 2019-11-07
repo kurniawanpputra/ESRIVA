@@ -2,9 +2,9 @@
 
 @section('css')
     <style>
-        .cust-margin{
+        /* .cust-margin{
             margin: 5% 0 5%;
-        }
+        } */
         hr{
             border-top: 1px solid #f4f4f4;
             margin: 10px 0 15px;
@@ -44,9 +44,16 @@
     </style>
 @endsection
 
+@section('title')
+	<h1>
+		Daftar Forum
+		<small>Menampilkan forum yang dibuat pengguna</small>
+	</h1>
+@stop
+
 @section('content')
-    <div class="container">
-        <div class="box box-body" style="margin: 5% 0 -3% 0;">
+    <div>
+        <div class="box box-body" style="margin: 0 0 15px 0;">
             <div class="row">
                 <form action="{{route('forum.list')}}" method="GET" id="filter-form">
                     <div class="col-md-4">
