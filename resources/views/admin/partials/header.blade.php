@@ -5,7 +5,8 @@
     .skin-black .main-header .navbar .sidebar-toggle:hover, 
     .skin-black .main-header .logo:hover
     {
-        background-color: #8ed1cd;
+        /* background-color: #8ed1cd; */
+        background-color: #1abc9c;
     }
 
     a#nav-ham.sidebar-toggle:before{
@@ -30,7 +31,8 @@
     .skin-black .main-header .navbar .navbar-custom-menu .navbar-nav>li>a:active,
     .skin-black .main-header .navbar .navbar-custom-menu .navbar-nav>li>a:visited
     {
-        background-color: #8ed1cd;
+        /* background-color: #8ed1cd; */
+        background-color: #1abc9c;
         color: #333;
     }
 

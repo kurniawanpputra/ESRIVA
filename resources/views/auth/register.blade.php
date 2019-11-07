@@ -2,15 +2,15 @@
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center" style="margin-top: 10%">
-        <div class="col-md-8">
+    <div class="row justify-content-center" style="margin-top: 5%">
+        <div class="col-md-6">
             <div class="box" style="border-top: 3px solid #fff">
             
                 <div class="box-header with-border text-center text-bold" style="border-bottom: 1px solid #8ed1cd;">
                     {{ __('PENDAFTARAN') }}
                 </div>
 
-                <div class="box-body">
+                <div class="box-body" style="padding: 20px;">
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
 
@@ -66,7 +66,7 @@
 
                         <div class="form-group row" style="margin-bottom: 0;">
                             <div class="col-md-8 offset-md-2">
-                                <button type="submit" class="btn btn-success btn-block">
+                                <button type="submit" class="btn btn-primary btn-block">
                                     {{ __('Daftar') }}
                                 </button>
 

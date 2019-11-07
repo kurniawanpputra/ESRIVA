@@ -11,7 +11,12 @@
 |
 */
 
-Route::get('/', function () { return view('welcome'); });
+// Route::get('/', function () { return view('index'); });
+
+// LANDING ROUTES
+Route::get('/', 'LandingController@index');
+Route::post('/message', 'LandingController@message');
+
 Route::get('/no-access-forbidden', function () { return view('error-403'); });
 
 Auth::routes(['reset' => false, 'verify' => false]);

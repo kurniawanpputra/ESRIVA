@@ -28,7 +28,8 @@
         }
         .panel > .panel-heading {
             background-image: none;
-            background-color: #8ed1cd;
+            /* background-color: #8ed1cd; */
+            background-color: #1abc9c;
         }
         .panel > .panel-heading > a{
             color: #333;
@@ -56,7 +57,8 @@
         .thumbnail{
             margin-bottom: 0;
             display: inline-block;
-            background-color: #8ed1cd;
+            /* background-color: #8ed1cd; */
+            background-color: #1abc9c;
         }
         @media only screen and (max-width: 1199px) {
             .res-margin{

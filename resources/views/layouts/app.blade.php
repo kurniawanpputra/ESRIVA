@@ -21,7 +21,8 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <style>
         body{
-            background-color: #8ed1cd;
+            /* background-color: #8ed1cd; */
+            background-color: #1abc9c;
         }
 
         .navbar-light .navbar-nav .nav-link{
@@ -88,7 +89,7 @@
             </div>
         </nav>
 
-        <main class="py-4 col-md-6 offset-md-3">
+        <main class="py-4">
             @yield('content')
         </main>
     </div>

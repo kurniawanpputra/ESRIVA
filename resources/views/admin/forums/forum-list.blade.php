@@ -17,7 +17,8 @@
         }
         .panel > .panel-heading {
             background-image: none;
-            background-color: #8ed1cd;
+            /* background-color: #8ed1cd; */
+            background-color: #1abc9c;
         }
         .panel > .panel-heading > a{
             color: #333;

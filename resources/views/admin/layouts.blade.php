@@ -36,7 +36,8 @@
             }
 
             .box{
-                border-top-color: #8ed1cd;
+                /* border-top-color: #8ed1cd; */
+                border-top-color: #1abc9c;
             }
 
             .navbar-nav > .user-menu > .dropdown-menu{

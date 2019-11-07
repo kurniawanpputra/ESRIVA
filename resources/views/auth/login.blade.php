@@ -2,14 +2,14 @@
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center" style="margin-top: 20%">
-        <div class="col-md-8">
+    <div class="row justify-content-center" style="margin-top: 10%">
+        <div class="col-md-6">
             <div class="box" style="border-top: 3px solid #fff">
-                <div class="box-header with-border text-center text-bold" style="border-bottom: 1px solid #8ed1cd;">
+                <div class="box-header with-border text-center text-bold" style="border-bottom: 1px solid #1abc9c;">
                     {{ __('LOGIN') }}
                 </div>
 
-                <div class="box-body">
+                <div class="box-body" style="padding: 20px;">
                     @if (session('error'))
                         <div class="alert alert-danger" role="alert">
                             {{ session('error') }}
@@ -61,7 +61,7 @@
 
                         <div class="form-group row" style="margin-bottom: 0;">
                             <div class="col-md-8 offset-md-2">
-                                <button type="submit" class="btn btn-success btn-block">
+                                <button type="submit" class="btn btn-primary btn-block">
                                     {{ __('Masuk') }}
                                 </button>
 
