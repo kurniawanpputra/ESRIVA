@@ -13,7 +13,7 @@
             margin: 10px 0 10px;
         }
         .thumbnail, .btn-profile{
-            background-color: #8ed1cd;
+            background-color: #1abc9c;
         }
     </style>
 @endsection
@@ -116,7 +116,7 @@
                             <div class="panel-heading">
                                 <b>
                                     <a data-toggle="modal" data-target="#profileModal-{{$c->user_id}}" 
-                                       style="cursor: pointer; color: #333; text-decoration: underline;">{{$user->name}}</a>
+                                       style="cursor: pointer; text-decoration: underline; color: #333;">{{$user->name}}</a>
                                 </b>
                                 <div class="modal fade" id="profileModal-{{$c->user_id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
