@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 
   <meta charset="utf-8">
@@ -130,9 +129,11 @@
                       <!-- Portfolio Modal - Image -->
                       <img class="img-fluid rounded" src="{{asset($a->image)}}" alt="">
                       <!-- Portfolio Modal - Text -->
-                      <p class="mb-5">
+                      <br/>
+                      <p style="margin-bottom: 0;" class="mt-3"><b>Penulis:</b> {{App\User::find($a->user_id)->name}} - <b>Kategori:</b> {{App\Category::find($a->category_id)->title}}</p>
+                      <p class="mb-3"></p>
                       {!! str_limit($a->body, 500) !!}
-                      </p>
+                      <br/>
                       <a class="btn btn-primary mt-3" href="/login">
                         Baca Lebih Lanjut
                       </a>

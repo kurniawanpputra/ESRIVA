@@ -28,6 +28,6 @@ class LandingController extends Controller
         $data->save();
 
         session()->flash('success', 'Pesan berhasil dikirim!');
-        return redirect('/#message-sent');
+        return redirect('/#contact');
     }
 }
