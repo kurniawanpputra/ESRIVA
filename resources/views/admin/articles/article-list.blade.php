@@ -44,12 +44,13 @@
         .filter-margin-2{
             margin-top: 0;
         }
-        .res-margin{
-            @if(auth()->user()->roles != 1)
+        .res-margin > p{
+            /* @if(auth()->user()->roles != 1)
                 transform: translateY(30%);
             @else
                 transform: translateY(10%);
-            @endif
+            @endif */
+            font-size: 1vw;
         }
         .minus-top{
             margin-top: 0;
@@ -60,7 +61,7 @@
             /* background-color: #8ed1cd; */
             background-color: #1abc9c;
         }
-        @media only screen and (max-width: 1199px) {
+        /* @media only screen and (max-width: 1199px) {
             .res-margin{
                 @if(auth()->user()->roles != 1)
                     transform: translateY(12%);
@@ -68,7 +69,7 @@
                     transform: translateY(-6%);
                 @endif
             }
-        }
+        } */
         @media only screen and (max-width: 991px) {
             .filter-margin{
                 margin-top: 5px;
@@ -81,14 +82,17 @@
                 text-align: center;
                 transform: translateY(0%);
             }
+            .res-margin > p{
+                font-size: 14px;
+            }
         }
-        @media only screen and (max-width: 650px) {
+        /* @media only screen and (max-width: 650px) {
             .minus-top{
                 @if(auth()->user()->roles == 1)
                     margin-top: -10px;
                 @endif
             }
-        }
+        } */
     </style>
 @endsection
 

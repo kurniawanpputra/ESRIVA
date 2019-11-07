@@ -27,8 +27,9 @@
         .box-cust-padding{
             padding: 20px 20px 0px 20px;
         }
-        .res-margin{
-            transform: translateY(30%);
+        .res-margin > p{
+            /* transform: translateY(50%); */
+            font-size: 1vw;
         }
         .thumbnail{
             margin-bottom: 0;
@@ -36,16 +37,20 @@
             /* background-color: #8ed1cd; */
             background-color: #1abc9c;
         }
-        @media only screen and (max-width: 1199px) {
+        /* @media only screen and (max-width: 1199px) {
             .res-margin{
                 transform: translateY(12%);
             }
-        }
+        } */
         @media only screen and (max-width: 991px) {
             .res-margin{
                 margin-top: 15px;
                 text-align: center;
                 transform: translateY(0%);
+            }
+
+            .res-margin > p{
+                font-size: 14px;
             }
         }
     </style>
