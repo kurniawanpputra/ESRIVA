@@ -1,5 +1,14 @@
 @extends('layouts.app')
 
+@section('css')
+    <style>
+        .btn-profile{
+            background-color: #1abc9c;
+            border-color: #1abc9c;
+        }
+    </style>
+@stop
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center" style="margin-top: 10%">
@@ -65,7 +74,7 @@
 
                         <div class="form-group row" style="margin-bottom: 0;">
                             <div class="col-md-8 offset-md-2">
-                                <button type="submit" class="btn btn-primary btn-block">
+                                <button type="submit" class="btn btn-info btn-block btn-profile">
                                     {{ __('Masuk') }}
                                 </button>
 
