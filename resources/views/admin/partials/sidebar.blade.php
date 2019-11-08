@@ -245,6 +245,11 @@
                         <span>Atur Pengguna</span>
                     </a>
                 </li>
+                <li @if(Request::is('messages/list')) class="active" @endif>
+                    <a href="{{url('messages/list')}}"><i class="fa fa-inbox"></i>
+                        <span>Pesan Beranda</span>
+                    </a>
+                </li>
                 <li @if(Request::is('activity/psikolog/log')) class="active" @endif>
                     <a href="{{route('psikolog.allActivity')}}"><i class="fa fa-area-chart"></i>
                         <span>Aktivitas Psikolog</span>

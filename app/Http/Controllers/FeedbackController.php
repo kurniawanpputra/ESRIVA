@@ -12,9 +12,7 @@ class FeedbackController extends Controller
     public function index() {
         $feedbacks = Feedback::OrderBy('created_at', 'desc')->paginate(10);
 
-        $messages = Message::OrderBy('created_at', 'desc')->take(10)->get();
-
-        return view('admin.feedbacks.feedback-list', compact('feedbacks', 'messages'));
+        return view('admin.feedbacks.feedback-list', compact('feedbacks'));
     }
 
     public function finished($id) {

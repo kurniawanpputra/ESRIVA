@@ -121,7 +121,7 @@
                       <div class="divider-custom">
                         <div class="divider-custom-line"></div>
                         <div class="divider-custom-icon">
-                          <i class="fas fa-eye"></i>
+                          <i class="fas fa-newspaper"></i>
                         </div>
                         <div class="divider-custom-line"></div>
                       </div>

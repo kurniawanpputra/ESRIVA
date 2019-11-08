@@ -16,6 +16,7 @@
 // LANDING ROUTES
 Route::get('/', 'LandingController@index');
 Route::post('/message', 'LandingController@message');
+Route::get('/messages/list', 'LandingController@messageList');
 
 Route::get('/no-access-forbidden', function () { return view('error-403'); });
 

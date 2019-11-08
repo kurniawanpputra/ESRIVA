@@ -33,4 +33,10 @@ class LandingController extends Controller
         session()->flash('success', 'Pesan kamu berhasil dikirim, terima kasih '.request()->name.'.');
         return redirect('/#contact');
     }
+
+    public function messageList() {
+        $messages = Message::OrderBy('created_at', 'desc')->paginate(10);
+
+        return view('admin.feedbacks.messages', compact('messages'));
+    }
 }
