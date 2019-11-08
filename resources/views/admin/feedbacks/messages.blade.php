@@ -59,7 +59,7 @@
             @endif
         </div>
         <div class="text-center">
-            {{$feedbacks->links()}}
+            {{$messages->links()}}
         </div>
     </div>
 @stop
