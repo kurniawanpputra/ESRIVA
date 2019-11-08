@@ -58,5 +58,8 @@
                 <p class="text-center text-muted" style="margin-top: 10px;">Tidak ada pesan.</p>
             @endif
         </div>
+        <div class="text-center">
+            {{$feedbacks->links()}}
+        </div>
     </div>
 @stop
