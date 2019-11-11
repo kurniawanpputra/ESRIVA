@@ -2,6 +2,26 @@
 
 @section('css')
     <style>
+        img{
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+            position: absolute;
+        }
+
+        @media only screen and (max-width: 767px) {
+            img{
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                margin: auto;
+                position: initial;
+            }
+        }
+
         .btn-profile{
             background-color: #1abc9c;
             border-color: #1abc9c;
