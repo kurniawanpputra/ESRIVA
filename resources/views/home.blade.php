@@ -18,6 +18,18 @@
 
 @section('content')
     <div>
+        @if(auth()->user()->roles == 3)
+            <div class="box" id="loginChart">
+                <div class="box-header with-border">
+                    Login Bulan {{\Carbon\Carbon::now()->format('F')}}
+                </div>
+                <div class="box-body" style="padding: 10px 20px;">
+                    <h4 id="nan" class="text-center"><i class="fa fa-spinner fa-spin" aria-hidden="true"></i> Memuat...</h4>
+                    <canvas id="myChart" style="display: none;"></canvas>
+                </div>
+            </div>
+        @endif
+
         <div class="box">
             <div class="box-header with-border">
                 @if(auth()->user()->roles == 3)
@@ -193,18 +205,6 @@
                 @endif
             </div>
         </div>
-
-        @if(auth()->user()->roles == 3)
-            <div class="box" id="loginChart">
-                <div class="box-header with-border">
-                    Login Bulan {{\Carbon\Carbon::now()->format('F')}}
-                </div>
-                <div class="box-body" style="padding: 10px 20px;">
-                    <h4 id="nan" class="text-center"><i class="fa fa-spinner fa-spin" aria-hidden="true"></i> Memuat...</h4>
-                    <canvas id="myChart" style="display: none;"></canvas>
-                </div>
-            </div>
-        @endif
     </div>
 @endsection
 
