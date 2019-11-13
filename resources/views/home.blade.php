@@ -8,7 +8,7 @@
         }
         #filter{
             width: 125px;
-            border-radius: 5px;
+            border-radius: 2.5px;
             border: 1.5px solid #1abc9c;
         }
     </style>
