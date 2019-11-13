@@ -25,6 +25,7 @@ Auth::routes(['reset' => false, 'verify' => false]);
 Route::group(['middleware' => 'auth'], function () 
 {
     Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('/login-logs/api', 'HomeController@loginApi')->name('loginApi');
 
     //ARTICLES - DONE
     Route::get('articles/create', 'ArticleController@create')->name('articles.create')->middleware('psikolog');
@@ -61,9 +62,8 @@ Route::group(['middleware' => 'auth'], function ()
     Route::post('user-management/update/{id}', 'UserController@update')->name('user.update')->middleware('admin');
     Route::get('user-management/premium/{id}', 'UserController@premium')->name('user.premium')->middleware('admin');
     Route::get('user-management/read-reset', 'UserController@readReset')->name('user.read-reset')->middleware('admin');
-
     // Route::get('user-management/point-reset/{id}', 'UserController@pointReset')->name('user.point-reset')->middleware('admin');
-    
+
     Route::get('my-profile', 'UserController@editProfile')->name('profile.edit');
     Route::post('my-profile/update', 'UserController@updateProfile')->name('profile.update');
 

@@ -18,13 +18,28 @@
 
 @section('content')
     <div>
+        @if(auth()->user()->roles == 3)
+            <div class="box">
+                <div class="box-header with-border">
+                    Login Bulan {{\Carbon\Carbon::now()->format('F')}}
+                </div>
+                <div class="box-body" style="padding: 10px 20px;">
+                    <h4 id="nan" class="text-center"><i class="fa fa-spinner fa-spin" aria-hidden="true"></i> Memuat...</h4>
+                    <canvas id="myChart" style="display: none; height: 430px;"></canvas>
+                </div>
+            </div>
+        @endif
         <div class="box">
             <div class="box-header with-border">
-                Dasbor
-                <span class="pull-right">
+                @if(auth()->user()->roles == 3)
+                    Statistik Keseluruhan
+                @else
+                    Statistik {{auth()->user()->name}}
+                @endif
+                <!-- <span class="pull-right">
                     {{\Carbon\Carbon::now()->format('d-m-Y')}}
                     <span id="txt"></span>
-                </span>
+                </span> -->
             </div>
             <div class="box-body">
                 @if (session('error'))
@@ -190,3 +205,76 @@
         </div>
     </div>
 @endsection
+
+@section('js')
+    <script src="{{ asset('js/Chart.js') }}"></script>
+    <script>
+        var url = "{{route('loginApi')}}";
+
+        var Label = new Array();
+        var Logins = new Array();
+        var ctx = document.getElementById("myChart").getContext('2d');
+
+        ctx.height = 400;
+
+        $(document).ready(function(){
+            $.get(url, function(response){
+                if(!$.trim(response)) {
+                    $('#nan').show();
+                }
+                
+                $('#nan').hide();
+                $('#myChart').show();
+
+                Object.values(response[0].label).forEach(function(day) {
+                    Label.push(day);
+                });
+
+                Object.values(response[0].logins).forEach(function(log) {
+                    Logins.push(log);
+                });
+
+                var myChart = new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: Label,
+                        datasets: 
+                        [{
+                            label: "Jumlah Login",
+                            data: Logins,
+                            backgroundColor: [
+                            'rgba(26,188,156,0.5)',
+                            ],
+                            borderColor: [
+                            'rgba(26,188,156)',
+                            ],
+                            borderWidth: 2
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scaleShowValues: true,
+                        scales: {
+                            xAxes: [{
+                                ticks: {
+                                    beginAtZero:true,
+                                    autoSkip: false,
+                                }
+                            }],
+                            yAxes: [{
+                                ticks: {
+                                    stepSize: 10,
+                                    beginAtZero: true
+                                }
+                            }]
+                        },
+                        legend: {
+                            display: true,
+                        }
+                    }
+                });
+            });
+        });
+	</script>
+@stop

@@ -10,6 +10,7 @@ use App\Forum;
 use Carbon\Carbon;
 use App\ForumComments as Comment;
 use App\ReportLog as Log;
+use App\LoginLog;
 
 class HomeController extends Controller
 {
@@ -106,5 +107,33 @@ class HomeController extends Controller
             'log_percent',
             'sub'
         ]));
+    }
+
+    public function loginAPi(Request $request) {
+        $month = Carbon::now()->month;
+        $year = Carbon::now()->year;
+
+        $start_date = "01-" . $month . "-" . $year;
+        $start_time = strtotime($start_date);
+        $end_time = strtotime("+1 month", $start_time);
+
+        if ($request->start_date != null && $request->end_date != null) {
+            $start_time = strtotime($request->start_date);
+            $end_time = strtotime("+1 day", strtotime($request->end_date));
+        }
+
+        $logins = array();
+
+        for ($i = $start_time; $i < $end_time; $i += 86400) {
+            $date = date('d-m-Y', $i);
+            $in = LoginLog::whereDate('created_at', '=', date('Y-m-d', $i))->count();
+            $logins[$date] = $in;
+            $dates[] = $date;
+        }
+
+        $response['logins'] = $logins;
+        $response['label'] = $dates;
+
+        return response()->json([$response]);
     }
 }
