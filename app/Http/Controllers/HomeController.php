@@ -125,7 +125,7 @@ class HomeController extends Controller
         $logins = array();
 
         for ($i = $start_time; $i < $end_time; $i += 86400) {
-            $date = date('d-m-Y', $i);
+            $date = date('d-m-y', $i);
             $in = LoginLog::whereDate('created_at', '=', date('Y-m-d', $i))->count();
             $logins[$date] = $in;
             $dates[] = $date;
