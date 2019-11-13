@@ -31,7 +31,7 @@
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center" style="margin-top: 10%">
+    <div class="row justify-content-center" style="margin-top: 14%">
         <div class="col-md-5 text-center">
             <img src="{{asset('img/landing-2.gif')}}" style="width: 100%; height: auto; max-width: 350px;" draggable="false">
         </div>
