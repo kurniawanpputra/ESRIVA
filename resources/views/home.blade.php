@@ -6,6 +6,11 @@
             margin-top: 15px;
             opacity: 0.9;
         }
+        #filter{
+            width: 125px;
+            border-radius: 5px;
+            border: 1.5px solid #1abc9c;
+        }
     </style>
 @stop
 
@@ -21,7 +26,36 @@
         @if(auth()->user()->roles == 3)
             <div class="box" id="loginChart">
                 <div class="box-header with-border">
+                @if(request()->month)
+                    @php
+                        $monthNum = request()->month;
+                        $dateObj = DateTime::createFromFormat('!m', $monthNum);
+                        $monthName = $dateObj->format('F');
+                    @endphp
+
+                    Login Bulan {{$monthName}}
+                @else
                     Login Bulan {{\Carbon\Carbon::now()->format('F')}}
+                @endif
+                    <span class="pull-right">
+                        <form method="GET">
+                            <select name="month" id="filter" onchange="this.form.submit()">
+                                <option disabled selected hidden>{{\Carbon\Carbon::now()->format('F')}}</option>
+                                <option value="1" @if(request()->month == "1") selected @endif>January</option>
+                                <option value="2" @if(request()->month == "2") selected @endif>February</option>
+                                <option value="3" @if(request()->month == "3") selected @endif>March</option>
+                                <option value="4" @if(request()->month == "4") selected @endif>April</option>
+                                <option value="5" @if(request()->month == "5") selected @endif>May</option>
+                                <option value="6" @if(request()->month == "6") selected @endif>June</option>
+                                <option value="7" @if(request()->month == "7") selected @endif>July</option>
+                                <option value="8" @if(request()->month == "8") selected @endif>August</option>
+                                <option value="9" @if(request()->month == "9") selected @endif>September</option>
+                                <option value="10" @if(request()->month == "10") selected @endif>October</option>
+                                <option value="11" @if(request()->month == "11") selected @endif>November</option>
+                                <option value="12" @if(request()->month == "12") selected @endif>December</option>
+                            </select>
+                        </form>
+                    </span>
                 </div>
                 <div class="box-body" style="padding: 10px 20px;">
                     <h4 id="nan" class="text-center"><i class="fa fa-spinner fa-spin" aria-hidden="true"></i> Memuat...</h4>
@@ -29,7 +63,6 @@
                 </div>
             </div>
         @endif
-
         <div class="box">
             <div class="box-header with-border">
                 @if(auth()->user()->roles == 3)
@@ -42,7 +75,6 @@
                     <span id="txt"></span>
                 </span> -->
             </div>
-
             <div class="box-body">
                 @if (session('error'))
                     <div class="alert alert-danger" role="alert">
@@ -211,7 +243,15 @@
 @section('js')
     <script src="{{ asset('js/Chart.js') }}"></script>
     <script>
-        var url = "{{route('loginApi')}}";
+        var route = window.location.href;
+        var date = route.split("?")[1];
+        
+        if(date != undefined) {
+            var url = "{{route('loginApi')}}?"+date;
+        }else{
+            var url = "{{route('loginApi')}}";
+        }
+
         var Label = new Array();
         var Logins = new Array();
         var ctx = document.getElementById("myChart").getContext('2d');

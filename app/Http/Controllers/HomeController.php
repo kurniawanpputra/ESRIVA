@@ -112,6 +112,11 @@ class HomeController extends Controller
     public function loginAPi(Request $request) {
         $month = Carbon::now()->month;
         $year = Carbon::now()->year;
+        
+        // GET MONTH IF REQUEST EXIST
+        if(request()->month) {
+            $month = request()->month;
+        }
 
         $start_date = "01-" . $month . "-" . $year;
         $start_time = strtotime($start_date);
