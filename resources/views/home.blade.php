@@ -18,17 +18,6 @@
 
 @section('content')
     <div>
-        @if(auth()->user()->roles == 3)
-            <div class="box">
-                <div class="box-header with-border">
-                    Login Bulan {{\Carbon\Carbon::now()->format('F')}}
-                </div>
-                <div class="box-body" style="padding: 10px 20px;">
-                    <h4 id="nan" class="text-center"><i class="fa fa-spinner fa-spin" aria-hidden="true"></i> Memuat...</h4>
-                    <canvas id="myChart" style="display: none; height: 430px;"></canvas>
-                </div>
-            </div>
-        @endif
         <div class="box">
             <div class="box-header with-border">
                 @if(auth()->user()->roles == 3)
@@ -41,6 +30,7 @@
                     <span id="txt"></span>
                 </span> -->
             </div>
+
             <div class="box-body">
                 @if (session('error'))
                     <div class="alert alert-danger" role="alert">
@@ -203,6 +193,18 @@
                 @endif
             </div>
         </div>
+
+        @if(auth()->user()->roles == 3)
+            <div class="box" id="loginChart">
+                <div class="box-header with-border">
+                    Login Bulan {{\Carbon\Carbon::now()->format('F')}}
+                </div>
+                <div class="box-body" style="padding: 10px 20px;">
+                    <h4 id="nan" class="text-center"><i class="fa fa-spinner fa-spin" aria-hidden="true"></i> Memuat...</h4>
+                    <canvas id="myChart" style="display: none;"></canvas>
+                </div>
+            </div>
+        @endif
     </div>
 @endsection
 
@@ -210,12 +212,9 @@
     <script src="{{ asset('js/Chart.js') }}"></script>
     <script>
         var url = "{{route('loginApi')}}";
-
         var Label = new Array();
         var Logins = new Array();
         var ctx = document.getElementById("myChart").getContext('2d');
-
-        ctx.height = 400;
 
         $(document).ready(function(){
             $.get(url, function(response){
@@ -253,7 +252,7 @@
                     },
                     options: {
                         responsive: true,
-                        maintainAspectRatio: false,
+                        maintainAspectRatio: true,
                         scaleShowValues: true,
                         scales: {
                             xAxes: [{
@@ -264,7 +263,7 @@
                             }],
                             yAxes: [{
                                 ticks: {
-                                    stepSize: 10,
+                                    stepSize: 5,
                                     beginAtZero: true
                                 }
                             }]
