@@ -7,7 +7,7 @@
             opacity: 0.9;
         }
         #filter{
-            width: 100%;
+            width: 125px;
             border-radius: 2.5px;
             text-align-last:center;
             border: 1.5px solid #1abc9c;
@@ -34,14 +34,14 @@
                         $monthName = $dateObj->format('F');
                     @endphp
 
-                    Login Bulan {{$monthName}}
+                    Login {{$monthName}} {{\Carbon\Carbon::now()->format('Y')}}
                 @else
-                    Login Bulan {{\Carbon\Carbon::now()->format('F')}}
+                    Login {{\Carbon\Carbon::now()->format('F Y')}}
                 @endif
                     <span class="pull-right">
                         <form method="GET">
                             <select name="month" id="filter" onchange="this.form.submit()">
-                                <option disabled selected hidden>{{\Carbon\Carbon::now()->format('F')}}</option>
+                                <option disabled selected hidden>Filter Bulan...</option>
                                 <option value="1" @if(request()->month == "1") selected @endif>January</option>
                                 <option value="2" @if(request()->month == "2") selected @endif>February</option>
                                 <option value="3" @if(request()->month == "3") selected @endif>March</option>
@@ -58,7 +58,7 @@
                         </form>
                     </span>
                 </div>
-                <div class="box-body" style="padding: 10px 20px;">
+                <div class="box-body" style="padding: 10px 20px 5px 20px;">
                     <h4 id="nan" class="text-center"><i class="fa fa-spinner fa-spin" aria-hidden="true"></i> Memuat...</h4>
                     <canvas id="myChart" style="display: none;"></canvas>
                 </div>
