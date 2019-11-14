@@ -7,8 +7,9 @@
             opacity: 0.9;
         }
         #filter{
-            width: 125px;
+            width: 100%;
             border-radius: 2.5px;
+            text-align-last:center;
             border: 1.5px solid #1abc9c;
         }
     </style>
