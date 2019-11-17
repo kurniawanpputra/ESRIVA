@@ -55,7 +55,7 @@
                     </div>
                     <div class="form-group">
                         <label for="">Tipe <sup style="color: red;">*</sup></label>
-                        <select class="form-control" name="type">
+                        <select class="form-control" name="type" id="selectType">
                             <option disabled selected hidden>Pilih...</option>
                             <option value="Privat" @if(old('type') == "Privat") selected @endif>Privat</option>
                             <option value="Publik" @if(old('type') == "Publik") selected @endif>Publik</option>
@@ -72,6 +72,30 @@
             </div>
         </div>
     </div>
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <span class="modal-title" id="exampleModalLabel">Cara Menentukan Tipe Diskusi</span>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        <b>Privat:</b> Untuk tema diskusi yang berkaitan dengan masalah emosi, masalah keluarga, dan masalah perilaku seksual.
+                    </p>
+                    <p>
+                        <b>Publik:</b> Untuk tema diskusi yang berkaitan dengan masalah penyesuaian diri, masalah lingkungan, dan masalah moral.
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
 
 @section('js')
@@ -81,6 +105,10 @@
                 height: 300,
                 focus: true,
                 disableResizeEditor: true
+            });
+
+            $('#selectType').on('change', function() {
+                $('#exampleModal').modal('show');
             });
         });
     </script>
