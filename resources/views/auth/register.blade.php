@@ -38,9 +38,9 @@
         
         <div class="col-md-7">
             <div class="col-md-10 offset-md-1">
-            <div class="box" style="border-top: 3px solid #fff">
+            <div class="box" style="border-top: 3px solid #1abc9c">
             
-                <div class="box-header with-border text-center text-bold" style="border-bottom: 1px solid #8ed1cd;">
+                <div class="box-header with-border text-center text-bold" style="background-color: #1abc9c">
                     {{ __('PENDAFTARAN') }}
                 </div>
 

@@ -22,7 +22,7 @@
     <style>
         body{
             /* background-color: #8ed1cd; */
-            background-color: #1abc9c;
+            background-color: #222d32;
         }
 
         .navbar-light .navbar-nav .nav-link{
@@ -38,7 +38,7 @@
 </head>
 <body onload="startTime()">
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
+        <nav class="navbar navbar-expand-md navbar-light navbar-laravel" style="background-color: #1abc9c">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     <span style="letter-spacing: 1px;">ESRIVA</span>
