@@ -20,6 +20,7 @@
             max-width: 500px;
             border-radius: 1%;
             margin-bottom: 7.5px;
+            border: 3px solid #1abc9c;
         }
     </style>
 @endsection
