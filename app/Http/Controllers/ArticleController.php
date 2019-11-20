@@ -89,7 +89,7 @@ class ArticleController extends Controller
             'title' => 'required',
             'body' => 'required',
             'category' => 'required',
-            'image'  => 'required|dimensions:ratio=5/3|mimes:jpeg,png|image'
+            'image'  => 'dimensions:ratio=5/3|mimes:jpeg,png|image'
         ], [
             'title.required' => 'Judul harus diisi!',
             'body.required' => 'Konten harus diisi!',
@@ -115,25 +115,27 @@ class ArticleController extends Controller
         $article->user_id = auth()->user()->id;
         $article->slug = $full_slug;
 
-        $req_img = request()->image;
-        $img = Image::make($req_img);
+        if(request()->image) {
+            $req_img = request()->image;
+            $img = Image::make($req_img);
 
-        $time = date('Y-m-d-h-i-s');
-        $format = $req_img->getClientOriginalExtension();
+            $time = date('Y-m-d-h-i-s');
+            $format = $req_img->getClientOriginalExtension();
 
-        $img->resize(500, 300, function ($constraint) {
-            $constraint->aspectRatio();
-        });
+            $img->resize(500, 300, function ($constraint) {
+                $constraint->aspectRatio();
+            });
 
-        // CHECK IF DIRECTORY EXIST
-        if (!file_exists('uploads\articles')) {
-            mkdir('uploads\articles', 666, true);
+            // CHECK IF DIRECTORY EXIST
+            if (!file_exists('uploads\articles')) {
+                mkdir('uploads\articles', 666, true);
+            }
+
+            $img->save(public_path('uploads\articles\\'.$time.'_'.'article'.".".$format));
+            $name = 'uploads/articles/'.$time.'_'.'article'.".".$format;
+
+            $article->image = $name;
         }
-
-        $img->save(public_path('uploads\articles\\'.$time.'_'.'article'.".".$format));
-        $name = 'uploads/articles/'.$time.'_'.'article'.".".$format;
-
-        $article->image = $name;
 
         $article->save();
 

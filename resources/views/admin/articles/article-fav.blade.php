@@ -124,7 +124,7 @@
                                     <div class="panel-body">
                                         <div class="row">
                                             <div class="col-md-7 text-center">
-                                                <img src="{{asset($a->image)}}" style="border-radius: 3px; max-width: 100%; height: auto;" class="thumbnail">
+                                                <img src="{{isset($a->image) ? asset($a->image) : asset('img/no-image.jpg')}}" style="border-radius: 3px; max-width: 100%; height: auto;" class="thumbnail">
                                             </div>
                                             <div class="col-md-5 res-margin">
                                                 <p>Penulis: {{App\User::find($a->user_id)->name}}</p>
