@@ -41,7 +41,7 @@
                     <span class="pull-right">
                         <form method="GET">
                             <select name="month" id="filter" onchange="this.form.submit()">
-                                <option disabled selected hidden>Filter Bulan...</option>
+                                <option disabled selected hidden>Filter bulan...</option>
                                 <option value="1" @if(request()->month == "1") selected @endif>January</option>
                                 <option value="2" @if(request()->month == "2") selected @endif>February</option>
                                 <option value="3" @if(request()->month == "3") selected @endif>March</option>
