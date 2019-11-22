@@ -27,6 +27,16 @@
             border-color: #1abc9c;
         }
 
+        .btn-profile:hover,
+        .btn-profile:focus,
+        .btn-profile:link,
+        .btn-profile:active,
+        .btn-profile:visited{
+            background-color: #222d32;
+            border-color: #222d32;
+            color: #fff;
+        }
+
         .form-control{
             border: 1px solid rgb(26, 188, 156);
         }
@@ -104,7 +114,7 @@
 
                         <div class="form-group row" style="margin-bottom: 0; margin-top: 30px;">
                             <div class="col-md-8 offset-md-2">
-                                <button type="submit" class="btn btn-info btn-block btn-profile">
+                                <button type="submit" class="btn btn-block btn-profile">
                                     {{ __('Daftar') }}
                                 </button>
 
