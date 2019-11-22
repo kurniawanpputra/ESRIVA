@@ -220,6 +220,7 @@
                                         @if(auth()->user()->id == $a->user_id || auth()->user()->roles == 3)
                                             <a href="{{route('articles.edit', $a->id)}}" class="btn btn-warning btn-sm">Ubah</a>
                                         @endif
+                                        
                                         @if(auth()->user()->roles == 3)
                                             <a class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delModal-{{$a->id}}">Hapus</a>
                                             <div class="modal fade" id="delModal-{{$a->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -268,6 +269,9 @@
                                             @endif
                                         @endif
                                         <a href="{{route('articles.read', $a->slug)}}" class="btn btn-success btn-sm pull-right">Baca</a>
+                                        @if(auth()->user()->roles == 1)
+                                            <div class="sharethis-inline-share-buttons" data-url="{{route('articles.read', $a->slug)}}"></div>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -282,6 +286,8 @@
 @endsection
 
 @section('js')
+
+    <script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=5dd756cfe8f93d00126c7066&product=inline-share-buttons" async="async"></script>
     <script>
         $('#clear-form').click(function() {
             $('#judul').val("");
@@ -289,4 +295,5 @@
             $('#filter-form').submit();
         });
     </script>
+
 @endsection

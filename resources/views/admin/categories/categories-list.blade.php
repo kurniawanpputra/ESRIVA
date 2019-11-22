@@ -58,7 +58,9 @@
                                     <td>{{$c->updated_at->addHours(7)}}</td>
                                     <td class="text-center">
                                         <a href="{{route('categories.edit', $c->id)}}" class="btn btn-warning btn-xs">Ubah</a>
-                                        <a href="{{route('categories.delete', $c->id)}}" class="btn btn-danger btn-xs">Hapus</a>
+                                        @if($c->posts()->count() == 0)
+                                            <a href="{{route('categories.delete', $c->id)}}" class="btn btn-danger btn-xs">Hapus</a>
+                                        @endif
                                     </td>
                                 </tr>
                             @endforeach

@@ -26,6 +26,10 @@
             background-color: #1abc9c;
             border-color: #1abc9c;
         }
+
+        .form-control{
+            border: 1px solid rgb(26, 188, 156);
+        }
     </style>
 @stop
 
@@ -33,7 +37,7 @@
 <div class="container">
     <div class="row justify-content-center" style="margin-top: 7%">
         <div class="col-md-5 text-center">
-            <img src="{{asset('img/landing-2.gif')}}" style="width: 100%; height: auto; max-width: 350px;" draggable="false">
+            <img src="{{asset('img/run.png')}}" style="width: 100%; height: auto; max-width: 350px;" draggable="false">
         </div>
         
         <div class="col-md-7">
@@ -98,7 +102,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group row" style="margin-bottom: 0;">
+                        <div class="form-group row" style="margin-bottom: 0; margin-top: 30px;">
                             <div class="col-md-8 offset-md-2">
                                 <button type="submit" class="btn btn-info btn-block btn-profile">
                                     {{ __('Daftar') }}

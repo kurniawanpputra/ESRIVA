@@ -95,7 +95,7 @@
                     </p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                    <button type="button" class="btn btn-success" data-dismiss="modal">Mengerti</button>
                 </div>
             </div>
         </div>

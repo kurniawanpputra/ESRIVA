@@ -51,7 +51,7 @@
     <div class="container d-flex align-items-center flex-column">
 
       <!-- Masthead Avatar Image -->
-      <img class="masthead-avatar mb-5" src="{{asset('img/clipart-1.png')}}" draggable="false">
+      <img class="masthead-avatar mb-5" src="{{asset('img/run.png')}}" draggable="false">
 
       <!-- Masthead Heading -->
       <h1 class="masthead-heading text-uppercase mb-0">Ayo! Ceritakan<br/>Masalahmu</h1>
@@ -339,13 +339,13 @@
         <!-- Footer Social Icons -->
         <div class="col-lg-4 mb-5 mb-lg-0">
           <h4 class="text-uppercase mb-4">Ikuti Kami</h4>
-          <a class="btn btn-outline-light btn-social mx-1" href="https://www.facebook.com" target="_blank">
+          <a class="btn btn-outline-light btn-social mx-1" href="#">
             <i class="fab fa-fw fa-facebook-f"></i>
           </a>
-          <a class="btn btn-outline-light btn-social mx-1" href="https://www.twitter.com" target="_blank">
+          <a class="btn btn-outline-light btn-social mx-1" href="#">
             <i class="fab fa-fw fa-twitter"></i>
           </a>
-          <a class="btn btn-outline-light btn-social mx-1" href="https://www.linkedin.com" target="_blank">
+          <a class="btn btn-outline-light btn-social mx-1" href="#">
             <i class="fab fa-fw fa-linkedin-in"></i>
           </a>
           <!-- <a class="btn btn-outline-light btn-social mx-1" href="#">

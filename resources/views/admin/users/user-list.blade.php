@@ -53,7 +53,7 @@
                 Daftar Pengguna
 
                 <span class="pull-right">
-                    <a data-toggle="modal" data-target="#exampleModal" class="btn btn-danger btn-xs">Reset Jumlah Baca</a>
+                    <a data-toggle="modal" data-target="#exampleModal" class="btn btn-info btn-xs">Reset Jumlah Baca</a>
 
                     <!-- MODAL RESET -->
                     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
