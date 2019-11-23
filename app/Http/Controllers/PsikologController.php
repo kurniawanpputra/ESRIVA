@@ -152,4 +152,38 @@ class PsikologController extends Controller
 
         return redirect()->route('psikolog.allActivity')->with('success', 'Poin '.$user->name.' sebanyak '.$point.' sukses ditambahkan!');
     }
+
+    public function claimDone($id) {
+        $data = Log::find($id);
+
+        if($data->is_done == 1) {
+            session()->flash('error', 'Sudah ditandai sebagai selesai!');
+
+            return redirect()->back();
+        }
+
+        $data->is_done = 1;
+        $data->save();
+
+        session()->flash('success', 'Sukses ditandai sebagai selesai!');
+        
+        return redirect()->back();
+    }
+
+    public function claimUndone($id) {
+        $data = Log::find($id);
+
+        if($data->is_done == 0) {
+            session()->flash('error', 'Sudah ditandai sebagai belum selesai!');
+
+            return redirect()->back();
+        }
+
+        $data->is_done = 0;
+        $data->save();
+
+        session()->flash('success', 'Sukses ditandai sebagai belum selesai!');
+
+        return redirect()->back();
+    }
 }

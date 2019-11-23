@@ -10,7 +10,7 @@ class LandingController extends Controller
 {
     public function index() {
         $articles = Article::where('status', 'Approved')
-                            ->OrderBy('created_at', 'asc')
+                            ->OrderBy('views', 'desc')
                             ->take(3)
                             ->get();
 

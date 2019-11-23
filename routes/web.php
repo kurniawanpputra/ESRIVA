@@ -62,6 +62,8 @@ Route::group(['middleware' => 'auth'], function ()
     Route::post('user-management/update/{id}', 'UserController@update')->name('user.update')->middleware('admin');
     Route::get('user-management/premium/{id}', 'UserController@premium')->name('user.premium')->middleware('admin');
     Route::get('user-management/read-reset', 'UserController@readReset')->name('user.read-reset')->middleware('admin');
+
+    
     // Route::get('user-management/point-reset/{id}', 'UserController@pointReset')->name('user.point-reset')->middleware('admin');
 
     Route::get('my-profile', 'UserController@editProfile')->name('profile.edit');
@@ -102,4 +104,6 @@ Route::group(['middleware' => 'auth'], function ()
     Route::post('top-up-points', 'PsikologController@topUp')->name('psikolog.topUp')->middleware('admin');
     Route::get('claim/log', 'PsikologController@myClaim')->name('psikolog.myClaim')->middleware('psikolog');
     Route::get('all-claim/log', 'PsikologController@claimLog')->name('psikolog.claimLog')->middleware('admin');
+    Route::get('all-claim/done/{id}', 'PsikologController@claimDone')->name('claim.done')->middleware('admin');
+    Route::get('all-claim/undone/{id}', 'PsikologController@claimUndone')->name('claim.undone')->middleware('admin');
 });

@@ -144,6 +144,7 @@
                                 <th>Sisa Poin</th>
                                 <th>No. Rekening</th>
                                 <th>Waktu</th>
+                                <th>Tindakan</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -154,6 +155,13 @@
                                     <td>{{$l->point_left}}</td>
                                     <td>{{$l->rekening}}</td>
                                     <td>{{date('Y-m-d H:i', strtotime($l->created_at->addHours(7)))}}</td>
+                                    <td>
+                                        @if($l->is_done == 0)
+                                            <a href="{{route('claim.done', $l->id)}}" class="btn btn-success btn-xs">Selesai</a>
+                                        @else
+                                            <a href="{{route('claim.undone', $l->id)}}" class="btn btn-warning btn-xs">Batal Selesai</a>
+                                        @endif
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>

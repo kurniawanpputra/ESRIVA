@@ -98,7 +98,7 @@
                             <span class="info-box-icon"><i class="fa fa-newspaper-o"></i></span>
                             <div class="info-box-content">
                                 <span class="info-box-text" style="margin-top: 7.5px;">Artikel</span>
-                                <span class="info-box-number">Artikel Terproses: {{$article_total - $unapproved_article}}</span>
+                                <span class="info-box-number">Diproses: {{$article_total - $unapproved_article}}</span>
                                 <span class="progress-description">
                                     {{$unapproved_article}} artikel baru
                                 </span>
@@ -108,7 +108,7 @@
                             <span class="info-box-icon"><i class="fa fa-stack-exchange"></i></span>
                             <div class="info-box-content">
                                 <span class="info-box-text" style="margin-top: 7.5px;">Forum</span>
-                                <span class="info-box-number">Forum Dibuka: {{$forum_total - $closed_forum}}</span>
+                                <span class="info-box-number">Dibuka: {{$forum_total - $closed_forum}}</span>
                                 <span class="progress-description">
                                     {{$closed_forum}} forum ditutup
                                 </span>
@@ -118,7 +118,7 @@
                             <span class="info-box-icon"><i class="fa fa-sticky-note"></i></span>
                             <div class="info-box-content">
                                 <span class="info-box-text" style="margin-top: 7.5px;">Umpan Balik</span>
-                                <span class="info-box-number">Umpan Balik: {{$feedback_total}}</span>
+                                <span class="info-box-number">Jumlah: {{$feedback_total}}</span>
                                 <span class="progress-description">
                                     {{$bug_feedback}} diantaranya keluhan
                                 </span>
@@ -130,7 +130,7 @@
                             <span class="info-box-icon"><i class="fa fa-users"></i></span>
                             <div class="info-box-content">
                                 <span class="info-box-text" style="margin-top: 7.5px;">Pengguna</span>
-                                <span class="info-box-number">Pengguna Aktif: {{$user_total - $blocked_user}}</span>
+                                <span class="info-box-number">Aktif: {{$user_total - $blocked_user}}</span>
                                 <span class="progress-description">
                                     {{$blocked_user}} lainnya diblokir
                                 </span>
@@ -139,8 +139,8 @@
                         <div class="info-box bg-light-blue">
                             <span class="info-box-icon"><i class="fa fa-history"></i></span>
                             <div class="info-box-content">
-                                <span class="info-box-text" style="margin-top: 7.5px;">Laporan</span>
-                                <span class="info-box-number">Jumlah Laporan: {{$log_total}}</span>
+                                <span class="info-box-text" style="margin-top: 7.5px;">Komentar</span>
+                                <span class="info-box-number">Laporan: {{$log_total}}</span>
                                 <span class="progress-description">
                                     {{$closed_comment}} komentar ditutup
                                 </span>
@@ -150,9 +150,9 @@
                             <span class="info-box-icon"><i class="fa fa-money"></i></span>
                             <div class="info-box-content">
                                 <span class="info-box-text" style="margin-top: 7.5px;">Langganan</span>
-                                <span class="info-box-number">Jumlah Pengguna: {{$user_total}}</span>
+                                <span class="info-box-number">Jumlah: {{$sub}}</span>
                                 <span class="progress-description">
-                                    {{$sub}} pengguna berlangganan
+                                    {{$user_total - $sub}} pengguna reguler
                                 </span>
                             </div>
                         </div>

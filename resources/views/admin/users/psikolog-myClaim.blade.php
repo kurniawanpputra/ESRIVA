@@ -64,6 +64,7 @@
                                 <th>No. Rekening</th>
                                 <th>Jumlah Konversi</th>
                                 <th>Waktu</th>
+                                <th>Status</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -74,6 +75,13 @@
                                     <td>{{$l->rekening}}</td>
                                     <td>{{'Rp'.str_replace(',', '.', number_format($l->claimed * 1000)).',00.'}}</td>
                                     <td>{{date('Y-m-d H:i', strtotime($l->created_at->addHours(7)))}}</td>
+                                    <td>
+                                        @if($l->is_done == 0)
+                                            <span class="text-warning text-bold">Pending</span>
+                                        @else
+                                            <span class="text-success text-bold">Ditransfer</span>
+                                        @endif
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>
