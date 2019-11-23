@@ -163,7 +163,7 @@
                             <span class="info-box-icon"><i class="fa fa-newspaper-o"></i></span>
                             <div class="info-box-content">
                                 <span class="info-box-text" style="margin-top: 17.5px;">Artikel</span>
-                                <span class="info-box-number">Artikel Dibuat: {{App\Article::where('user_id', auth()->user()->id)->get()->count()}}</span>
+                                <span class="info-box-number">Dibuat: {{App\Article::where('user_id', auth()->user()->id)->get()->count()}}</span>
                                 <!-- <span class="progress-description">
                                     {{App\Article::where('user_id', auth()->user()->id)->where('status', 'Approved')->get()->count()}} artikel disetujui
                                 </span> -->
@@ -175,7 +175,7 @@
                             <span class="info-box-icon"><i class="fa fa-comments"></i></span>
                             <div class="info-box-content">
                                 <span class="info-box-text" style="margin-top: 17.5px;">Jawaban</span>
-                                <span class="info-box-number">Jawaban Dibuat: {{App\ForumComments::where('user_id', auth()->user()->id)->get()->count()}}</span>
+                                <span class="info-box-number">Dibuat: {{App\ForumComments::where('user_id', auth()->user()->id)->get()->count()}}</span>
                             </div>
                         </div>
                     </div>
@@ -183,8 +183,8 @@
                         <div class="info-box bg-yellow">
                             <span class="info-box-icon"><i class="fa fa-puzzle-piece"></i></span>
                             <div class="info-box-content">
-                                <span class="info-box-text" style="margin-top: 17.5px;">Total Poin</span>
-                                <span class="info-box-number">Poin Aktivitas: {{auth()->user()->points}}</span>
+                                <span class="info-box-text" style="margin-top: 17.5px;">Poin</span>
+                                <span class="info-box-number">Jumlah: {{auth()->user()->points}}</span>
                             </div>
                         </div>
                     </div>
@@ -194,7 +194,7 @@
                             <span class="info-box-icon"><i class="fa fa-stack-exchange"></i></span>
                             <div class="info-box-content">
                                 <span class="info-box-text" style="margin-top: 17.5px;">Forum</span>
-                                <span class="info-box-number">Forum Dibuat: {{App\Forum::where('user_id', auth()->user()->id)->get()->count()}}</span>
+                                <span class="info-box-number">Dibuat: {{App\Forum::where('user_id', auth()->user()->id)->get()->count()}}</span>
                                 
                                 <!-- <span class="progress-description">
                                     {{App\Article::where('user_id', auth()->user()->id)->where('status', 'Approved')->get()->count()}} artikel disetujui
@@ -208,7 +208,7 @@
                             <span class="info-box-icon"><i class="fa fa-comments"></i></span>
                             <div class="info-box-content">
                                 <span class="info-box-text" style="margin-top: 17.5px;">Komentar</span>
-                                <span class="info-box-number">Komentar Dibuat: {{App\ForumComments::where('user_id', auth()->user()->id)->get()->count()}}</span>
+                                <span class="info-box-number">Dibuat: {{App\ForumComments::where('user_id', auth()->user()->id)->get()->count()}}</span>
                             </div>
                         </div>
                     </div>
@@ -217,7 +217,7 @@
                             <div class="info-box bg-yellow">
                                 <span class="info-box-icon"><i class="fa fa-user"></i></span>
                                 <div class="info-box-content">
-                                    <span class="info-box-text" style="margin-top: 17.5px;">Status Akun</span>
+                                    <span class="info-box-text" style="margin-top: 17.5px;">Akun</span>
                                     <span class="info-box-number">
                                         PREMIUM
                                     </span>
@@ -227,7 +227,7 @@
                             <div class="info-box bg-aqua">
                                 <span class="info-box-icon"><i class="fa fa-user"></i></span>
                                 <div class="info-box-content">
-                                    <span class="info-box-text" style="margin-top: 17.5px;">Status Akun</span>
+                                    <span class="info-box-text" style="margin-top: 17.5px;">Akun</span>
                                     <span class="info-box-number">
                                         REGULER
                                     </span>
