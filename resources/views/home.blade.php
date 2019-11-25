@@ -282,13 +282,17 @@
                         [{
                             label: "Jumlah Login",
                             data: Logins,
+                            // backgroundColor: [
+                            // 'rgba(26,188,156,0.5)',
+                            // ],
                             backgroundColor: [
-                            'rgba(26,188,156,0.5)',
+                            'rgba(26,188,156)',
                             ],
                             borderColor: [
                             'rgba(26,188,156)',
                             ],
-                            borderWidth: 2
+                            borderWidth: 2,
+                            fill: false
                         }]
                     },
                     options: {
