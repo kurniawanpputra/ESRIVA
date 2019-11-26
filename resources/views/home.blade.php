@@ -104,7 +104,7 @@
                                 </span>
                             </div>
                         </div>
-                        <div class="info-box bg-red">
+                        <div class="info-box bg-yellow">
                             <span class="info-box-icon"><i class="fa fa-stack-exchange"></i></span>
                             <div class="info-box-content">
                                 <span class="info-box-text" style="margin-top: 7.5px;">Forum</span>
@@ -114,7 +114,7 @@
                                 </span>
                             </div>
                         </div>
-                        <div class="info-box bg-yellow">
+                        <div class="info-box bg-red">
                             <span class="info-box-icon"><i class="fa fa-sticky-note"></i></span>
                             <div class="info-box-content">
                                 <span class="info-box-text" style="margin-top: 7.5px;">Umpan Balik</span>
@@ -171,7 +171,7 @@
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <div class="info-box bg-red">
+                        <div class="info-box bg-yellow">
                             <span class="info-box-icon"><i class="fa fa-comments"></i></span>
                             <div class="info-box-content">
                                 <span class="info-box-text" style="margin-top: 17.5px;">Jawaban</span>
@@ -180,7 +180,7 @@
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <div class="info-box bg-yellow">
+                        <div class="info-box bg-red">
                             <span class="info-box-icon"><i class="fa fa-puzzle-piece"></i></span>
                             <div class="info-box-content">
                                 <span class="info-box-text" style="margin-top: 17.5px;">Poin</span>
@@ -204,7 +204,7 @@
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <div class="info-box bg-red">
+                        <div class="info-box bg-yellow">
                             <span class="info-box-icon"><i class="fa fa-comments"></i></span>
                             <div class="info-box-content">
                                 <span class="info-box-text" style="margin-top: 17.5px;">Komentar</span>
@@ -214,7 +214,7 @@
                     </div>
                     <div class="col-md-4">
                         @if(count(auth()->user()->memberships) > 0 && auth()->user()->memberships->last()->expired > \Carbon\Carbon::now())
-                            <div class="info-box bg-yellow">
+                            <div class="info-box bg-red">
                                 <span class="info-box-icon"><i class="fa fa-user"></i></span>
                                 <div class="info-box-content">
                                     <span class="info-box-text" style="margin-top: 17.5px;">Akun</span>
@@ -256,6 +256,7 @@
         var Label = new Array();
         var Logins = new Array();
         var Forums = new Array();
+        var Articles = new Array();
         var ctx = document.getElementById("myChart").getContext('2d');
 
         $(document).ready(function(){
@@ -277,6 +278,10 @@
 
                 Object.values(response[0].forums).forEach(function(forum) {
                     Forums.push(forum);
+                });
+
+                Object.values(response[0].articles).forEach(function(art) {
+                    Articles.push(art);
                 });
 
                 var myChart = new Chart(ctx, {
@@ -306,10 +311,25 @@
                             // 'rgba(26,188,156,0.5)',
                             // ],
                             backgroundColor: [
-                            'rgba(0,192,239)',
+                            'rgb(243,156,18)',
                             ],
                             borderColor: [
-                            'rgba(0,192,239)',
+                            'rgb(243,156,18)',
+                            ],
+                            borderWidth: 2,
+                            fill: false
+                        },
+                        {
+                            label: "Artikel Dibuat",
+                            data: Articles,
+                            // backgroundColor: [
+                            // 'rgba(26,188,156,0.5)',
+                            // ],
+                            backgroundColor: [
+                            'rgb(221,75,57)',
+                            ],
+                            borderColor: [
+                            'rgb(221,75,57)',
                             ],
                             borderWidth: 2,
                             fill: false

@@ -139,14 +139,19 @@ class HomeController extends Controller
 
             // GET FORUM CREATED ON DATE
             $forum = Forum::whereDate('created_at', '=', date('Y-m-d', $i))->count();
+
+            // GET ARTICLE CREATED ON DATE
+            $article = Article::whereDate('created_at', '=', date('Y-m-d', $i))->count();
             
             $logins[$date] = $in;
             $forums[$date] = $forum;
+            $articles[$date] = $article;
             $dates[] = $date;
         }
 
         $response['logins'] = $logins;
         $response['forums'] = $forums;
+        $response['articles'] = $articles;
         $response['label'] = $dates;
 
         return response()->json([$response]);
