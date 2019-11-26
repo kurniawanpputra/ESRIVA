@@ -255,6 +255,7 @@
 
         var Label = new Array();
         var Logins = new Array();
+        var Forums = new Array();
         var ctx = document.getElementById("myChart").getContext('2d');
 
         $(document).ready(function(){
@@ -274,6 +275,10 @@
                     Logins.push(log);
                 });
 
+                Object.values(response[0].forums).forEach(function(forum) {
+                    Forums.push(forum);
+                });
+
                 var myChart = new Chart(ctx, {
                     type: 'line',
                     data: {
@@ -290,6 +295,21 @@
                             ],
                             borderColor: [
                             'rgba(26,188,156)',
+                            ],
+                            borderWidth: 2,
+                            fill: false
+                        },
+                        {
+                            label: "Forum Dibuat",
+                            data: Forums,
+                            // backgroundColor: [
+                            // 'rgba(26,188,156,0.5)',
+                            // ],
+                            backgroundColor: [
+                            'rgba(0,192,239)',
+                            ],
+                            borderColor: [
+                            'rgba(0,192,239)',
                             ],
                             borderWidth: 2,
                             fill: false

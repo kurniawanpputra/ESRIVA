@@ -128,15 +128,25 @@ class HomeController extends Controller
         }
 
         $logins = array();
+        $forums = array();
+        $dates = array();
 
         for ($i = $start_time; $i < $end_time; $i += 86400) {
             $date = date('d-m-y', $i);
+
+            // GET LOGIN BASED ON DATE
             $in = LoginLog::whereDate('created_at', '=', date('Y-m-d', $i))->count();
+
+            // GET FORUM CREATED ON DATE
+            $forum = Forum::whereDate('created_at', '=', date('Y-m-d', $i))->count();
+            
             $logins[$date] = $in;
+            $forums[$date] = $forum;
             $dates[] = $date;
         }
 
         $response['logins'] = $logins;
+        $response['forums'] = $forums;
         $response['label'] = $dates;
 
         return response()->json([$response]);
