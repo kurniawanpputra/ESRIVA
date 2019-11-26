@@ -135,13 +135,18 @@ class HomeController extends Controller
             $date = date('d-m-y', $i);
 
             // GET LOGIN BASED ON DATE
-            $in = LoginLog::whereDate('created_at', '=', date('Y-m-d', $i))->count();
+            $in = LoginLog::whereDate('created_at', '=', date('Y-m-d', $i))
+                          ->where('user_id', '!=', 12)
+                          ->distinct('user_id')
+                          ->count('user_id');
 
             // GET FORUM CREATED ON DATE
-            $forum = Forum::whereDate('created_at', '=', date('Y-m-d', $i))->count();
+            $forum = Forum::whereDate('created_at', '=', date('Y-m-d', $i))
+                          ->count();
 
             // GET ARTICLE CREATED ON DATE
-            $article = Article::whereDate('created_at', '=', date('Y-m-d', $i))->count();
+            $article = Article::whereDate('created_at', '=', date('Y-m-d', $i))
+                              ->count();
             
             $logins[$date] = $in;
             $forums[$date] = $forum;

@@ -290,7 +290,7 @@
                         labels: Label,
                         datasets: 
                         [{
-                            label: "Jumlah Login",
+                            label: "Pengunjung",
                             data: Logins,
                             // backgroundColor: [
                             // 'rgba(26,188,156,0.5)',
@@ -348,7 +348,7 @@
                             }],
                             yAxes: [{
                                 ticks: {
-                                    stepSize: 5,
+                                    stepSize: 1,
                                     beginAtZero: true
                                 }
                             }]
