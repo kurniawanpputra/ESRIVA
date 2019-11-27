@@ -302,7 +302,8 @@
                             'rgba(26,188,156)',
                             ],
                             borderWidth: 2,
-                            fill: false
+                            fill: false,
+                            lineTension: 0.5
                         },
                         {
                             label: "Forum Dibuat",
@@ -317,7 +318,8 @@
                             'rgb(243,156,18)',
                             ],
                             borderWidth: 2,
-                            fill: false
+                            fill: false,
+                            lineTension: 0.5
                         },
                         {
                             label: "Artikel Dibuat",
@@ -332,7 +334,8 @@
                             'rgb(221,75,57)',
                             ],
                             borderWidth: 2,
-                            fill: false
+                            fill: false,
+                            lineTension: 0.5
                         }]
                     },
                     options: {
@@ -348,7 +351,7 @@
                             }],
                             yAxes: [{
                                 ticks: {
-                                    stepSize: 1,
+                                    stepSize: 5,
                                     beginAtZero: true
                                 }
                             }]
