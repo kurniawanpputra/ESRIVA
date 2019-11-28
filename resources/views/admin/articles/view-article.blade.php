@@ -82,7 +82,9 @@
                 </div>
 
                 <p>{!! $article->body !!}</p>
-                <div class="sharethis-inline-share-buttons"></div>
+                @if(auth()->user()->roles == 1)
+                    <div class="sharethis-inline-share-buttons"></div>
+                @endif
 
                 <hr style="margin: 20px 0 5px;">
                 <span>
