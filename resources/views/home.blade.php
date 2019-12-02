@@ -248,9 +248,9 @@
         var date = route.split("?")[1];
         
         if(date != undefined) {
-            var url = "{{route('loginApi')}}?"+date;
+            var url = "{{route('chartApi')}}?"+date;
         }else{
-            var url = "{{route('loginApi')}}";
+            var url = "{{route('chartApi')}}";
         }
 
         var Label = new Array();

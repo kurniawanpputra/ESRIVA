@@ -109,7 +109,7 @@ class HomeController extends Controller
         ]));
     }
 
-    public function loginAPi(Request $request) {
+    public function chartAPi(Request $request) {
         $month = Carbon::now()->month;
         $year = Carbon::now()->year;
         

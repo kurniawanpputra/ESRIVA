@@ -25,7 +25,7 @@ Auth::routes(['reset' => false, 'verify' => false]);
 Route::group(['middleware' => 'auth'], function () 
 {
     Route::get('/home', 'HomeController@index')->name('home');
-    Route::get('/login-logs/api', 'HomeController@loginApi')->name('loginApi');
+    Route::get('/chart/api', 'HomeController@chartApi')->name('chartApi');
 
     //ARTICLES - DONE
     Route::get('articles/create', 'ArticleController@create')->name('articles.create')->middleware('psikolog');
