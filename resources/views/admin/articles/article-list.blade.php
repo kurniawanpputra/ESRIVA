@@ -98,8 +98,8 @@
 
 @section('title')
 	<h1>
-		Dasbor
-		<small>Menampilkan data statistik pengguna</small>
+		Daftar Artikel
+		<small>Menampilkan seluruh artikel</small>
 	</h1>
 @stop
 
