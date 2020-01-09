@@ -237,7 +237,8 @@ class ForumController extends Controller
         $this->validate(request(), [
             'title' => 'required',
             'body' => 'required'
-        ],[
+        ],
+        [
             'title.required' => 'Judul tidak boleh kosong!',
             'body.required' => 'Konten tidak boleh kosong!'
         ]);
@@ -258,7 +259,18 @@ class ForumController extends Controller
         $forum = Forum::find($id);
 
         if($forum->type == "Privat") {
-            if(auth()->user()->id != $forum->user_id || auth()->user()->roles != 2) {
+            if(auth()->user()->id != $forum->user_id) {
+                if(auth()->user()->roles == 2) {
+                    $comments = FC::where('forum_id', $id)->paginate(10);
+
+                    $views = $forum->views;
+                    $forum->views = $views + 1;
+
+                    $forum->save();
+
+                    return view('admin.forums.view-forum', compact('forum', 'comments'));
+                }
+
                 session()->flash('error', 'Forum privat hanya bisa diakses pembuat forum dan psikolog!'); 
             
                 return redirect()->back();
