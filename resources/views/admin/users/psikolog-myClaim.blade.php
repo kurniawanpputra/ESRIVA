@@ -73,7 +73,7 @@
                                     <td>{{$l->claimed}}</td>
                                     <td>{{$l->point_left}}</td>
                                     <td>{{$l->rekening}}</td>
-                                    <td>{{'Rp'.str_replace(',', '.', number_format($l->claimed * 1000)).',00.'}}</td>
+                                    <td>{{'Rp'.str_replace(',', '.', number_format($l->claimed * 1000)).',00'}}</td>
                                     <td>{{date('Y-m-d H:i', strtotime($l->created_at->addHours(7)))}}</td>
                                     <td>
                                         @if($l->is_done == 0)
