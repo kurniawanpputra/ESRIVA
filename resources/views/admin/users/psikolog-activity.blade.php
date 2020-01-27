@@ -134,7 +134,7 @@
             var converted = $('#poin').val() * 1000;
             var formatted = Number(converted.toFixed(1)).toLocaleString();
             var fixed = formatted.replace(',', '.')
-            $('#converted').val('Rp'+fixed+',00.');
+            $('#converted').val('Rp'+fixed+',00');
             $('#amount').val(converted);
         });
     </script>

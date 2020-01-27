@@ -51,7 +51,7 @@
                                 <!-- BATAS MANFAAT DAN CARA DAFTAR -->
 
                                 <p class="text-bold">Cara Mendaftar:</p>
-                                <p>1. Lakukan pembayaran melalui <b>Bank BCA</b> sebesar Rp50.000,00.
+                                <p>1. Lakukan pembayaran melalui <b>Bank BCA</b> sebesar Rp50.000,00
                                     </br>(Nomor Rekening: 123654666 - a.n. PT. ESRIVA).
                                 </p>
                                 <p>2. Kirim foto bukti pembayaran ke 08123654987
