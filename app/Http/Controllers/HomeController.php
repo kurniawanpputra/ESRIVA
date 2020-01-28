@@ -118,6 +118,11 @@ class HomeController extends Controller
             $month = request()->month;
         }
 
+        // GET YEAR IF REQUEST EXIST
+        if(request()->year) {
+            $year = request()->year;
+        }
+
         $start_date = "01-" . $month . "-" . $year;
         $start_time = strtotime($start_date);
         $end_time = strtotime("+1 month", $start_time);

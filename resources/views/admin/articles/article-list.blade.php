@@ -163,7 +163,7 @@
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
                                         <a href="{{route('articles.read', $a->slug)}}" style="text-decoration: underline;">{{$a->title}}</a>
-                                        @if(auth()->user()->roles != 1)
+                                        <!-- @if(auth()->user()->roles != 1)
                                             @if($a->status == "Approved")
                                                 <span class="pull-right btn btn-success btn-xs disabled">
                                                     Disetujui
@@ -173,7 +173,7 @@
                                                     Pending
                                                 </span>
                                             @endif
-                                        @endif
+                                        @endif -->
                                         @if(auth()->user()->roles == 1)
                                             <form action="{{route('articles.favorite', $a->id)}}" method="POST">
                                                 {{ csrf_field() }}
@@ -202,6 +202,7 @@
                                                 <img src="{{isset($a->image) ? asset($a->image) : asset('img/no-image.jpg')}}" style="border-radius: 3px; max-width: 100%; height: auto;" class="thumbnail minus-top">
                                             </div>
                                             <div class="col-md-5 res-margin">
+                                                <p class="text-bold">Status: @if($a->status == "Approved") <span class="text-success">Disetujui</span> @else <span class="text-warning">Pending</span> @endif</p>
                                                 <p>Penulis: {{App\User::find($a->user_id)->name}}</p>
                                                 <p>Kategori: {{App\Category::find($a->category_id)->title}}</p>
                                                 <p>{{date('M Y', strtotime($a->created_at))}} &#8226; {{$mins}} min read</p>
