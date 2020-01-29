@@ -20,7 +20,7 @@ class PsikologController extends Controller
                          ->where('roles', 2)
                          ->get();
 
-            $users->appends(request()->all());
+            // $users->appends(request()->all());
         }else{
             $users = User::where('roles', 2)->get();
         }

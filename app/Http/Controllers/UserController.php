@@ -15,11 +15,11 @@ class UserController extends Controller
                          ->where('roles', 1)
                          ->orWhere('email', 'LIKE', '%'.request()->get('query').'%')
                          ->where('roles', 1)
-                         ->get();
+                         ->paginate(10);
 
             $users->appends(request()->all());
         }else{
-            $users = User::where('roles', 1)->get();
+            $users = User::where('roles', 1)->paginate(10);
         }
 
         return view('admin.users.user-list', compact('users'));

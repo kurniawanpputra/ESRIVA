@@ -56,8 +56,8 @@
         <div class="box box-body" style="margin: 0 0 15px 0;">
             <div class="row">
                 <form action="{{route('forum.list')}}" method="GET" id="filter-form">
-                    <div class="col-md-4">
-                        <select name="status" class="form-control" id="status">
+                    <div class="col-md-5">
+                        <select name="status" class="form-control" id="status" onchange="this.form.submit()">
                             @php
                                 if(isset(request()->status)) {
                                     if(request()->status == 0) {
@@ -68,20 +68,20 @@
                                 }
                             @endphp 
                             <option disabled selected hidden>{{isset(request()->status) ? $status : "Filter status..." }}</option>
-                            <option value="0">Dibuka</option>
-                            <option value="1">Ditutup</option>
+                            <option value="0" @if(request()->status == "0") selected @endif>Dibuka</option>
+                            <option value="1" @if(request()->status == "1") selected @endif>Ditutup</option>
                         </select>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-5">
                         <input type="text" name="judul" placeholder="Cari judul atau nama penulis..." class="form-control filter-margin" 
-                               value="{{isset(request()->judul) ? request()->judul : ''}}" id="judul">
+                               value="{{isset(request()->judul) ? request()->judul : ''}}" id="judul" onchange="this.form.submit()">
                     </div>
-                    <div class="col-md-1">
+                    <!-- <div class="col-md-1">
                         <input type="submit" value="Cari" class="btn btn-primary btn-block filter-margin-2">
-                    </div>
+                    </div> -->
                 </form>
-                <div class="col-md-1">
-                    <button value="Hapus" class="btn btn-default btn-block filter-margin" id="clear-form">Hapus</button>
+                <div class="col-md-2">
+                    <button class="btn btn-default btn-block filter-margin" id="clear-form">Hapus Filter</button>
                 </div>
             </div>
         </div>

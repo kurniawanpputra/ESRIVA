@@ -108,24 +108,24 @@
         <div class="box box-body" style="margin: 0 0 15px 0;">
             <div class="row">
                 <form action="{{route('articles.list')}}" method="GET" id="filter-form">
-                    <div class="col-md-4">
-                        <select name="kategori" class="form-control" id="kategori">
+                    <div class="col-md-5">
+                        <select name="kategori" class="form-control" id="kategori" onchange="this.form.submit()">
                             <option disabled selected hidden>{{isset(request()->kategori) ? App\Category::find(request()->kategori)->title : "Filter kategori..." }}</option>
                             @foreach($categories as $c)
-                                <option value="{{$c->id}}">{{$c->title}}</option>
+                                <option value="{{$c->id}}" @if(request()->kategori == "$c->id") selected @endif>{{$c->title}}</option>
                             @endforeach
                         </select>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-5">
                         <input type="text" name="judul" placeholder="Cari judul atau nama penulis..." class="form-control filter-margin" 
-                               value="{{isset(request()->judul) ? request()->judul : ''}}" id="judul">
+                               value="{{isset(request()->judul) ? request()->judul : ''}}" id="judul" onchange="this.form.submit()">
                     </div>
-                    <div class="col-md-1">
+                    <!-- <div class="col-md-1">
                         <input type="submit" value="Cari" class="btn btn-primary btn-block filter-margin-2">
-                    </div>
+                    </div> -->
                 </form>
-                <div class="col-md-1">
-                    <button value="Hapus" class="btn btn-default btn-block filter-margin" id="clear-form">Hapus</button>
+                <div class="col-md-2">
+                    <button class="btn btn-default btn-block filter-margin" id="clear-form">Hapus Filter</button>
                 </div>
             </div>
         </div>

@@ -36,14 +36,14 @@
                 <form action="{{route('user.list')}}" method="GET" id="filter-form">
                     <div class="col-md-10">
                         <input type="text" name="query" placeholder="Cari pengguna berdasarkan nama atau email..." class="form-control" 
-                               value="{{count(request()->query) > 0 ? request()->get('query') : ''}}" id="query">
+                               value="{{count(request()->query) > 0 ? request()->get('query') : ''}}" id="query" onchange="this.form.submit()">
                     </div>
-                    <div class="col-md-1">
+                    <!-- <div class="col-md-1">
                         <input type="submit" value="Cari" class="btn btn-primary btn-block filter-margin-2">
-                    </div>
+                    </div> -->
                 </form>
-                <div class="col-md-1">
-                    <button value="Hapus" class="btn btn-default btn-block filter-margin" id="clear-form">Hapus</button>
+                <div class="col-md-2">
+                    <button class="btn btn-default btn-block filter-margin" id="clear-form">Hapus Filter</button>
                 </div>
             </div>
         </div>
@@ -166,6 +166,9 @@
                 @else
                     <p class="text-center text-muted" style="margin-top: 10px;">Tidak ada user.</p>
                 @endif
+            </div>
+            <div class="text-center">
+                {{$users->links()}}
             </div>
         </div>
     </div>

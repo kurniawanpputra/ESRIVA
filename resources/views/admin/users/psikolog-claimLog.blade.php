@@ -52,19 +52,19 @@
             <div class="row">
                 <form action="{{route('psikolog.claimLog')}}" method="GET" id="filter-form">
                     <div class="col-md-10">
-                        <select name="uid" class="form-control" id="uid">
+                        <select name="uid" class="form-control" id="uid" onchange="this.form.submit()">
                             <option disabled selected hidden>Filter data psikolog spesifik...</option>
                             @foreach($psikolog as $p)
                                 <option value="{{$p->id}}" @if(request()->uid == $p->id) selected @endif>{{$p->name}}</option>
                             @endforeach
                         </select>
                     </div>
-                    <div class="col-md-1">
+                    <!-- <div class="col-md-1">
                         <input type="submit" value="Filter" class="btn btn-primary btn-block filter-margin-2">
-                    </div>
+                    </div> -->
                 </form>
-                <div class="col-md-1">
-                    <button value="Hapus" class="btn btn-default btn-block filter-margin" id="clear-form">Hapus</button>
+                <div class="col-md-2">
+                    <button class="btn btn-default btn-block filter-margin" id="clear-form">Hapus Filter</button>
                 </div>
             </div>
         </div>
