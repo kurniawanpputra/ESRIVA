@@ -249,8 +249,6 @@
 @section('js')
     <script src="{{ asset('js/Chart.js') }}"></script>
     <script>
-
-
         var route = window.location.href;
         var date = route.split("?")[1];
         
