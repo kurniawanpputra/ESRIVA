@@ -27,7 +27,7 @@
         @if(auth()->user()->roles == 3)
             <div class="box" id="loginChart">
                 <div class="box-header with-border">
-                @if(request()->month)
+                {{--@if(request()->month)
                     @php
                         $monthNum = request()->month;
                         $dateObj = DateTime::createFromFormat('!m', $monthNum);
@@ -37,7 +37,7 @@
                     Statistik {{$monthName}} {{request()->year}}
                 @else
                     Statistik {{\Carbon\Carbon::now()->format('F Y')}}
-                @endif
+                @endif--}}
                     <span class="pull-right">
                         <form method="GET" id="hehe">
                             <select name="month" id="filter" class="stat-filter">
