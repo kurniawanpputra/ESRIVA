@@ -119,7 +119,7 @@
                                     <div class="panel-heading">
                                         <a href="{{route('forum.detail', $f->id)}}" style="text-decoration: underline;">{{$f->title}}</a>
 
-                                        @if(auth()->user()->roles == 3)
+                                        {{-- @if(auth()->user()->roles == 3)
                                             <span class="pull-right">
                                                 @if($f->is_show == 1)
                                                     <a href="{{route('forum.hide', $f->id)}}" class="btn btn-warning btn-xs" title="Sembunyikan"><i class="fa fa-eye-slash"></i></a>
@@ -127,7 +127,7 @@
                                                     <a href="{{route('forum.show', $f->id)}}" class="btn btn-success btn-xs" title="Tampilkan"><i class="fa fa-eye"></i></a>
                                                 @endif
                                             </span>
-                                        @endif
+                                        @endif --}}
                                     </div>
                                     <div class="panel-body">
                                         <p>
@@ -154,7 +154,7 @@
                                         </p>
                                         <hr>
 
-                                        @if(auth()->user()->roles == 3 || auth()->user()->id == $f->user_id)
+                                        @if(auth()->user()->roles == 3 && $f->type == "Publik" || auth()->user()->id == $f->user_id)
                                             <a href="{{route('forum.edit', $f->id)}}" class="btn btn-warning btn-sm">Ubah</a>
                                         @endif
                                         

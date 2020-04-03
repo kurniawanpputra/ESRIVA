@@ -296,8 +296,8 @@
             </div>
             <div class="control-group">
               <div class="form-group floating-label-form-group controls mb-0 pb-2">
-                <label>Alamat E-mail</label>
-                <input class="form-control" id="email" type="email" placeholder="Alamat E-mail" required="required" data-validation-required-message="Please enter your email address." name="email">
+                <label>Alamat E-Mail</label>
+                <input class="form-control" id="email" type="email" placeholder="Alamat E-Mail" required="required" data-validation-required-message="Please enter your email address." name="email">
                 <p class="help-block text-danger"></p>
               </div>
             </div>

@@ -42,6 +42,14 @@
                         <input type="text" class="form-control" name="title" value="{{$forum->title}}">
                     </div>
                     <div class="form-group">
+                        <label for="">Tipe <sup style="color: red;">*</sup></label>
+                        <select class="form-control" name="type" id="selectType">
+                            <option disabled selected hidden>Pilih...</option>
+                            <option value="Privat" @if($forum->type == "Privat") selected @endif>Privat</option>
+                            <option value="Publik" @if($forum->type == "Publik") selected @endif>Publik</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
                         <label for="">Konten <sup style="color: red;">*</sup></label>
                         <textarea id="summernote" name="body">{{$forum->body}}</textarea>
                     </div>

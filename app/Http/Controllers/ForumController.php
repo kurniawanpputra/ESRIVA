@@ -222,9 +222,16 @@ class ForumController extends Controller
         $forum = Forum::find($id);
 
         if(auth()->user()->id != $forum->user_id) {
-            if(auth()->user()->roles == 3) {
-                return view('admin.forums.edit-forum', compact('forum'));
+            if(auth()->user()->roles != 1) {
+                if($forum->type == "Privat") {
+                    session()->flash('error', 'Tidak bisa mengubah forum privat!');
+    
+                    return redirect()->back();
+                }else{
+                    return view('admin.forums.edit-forum', compact('forum'));
+                }
             }
+
             session()->flash('error', 'Tidak bisa mengubah forum pengguna lain!'); 
             
             return redirect()->back();
@@ -246,13 +253,18 @@ class ForumController extends Controller
         $forum = Forum::find($id);
 
         $forum->title = request()->title;
+        $forum->type = request()->type;
         $forum->body = request()->body;
 
         $forum->save();
 
         session()->flash('success', 'Forum berhasil diubah!');
 
-        return redirect()->back();
+        if(auth()->user()->roles == 1){
+            return redirect()->back();
+        }else{
+            return redirect()->route('forum.list');
+        }
     }
 
     public function detail($id) {
