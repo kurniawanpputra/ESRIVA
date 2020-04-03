@@ -27,7 +27,17 @@
         @if(auth()->user()->roles == 3)
             <div class="box" id="loginChart">
                 <div class="box-header with-border">
-                
+                @if(request()->month)
+                    @php
+                        $monthNum = request()->month;
+                        $dateObj = DateTime::createFromFormat('!m', $monthNum);
+                        $monthName = $dateObj->format('F');
+                    @endphp
+
+                    Statistik {{$monthName}} {{request()->year}}
+                @else
+                    Statistik {{\Carbon\Carbon::now()->format('F Y')}}
+                @endif
                     <span class="pull-right">
                         <form method="GET" id="hehe">
                             <select name="month" id="filter" class="stat-filter">
@@ -66,7 +76,10 @@
                 @else
                     Statistik {{auth()->user()->name}}
                 @endif
-                
+                <!-- <span class="pull-right">
+                    {{\Carbon\Carbon::now()->format('d-m-Y')}}
+                    <span id="txt"></span>
+                </span> -->
             </div>
             <div class="box-body">
                 @if (session('error'))
