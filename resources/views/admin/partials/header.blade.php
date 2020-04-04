@@ -46,7 +46,7 @@
 
     @font-face{
         font-family: mst;
-        src: url({{asset('fonts/montserrat-regular.ttf')}});
+        src: url({{asset('fonts/Montserrat-Regular.ttf')}});
     }
     
     .mst{
