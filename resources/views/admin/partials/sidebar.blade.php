@@ -71,7 +71,7 @@
             </li> -->
 
             @if(auth()->user()->roles != 1)
-                <li class="treeview @if(Request::is('articles/create','articles/list','articles/trashed','articles/categories/list')) active @endif">
+                <li class="treeview @if(Request::is('articles/create','articles/list','articles/trashed','articles/categories/list','articles/my')) active @endif">
                     <a href="#">
                         <i class="fa fa-newspaper-o"></i> <span>Artikel</span>
                         <span class="pull-right-container">
@@ -147,7 +147,7 @@
                 </li>
             @endif
             @if(auth()->user()->roles == 1)
-                <li class="treeview @if(Request::is('forums/list','forums/create')) active @endif">
+                <li class="treeview @if(Request::is('forums/list','forums/create','forums/my')) active @endif">
                     <a href="#">
                         <i class="fa fa-stack-exchange"></i> <span>Forum</span>
                         <span class="pull-right-container">
