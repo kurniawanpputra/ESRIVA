@@ -10,7 +10,7 @@
 
 @section('title')
 	<h1>
-		Dasbor
+		Riwayat Aktivitas
 		<small>Menampilkan data aktivitas {{auth()->user()->name}}</small>
 	</h1>
 @stop
