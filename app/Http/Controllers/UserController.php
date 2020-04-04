@@ -202,7 +202,7 @@ class UserController extends Controller
         if(request()->image){
             $avatar = request()->image;
 
-            $avatar_new = time().$avatar->getClientOriginalExtension();
+            $avatar_new = time().'.'.$avatar->getClientOriginalExtension();
             $avatar->move('uploads/avatars', $avatar_new);
             $user->avatar = 'uploads/avatars/' . $avatar_new;
         }
