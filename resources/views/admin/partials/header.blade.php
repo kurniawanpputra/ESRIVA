@@ -43,15 +43,6 @@
     b{
         color: #333;
     }
-
-    @font-face{
-        font-family: mst;
-        src: url({{asset('fonts/Montserrat-Regular.ttf')}});
-    }
-    
-    .mst{
-        font-family: mst;
-    }
 </style>
 
 <header class="main-header">
