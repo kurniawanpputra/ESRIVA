@@ -66,9 +66,9 @@
                                     <td class="text-center middle">
                                         <a href="{{route('forum.detail', $l->forum_id)}}" class="btn btn-xs btn-primary">Lihat</a>
                                         @if(App\ForumComments::find($l->comment_id)->abuse == 0)
-                                            <a href="{{route('comments.close', $l->comment_id)}}" class="btn btn-xs btn-danger">Tutup Komentar</a>
+                                            <a href="{{route('comments.close', $l->comment_id)}}" class="btn btn-xs btn-danger">Sembunyikan</a>
                                         @else
-                                            <a href="{{route('comments.open', $l->comment_id)}}" class="btn btn-xs btn-success">Buka Komentar</a>
+                                            <a href="{{route('comments.open', $l->comment_id)}}" class="btn btn-xs btn-success">Tampilkan</a>
                                         @endif
                                     </td>
                                 </tr>

@@ -1,9 +1,11 @@
 <footer class="main-footer">
-    <div class="pull-right hidden-xs">
+    {{--<div class="pull-right hidden-xs">
         <b>Pengembang: </b>
-        <i>Terra Incognita</i>
-    </div>
+        Terra Incognita
+    </div>--}}
 
-    <strong>&copy; {{\Carbon\Carbon::now()->format('Y')}} ESRIVA.</strong>
-    Seluruh hak cipta dilindungi.
+    <div class="text-center">
+        Copyright &copy; 2019 - {{\Carbon\Carbon::now()->format('Y')}} ESRIVA.
+        Seluruh Hak Cipta Dilindungi
+    </div>
 </footer>

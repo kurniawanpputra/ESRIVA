@@ -51,17 +51,19 @@
         </div>
         <div class="col-md-7">
             <div class="col-md-10 offset-md-1">
+            @if (session('error'))
+                <div class="alert alert-danger" role="alert" style="border: none;">
+                    {{ session('error') }}
+                </div>
+            @endif
+
             <div class="box" style="border-top: 3px solid #1abc9c">
                 <div class="box-header with-border text-center text-bold" style="background-color: #1abc9c">
                     {{ __('LOGIN') }}
                 </div>
 
                 <div class="box-body" style="padding: 20px;">
-                    @if (session('error'))
-                        <div class="alert alert-danger" role="alert">
-                            {{ session('error') }}
-                        </div>
-                    @endif
+                    
                     
                     <form method="POST" action="{{ route('login') }}">
                         @csrf

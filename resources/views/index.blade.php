@@ -237,19 +237,19 @@
       <!-- About Section Content -->
       <div class="row">
         <div class="col-lg-4 ml-auto">
-          <p class="lead">ESRIVA adalah sebuah situs yang memberikan pelayanan dan pengetahuan tentang kesehatan mental. Nama ESRIVA berasal dari bahasa Perancis yang merupakan singkatan dari <i>Esprit Sauvage</i>, berarti jiwa yang bebas.</p>
+          <p class="lead mb-0">ESRIVA adalah sebuah situs yang memberikan pelayanan dan pengetahuan tentang kesehatan mental. Nama ESRIVA berasal dari bahasa Perancis yang merupakan singkatan dari <i>Esprit Sauvage</i>, berarti jiwa yang bebas.</p>
         </div>
         <div class="col-lg-4 mr-auto">
-          <p class="lead">ESRIVA memiliki dua fitur utama, pertama blog yang berisi artikel-artikel berkaitan kesehatan mental dan fitur kedua berupa forum diskusi, dimana para pengguna bisa bertanya dan akan dijawab langsung oleh para psikolog.</p>
+          <p class="lead mb-0">ESRIVA memiliki dua fitur utama, pertama blog yang berisi artikel-artikel berkaitan kesehatan mental dan fitur kedua berupa forum diskusi, dimana para pengguna bisa bertanya dan akan dijawab langsung oleh para psikolog.</p>
         </div>
       </div>
 
       <!-- About Section Button -->
-      <div class="text-center mt-4">
+      {{--<div class="text-center mt-4">
         <a class="btn btn-xl btn-outline-light" href="/register">
           Daftar Sekarang
         </a>
-      </div>
+      </div>--}}
 
     </div>
   </section>
@@ -370,7 +370,7 @@
   <!-- Copyright Section -->
   <section class="copyright py-4 text-center text-white">
     <div class="container">
-      <small>&copy; {{\Carbon\Carbon::now()->format('Y')}} ESRIVA. Seluruh hak cipta dilindungi.</small>
+      <small>Copyright &copy; 2019 - {{\Carbon\Carbon::now()->format('Y')}} ESRIVA. Seluruh Hak Cipta Dilindungi</small>
     </div>
   </section>
 

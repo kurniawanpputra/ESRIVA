@@ -11,6 +11,7 @@ use Carbon\Carbon;
 use App\ForumComments as Comment;
 use App\ReportLog as Log;
 use App\LoginLog;
+use App\Membership;
 
 class HomeController extends Controller
 {
@@ -31,14 +32,13 @@ class HomeController extends Controller
      */
     public function index()
     {
-        // KESELURUHAN DATA
+        // GET ALL GENERAL DATA
         $article_total = Article::all()->count();
         $forum_total = Forum::all()->count();
         $feedback_total = Feedback::all()->count();
         $user_total = User::where('roles', '!=', 3)->get()->count();
         $log_total = Log::all()->count();
 
-        // DATA DIPROSES
         $unapproved_article = Article::where('status', 'Unapproved')->get()->count();
         if($article_total != 0) {
             $new_article = number_format(($unapproved_article / $article_total * 100));
@@ -53,8 +53,10 @@ class HomeController extends Controller
             $forum_percent = 0;
         }
 
-        // $unfinished_feedback = Feedback::where('is_finished', 0)->get()->count();
         $bug_feedback = Feedback::where('type', "Keluhan")->get()->count();
+        $adv_feedback = Feedback::where('type', "Masukan")->get()->count();
+        $msg_feedback = Feedback::where('type', "Pesan")->get()->count();
+
         if($feedback_total != 0) {
             $feedback_percent = number_format(($bug_feedback / $feedback_total * 100));
         }else{
@@ -75,11 +77,11 @@ class HomeController extends Controller
             $log_percent = 0;
         }
 
-        // GET ALL USERS
         $all_users = User::all();
+        $all_sub = Membership::distinct('user_id')->count('user_id');
         $sub = 0;
 
-        // INCREMENT SUB IF MEMBERSHIP ACTIVE
+        // INCREMENT SUB IF MEMBERSHIP IS ACTIVE
         foreach($all_users as $u) {
             if(count($u->memberships)) {
                 if($u->memberships->last()->expired > Carbon::now()) {
@@ -100,12 +102,15 @@ class HomeController extends Controller
             'closed_forum',
             'forum_percent',
             'bug_feedback',
+            'adv_feedback',
+            'msg_feedback',
             'feedback_percent',
             'blocked_user',
             'blocked_percent',
             'closed_comment',
             'log_percent',
-            'sub'
+            'sub',
+            'all_sub'
         ]));
     }
 
@@ -139,7 +144,7 @@ class HomeController extends Controller
         for ($i = $start_time; $i < $end_time; $i += 86400) {
             $date = date('d-m-y', $i);
 
-            // GET LOGIN BASED ON DATE
+            // GET LOGIN LOGS BASED ON DATE
             $in = LoginLog::whereDate('created_at', '=', date('Y-m-d', $i))
                           ->where('user_id', '!=', 12)
                           ->distinct('user_id')

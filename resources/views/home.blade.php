@@ -103,9 +103,9 @@
                             <span class="info-box-icon"><i class="fa fa-newspaper-o"></i></span>
                             <div class="info-box-content">
                                 <span class="info-box-text" style="margin-top: 7.5px;">Artikel</span>
-                                <span class="info-box-number">Diproses: {{$article_total - $unapproved_article}}</span>
+                                <span class="info-box-number">{{$article_total - $unapproved_article}} sudah diproses</span>
                                 <span class="progress-description">
-                                    {{$unapproved_article}} artikel baru
+                                    {{$unapproved_article}} belum diproses
                                 </span>
                             </div>
                         </div>
@@ -113,7 +113,7 @@
                             <span class="info-box-icon"><i class="fa fa-stack-exchange"></i></span>
                             <div class="info-box-content">
                                 <span class="info-box-text" style="margin-top: 7.5px;">Forum</span>
-                                <span class="info-box-number">Dibuka: {{$forum_total - $closed_forum}}</span>
+                                <span class="info-box-number">{{$forum_total - $closed_forum}} forum dibuka</span>
                                 <span class="progress-description">
                                     {{$closed_forum}} forum ditutup
                                 </span>
@@ -123,9 +123,9 @@
                             <span class="info-box-icon"><i class="fa fa-sticky-note"></i></span>
                             <div class="info-box-content">
                                 <span class="info-box-text" style="margin-top: 7.5px;">Umpan Balik</span>
-                                <span class="info-box-number">Jumlah: {{$feedback_total}}</span>
+                                <span class="info-box-number">{{$feedback_total}} umpan balik</span>
                                 <span class="progress-description">
-                                    {{$bug_feedback}} diantaranya keluhan
+                                {{$msg_feedback}} pesan, {{$adv_feedback}} masukan, {{$bug_feedback}} keluhan
                                 </span>
                             </div>
                         </div>
@@ -135,9 +135,9 @@
                             <span class="info-box-icon"><i class="fa fa-users"></i></span>
                             <div class="info-box-content">
                                 <span class="info-box-text" style="margin-top: 7.5px;">Pengguna</span>
-                                <span class="info-box-number">Aktif: {{$user_total - $blocked_user}}</span>
+                                <span class="info-box-number">{{$user_total - $blocked_user}} akun aktif</span>
                                 <span class="progress-description">
-                                    {{$blocked_user}} lainnya diblokir
+                                    {{$blocked_user}} akun diblokir
                                 </span>
                             </div>
                         </div>
@@ -145,9 +145,9 @@
                             <span class="info-box-icon"><i class="fa fa-history"></i></span>
                             <div class="info-box-content">
                                 <span class="info-box-text" style="margin-top: 7.5px;">Komentar</span>
-                                <span class="info-box-number">Laporan: {{$log_total}}</span>
+                                <span class="info-box-number">{{$log_total}} komentar dilaporkan</span>
                                 <span class="progress-description">
-                                    {{$closed_comment}} komentar ditutup
+                                    {{$closed_comment}} komentar disembunyikan
                                 </span>
                             </div>
                         </div>
@@ -155,9 +155,9 @@
                             <span class="info-box-icon"><i class="fa fa-money"></i></span>
                             <div class="info-box-content">
                                 <span class="info-box-text" style="margin-top: 7.5px;">Langganan</span>
-                                <span class="info-box-number">Jumlah: {{$sub}}</span>
+                                <span class="info-box-number">{{$all_sub}} total langganan</span>
                                 <span class="progress-description">
-                                    {{$user_total - $sub}} pengguna reguler
+                                    {{$sub}} masih aktif
                                 </span>
                             </div>
                         </div>
