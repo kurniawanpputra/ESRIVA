@@ -47,7 +47,7 @@
 @section('title')
 	<h1>
 		Daftar Forum
-		<small>Menampilkan forum yang dibuat pengguna</small>
+		<small>Menampilkan seluruh forum</small>
 	</h1>
 @stop
 
@@ -141,6 +141,7 @@
                                                 Pembuat: {{App\User::find($f->user_id)->name}}
                                             @endif
                                         </p>
+                                        <p>Dibuat: {{$f->created_at->diffForHumans()}}</p>
                                         <!-- <p>{{date('M Y', strtotime($f->created_at))}} &#8226; {{$mins}} min read</p> -->
                                         @if($f->is_closed == 0)
                                             <p>Status: <span class="text-success text-bold">Dibuka</span></p>

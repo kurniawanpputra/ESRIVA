@@ -11,7 +11,7 @@
 @section('title')
 	<h1>
 		Riwayat Klaim Poin
-		<small>Menampilkan data klaim poin {{auth()->user()->name}}</small>
+		<small>Menampilkan data riwayat klaim poin {{auth()->user()->name}}</small>
 	</h1>
 @stop
 

@@ -25,7 +25,7 @@
 @section('title')
 	<h1>
 		Daftar Psikolog
-		<small>Menampilkan data psikolog untuk dimanage</small>
+		<small>Menampilkan list data akun psikolog</small>
 	</h1>
 @stop
 

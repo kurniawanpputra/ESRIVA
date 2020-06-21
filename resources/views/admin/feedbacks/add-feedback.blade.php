@@ -11,7 +11,7 @@
 @section('title')
 	<h1>
 		Buat Umpan Balik
-		<small>Silahkan tulis pesan, keluhan, atau masukan</small>
+		<small>Umpan Balik dapat berupa pesan, keluhan, atau masukan kepada Admin</small>
 	</h1>
 @stop
 

@@ -25,7 +25,7 @@
 @section('title')
 	<h1>
 		Daftar Pengguna
-		<small>Menampilkan data pengguna untuk dimanage</small>
+		<small>Menampilkan list data akun pengguna</small>
 	</h1>
 @stop
 

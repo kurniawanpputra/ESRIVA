@@ -32,7 +32,7 @@ class ForumCommentsController extends Controller
             $activity = new Activity();
 
             $activity->user_id = auth()->user()->id;
-            $activity->activity = "Membuat komentar";
+            $activity->activity = 'Membuat komentar di forum '.'"'.$forum->title.'"';
             $activity->notes = "Poin +5";
 
             $activity->save();
@@ -60,6 +60,24 @@ class ForumCommentsController extends Controller
         $log->save();
 
         session()->flash('success', 'Komentar berhasil dilaporkan!');
+        return redirect()->back();
+    }
+
+    public function markAsBest($fid, $cid) {
+        $forum = Forum::find($fid);
+
+        if($forum->best != null) {
+            if($forum->best == $cid) {
+                session()->flash('error', 'Sudah ditandai sebagai komentar terbaik!');
+
+                return redirect()->back();
+            }
+        }
+
+        $forum->best = $cid;
+        $forum->save();
+
+        session()->flash('success', 'Komentar berhasil ditandai sebagai terbaik!');
         return redirect()->back();
     }
 

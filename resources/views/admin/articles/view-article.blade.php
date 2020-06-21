@@ -28,7 +28,7 @@
 @section('title')
 	<h1>
 		Baca Artikel
-		<small>Menampilkan artikel {{$article->title}}</small>
+		<small>Menampilkan artikel <i>"{{$article->title}}"</i></small>
 	</h1>
 @stop
 
@@ -36,9 +36,9 @@
     <div>
         <div class="box cust-margin">
             <div class="box-header with-border">
-                <span class="text-bold">{{strtoupper($article->title)}}</span>
+                <span class="text-bold" style="font-size: 2rem;">{{strtoupper($article->title)}}</span>
 
-                <span class="pull-right btn btn-primary btn-xs disabled">
+                <span class="pull-right btn btn-primary btn-sm disabled">
                     {{App\Category::find($article->category_id)->title}}
                 </span>
             </div>

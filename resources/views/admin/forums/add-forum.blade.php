@@ -18,7 +18,7 @@
 @section('title')
 	<h1>
 		Buat Forum
-		<small>Form untuk membuat forum baru</small>
+		<small>Mernampilkan form untuk membuat forum</small>
 	</h1>
 @stop
 

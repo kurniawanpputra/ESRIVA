@@ -90,6 +90,7 @@
                                         <p>
                                             Pembuat: {{App\User::find($f->user_id)->name}}
                                         </p>
+                                        <p>Dibuat: {{$f->created_at->diffForHumans()}}</p>
                                         <!-- <p>{{date('M Y', strtotime($f->created_at))}} &#8226; {{$mins}} min read</p> -->
                                         @if($f->is_closed == 0)
                                             <p>Status: <span class="text-success text-bold">Dibuka</span></p>

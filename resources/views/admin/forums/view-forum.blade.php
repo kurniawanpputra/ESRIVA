@@ -5,6 +5,15 @@
         /* .cust-margin{
             margin: 5% 0 0;
         } */
+        .best{
+            background-image: none;
+            /* background-color: #8ed1cd; */
+            background-color: #1abc9c;
+        }
+        .best > a{
+            color: #333;
+            font-weight: bold;
+        }
         .cust-margin-alt{
             margin: 2.5% 0 0;
         }
@@ -21,7 +30,7 @@
 @section('title')
 	<h1>
         Baca Forum
-		<small>Menampilkan forum {{$forum->title}}</small>
+		<small>Menampilkan forum <i>"{{$forum->title}}"</i></small>
 	</h1>
 @stop
 
@@ -29,12 +38,12 @@
     <div>
         <div class="box cust-margin">
             <div class="box-header with-border">
-                <span class="text-bold">{{strtoupper($forum->title)}}</span>
+                <span class="text-bold" style="font-size: 2rem;">{{strtoupper($forum->title)}}</span>
                 <span class="pull-right" style="color: #111;">
                     @if($forum->is_closed == 0)
-                        <span class=" btn btn-primary btn-xs disabled">Dibuka</span>
+                        <span class=" btn btn-primary btn-sm disabled">Dibuka</span>
                     @else
-                        <span class=" btn btn-danger btn-xs disabled">Ditutup</span>
+                        <span class=" btn btn-danger btn-sm disabled">Ditutup</span>
                     @endif
                 </span>
             </div>
@@ -100,9 +109,44 @@
                 </div>
             </div>
         @endif
+        
+        @php
+            $best = App\ForumComments::find($forum->best);
+        @endphp
 
         <div class="box cust-margin-alt">
-            <div class="box-header with-border">
+            <div class="box-header with-border ">
+                <b>Komentar Terbaik</b>
+            </div>
+            
+            <div class="box-body">
+                @if($forum->best != null)
+                    <div class="panel panel-default" style="margin: 10px 0;">
+                        <div class="panel-heading" style="background-color: #1abc9c;">
+                            <b>
+                                <p style="margin-bottom: 0;">{{App\User::find($best->user_id)->name}}</p>
+                            </b>
+                        </div>
+                        <div class="panel-body">
+                            <p>
+                                @if($best->abuse == 1)
+                                    <i>Komentar ini telah dihapus oleh moderator.</i>
+                                @else
+                                    {!! $best->body !!}
+                                @endif
+                            </p>
+                            <hr>
+                            <p>{{$best->created_at->addHours(7)}}</p>
+                        </div>
+                    </div>
+                @else
+                    <p class="text-center" style="margin-top: 10px;"><i>Belum ada komentar terbaik.</i></p>
+                @endif
+            </div>
+        </div>
+
+        <div class="box cust-margin-alt">
+            <div class="box-header with-border ">
                 <b>{{$comments->count()}} Komentar</b>
             </div>
             
@@ -228,7 +272,7 @@
                                     @endif
                                 </p>
                                 <hr>
-                                <p>{{$c->created_at->addHours(7)}}</p>
+                                <p>{{$c->created_at->addHours(7)}} @if(auth()->user()->id == $forum->user_id) ~ <a href="{{route('comments.best', ['fid' => $forum->id, 'cid' => $c->id])}}">Tandai Jawaban Terbaik</a> @endif</p>
                             </div>
                         </div>
                     @endforeach

@@ -93,6 +93,7 @@ Route::group(['middleware' => 'auth'], function ()
     Route::get('report-log', 'ForumCommentsController@reportIndex')->name('report.index')->middleware('admin');
     Route::post('forums/{id}/comments/store', 'ForumCommentsController@store')->name('comments.store');
     Route::post('forums/{fid}/comments/{cid}/report', 'ForumCommentsController@report')->name('report.store');
+    Route::get('forums/{fid}/comments/{cid}/mark-as-best', 'ForumCommentsController@markAsBest')->name('comments.best');
     Route::get('report-log/open/{id}', 'ForumCommentsController@open')->name('comments.open')->middleware('admin');
     Route::get('report-log/close/{id}', 'ForumCommentsController@close')->name('comments.close')->middleware('admin');
 

@@ -296,7 +296,7 @@ class ArticleController extends Controller
             $activity = new Activity();
 
             $activity->user_id = $article->user->id;
-            $activity->activity = "Artikel diapprove admin";
+            $activity->activity = 'Artikel judul '.'"'.$article->title.'"'.' diapprove admin';
             $activity->notes = "Poin +25";
 
             $activity->save();

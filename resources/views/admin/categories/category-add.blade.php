@@ -11,7 +11,7 @@
 @section('title')
 	<h1>
 		Tambah Kategori
-		<small>Form untuk menambah kategori baru</small>
+		<small>Menampilkan form untuk menambah kategori</small>
 	</h1>
 @stop
 

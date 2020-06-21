@@ -11,7 +11,7 @@
 @section('title')
 	<h1>
 		Ubah Kategori
-		<small>Ubah kategori {{$category->title}}</small>
+		<small>Menampilkan form untuk mengubah kategori</small>
 	</h1>
 @stop
 

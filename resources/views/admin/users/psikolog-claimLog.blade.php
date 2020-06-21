@@ -25,7 +25,7 @@
 @section('title')
 	<h1>
 		Riwayat Klaim Poin
-		<small>Menampilkan data klaim poin psikolog</small>
+		<small>Menampilkan data riwayat klaim poin psikolog</small>
 	</h1>
 @stop
 

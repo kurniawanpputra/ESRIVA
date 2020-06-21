@@ -25,7 +25,7 @@
 @section('title')
 	<h1>
 		Buat Artikel
-		<small>Form untuk membuat artikel baru</small>
+		<small>Menampilkan form untuk membuat artikel</small>
 	</h1>
 @stop
 

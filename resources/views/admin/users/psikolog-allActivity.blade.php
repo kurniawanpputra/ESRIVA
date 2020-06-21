@@ -25,7 +25,7 @@
 @section('title')
 	<h1>
 		Aktivitas Psikolog
-		<small>Menampilkan data aktivitas psikolog</small>
+		<small>Menampilkan data riwayat aktivitas psikolog</small>
 	</h1>
 @stop
 

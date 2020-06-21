@@ -11,7 +11,7 @@
 @section('title')
 	<h1>
 		Riwayat Aktivitas
-		<small>Menampilkan data aktivitas {{auth()->user()->name}}</small>
+		<small>Menampilkan data riwayat aktivitas {{auth()->user()->name}}</small>
 	</h1>
 @stop
 
