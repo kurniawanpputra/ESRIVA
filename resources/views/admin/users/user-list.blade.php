@@ -50,7 +50,7 @@
 
         <div class="box cust-margin">
             <div class="box-header with-border">
-                Daftar Pengguna
+                Daftar Pengguna - Tanggal Hari Ini: {{\Carbon\Carbon::today()->format('d M Y')}}
 
                 <span class="pull-right">
                     <a data-toggle="modal" data-target="#exampleModal" class="btn btn-info btn-xs">Reset Jumlah Baca</a>
